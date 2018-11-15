@@ -1,0 +1,78 @@
+<style type="text/css">
+	body {
+		background: #f5f7f9;
+	}
+</style>
+<div class="index_my">
+	<div class="">
+		<div class="mine_head">
+			<div class="mine_info ovh ptr">
+				<!--<div class="itu_poster hp100 wp100" style="background: url({{headimg?headimg:'img/default.jpg'}}) 50% 0%  no-repeat;background-attachment:scroll; background-size:100%;-webkit-filter:blur(10px);filter: blur(10px);width: 110%;margin-left: -5%;height: 2.5rem; margin-top: -.15rem;"></div>-->
+				<div class="headBox alic pta wp100">
+					<div class="imgbox_center bdrp50 mauto">
+						<a href="#/user_center?otherId={{userId}}"> 
+							<img id="J_img" class="loading bdrp50 wp100" src="{{headimg?headimg:'img/default.jpg'}}">
+						</a>
+					</div>
+					<p class="fs17 pt15 fwb lh1">{{nick=='null'||nick=='undefined'||!nick?'未登录':nick}}</p>
+				</div>
+			</div>
+		</div>
+		<ul class="mine_bot tab-text333">
+			<li class="m_banding">
+				<a href="#/mine_toMember" class="dsb">
+					<!--<i class="ico_mine"  ></i>帐号绑定-->
+					<img class="ico_mine" src="images/mine-icon-member.png" />开通节目VIP
+					<img class="rightArrow" src="img/rec01fr.png" />
+				</a>
+				<div class="bold-line"></div>
+			</li>
+			<li class="m_see">
+				<a href="#/mine_history" class="dsb">
+					<!--<i class="ico_mine" ></i>我的看单-->
+					<img class="ico_mine" src="images/mine-icon-history.png" />观看历史
+					<img class="rightArrow" src="img/rec01fr.png" />
+				</a>
+				<div class="mine_line"></div>
+			</li>
+			<li class="m_service">
+				<a href="#/mine_collect" class="dsb">
+					<!--<i class="ico_mine" ></i>我的收藏-->
+					<img class="ico_mine" src="images/mine-icon-save.png" />我的收藏
+					<img class="rightArrow" src="img/rec01fr.png" />
+				</a>
+				<div class="mine_line"></div>
+			</li>
+			<li class="m_service">
+				<a href="#/mine_order" class="dsb">
+					<!--<i class="ico_mine" ></i>我的预约-->
+					<img class="ico_mine" src="images/mine-icon-book.png" />我的预约
+					<img class="rightArrow" src="img/rec01fr.png" />
+				</a>
+				<div class="bold-line"></div>
+			</li>
+			<li class="m_message">
+				<!--<a href="#/mine_message" class="dsb">-->
+				<a href="#/mine_msg_order" class="dsb">
+					<img class="ico_mine" src="images/mine-icon-message.png" />我的消息
+					<img ng-show="msgNum" src="imgnew/dot.png" alt="" style="height:.1rem;">
+					<img class="rightArrow" src="img/rec01fr.png" />
+				</a>
+				<div class="mine_line"></div>
+			</li>
+			<li class="m_buy">
+				<a href="#/mine_buy" class="dsb">
+					<img class="ico_mine" src="images/mine-icon-order.png" />我的订购
+					<img class="rightArrow" src="img/rec01fr.png" />
+				</a>
+				<div class="mine_line"></div>
+			</li>
+			<li class="m_banding">
+				<a href="#/mine_device" class="dsb">
+					<img class="ico_mine" src="images/mine-icon-device.png" />我的设备
+					<img class="rightArrow" src="img/rec01fr.png" />
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

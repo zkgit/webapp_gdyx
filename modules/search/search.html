@@ -1,0 +1,219 @@
+<style>
+	body{background: #fff;}
+</style>
+<div class="search  pb60">
+	<div class="headline headline-title headline-fixed {{!search_on&&!isresult?'bdb':''}}" style="padding: 0;z-index: 4;">
+		<div class="">
+			<div class="search_bar cursor " id="search_bar">
+				<div class="search_inner">
+					<img src="images/search.png" alt="">
+					<input type="search" autocomplete="off" autocorrect="off" ng-model="keyword" ng-change="keylen(key)" class="search_input "
+					    id="search_input" placeholder="{{type=='vod'?'请输入片名、主演或导演':(type=='live'?'请输入频道名称':(type=='apply'?'请输入应用名称':''))}}"
+					    required />
+					<a href="javascript:" class="{{keyword?'icon_clear':'dsn'}}" id="search_clear" ng-click="search_clear()"></a>
+				</div>
+				<a href="javascript:" class="pta r15 t0 lh0 dsb hp100  fs16" id="search_hidden" ng-show="search_btn" ng-click="searchsub()">搜索</a>
+				<a href="javascript:" class="c33  pta r15 t0 lh0 dsb hp100  fs16" id="search_cancel" ng-show="search_can" back>取消</a>
+			</div>
+			<div class="search_cells search_cells_access" id="search_show" ng-show="search_on" style="overflow-x: hidden;overflow-y: auto;margin-top: 0;">
+				<div class="search_cell cursor" ng-repeat="text in textlist track by $index" ng-click="keysearch(text)">
+					<div class="">
+						<p ng-bind="text"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<a class="pta r10 cff fs16" href="javascript:;" id="J_searchbtn" ng-click="searchsub()">搜索</a>
+    <p class="input cff fs18 alic"><input type="text" placeholder="请输入片名、主演或导演" autofocus="autofocus" ng-model="keyword" ng-keyup="keyup()" class="icontrol" id="J_itext"></p>-->
+	</div>
+	<div style="margin-top: .44rem">
+		<div class="result" id="J_result" ng-show="isresult&&!search_on">
+			<div class="rtab" id="J_tab" ng-show="type=='vod'">
+				<div class="panels" infinite-scroll="getajax()" infinite-scroll-disabled="isc" infinite-scroll-distance="0">
+					<div class="pt10 ovh borderc  headline-fixed fs16 bgcffffff bdb" style="margin-top: .44rem;">
+						<a href="javascript:;" ng-click="searchsub('live')" class="cursor searchtype {{searchtype=='live'?'active':''}}">
+							<p>直播</p>
+						</a>
+						<a href="javascript:;" ng-click="searchsub('back')" class="cursor searchtype {{searchtype=='back'?'active':''}}">
+							<p>回看</p>
+						</a>
+						<a href="javascript:;" ng-click="searchsub('vod')" class="cursor searchtype {{searchtype=='vod'?'active':''}}">
+							<p>点播</p>
+						</a>
+					</div>
+					<div class="headline-fixed bgcffffff  c33 fs14" ng-show="searchtype=='vod'" style="margin-top: .85rem;">
+						<div class="search_choose bdb">
+							<ul class="scrollx">
+								<li>综合</li>
+								<li>播放次数</li>
+								<li>上映时间</li>
+								<li>评分最高</li>
+								<li>评分最高1</li>
+								<li>评分最高2</li>
+							</ul>
+							<div class="search_choose_btn alic"><img src="images/choosebtn.png" alt="" class="mr5">筛选</div>
+						</div>
+						<div class="search_choosetable">
+							<ul class='search_table scrollx' ng-repeat="(key,value) in choosejson" >
+								<li ng-repeat="vv in value.data" class='type-li {{$index==value.index?"active":""}}' on-finish-render-filters  ng-click="chooseli(vv,$index,key)">
+									<a href="javascript:;" class="choose_ls">{{vv}}</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel" ng-show="searchtype=='vod'" style="margin-top:2.5rem;">
+						<ul class="searlist list ovh" id="J_relist_db">
+							<!--点播-->
+							<li class="li lia ovh  pt20 mb20 plr cursor {{$index==0?'':'bdte5'}}" ng-show="type=='vod'" ng-repeat="v in list"
+							    on-finish-render-filters>
+								<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}" ng-click="deleteHtml()">
+									<div class="img mr10">
+										<p class="size-cover ptr">
+											<img class="J_img lazy loading pta wp100 hp100" animate-visible="true" lazy-src="{{v.image}}">
+											<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>
+										</p>
+									</div>
+								</a>
+								<div class="ptr fs13">
+									<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}">
+										<p class="fs15 ce4 ellipsis" ng-bind="v.title"></p>
+										<p class="c99  pt5  ellipsis">{{typeJson[v.videoType]}} {{v.tags.split(';').splice(0,2).join('·')}} {{v.year}}</p>
+										<p class="c99  pt5  ellipsis">导演：{{v.director}}</p>
+										<p class="c99 h48 detailEllipsis "><span class="">主演：</span>{{v.actors.length>20?v.actors.substr(0,25)+'...':v.actors}}</p>
+									</a>
+									<!--<div class="mt10 bgyellow fs14 cff dsib ser_play" ng-show="v.videoType=='film'" ng-click="playtv(v)"><img  src="imgnew/search-icon-play.png" alt=""><span>立即投屏</span></div>-->
+									<a href="javascript:;" class="mt10 bgyellow fs14 cff dsib ser_play" ng-click="playtv('db',v)"><span>投屏</span></a>
+								</div>
+							</li>
+							<!--直播、回看-->
+							<!--	<div class="searchtv ptr  cursor lstv ptr {{$index==0?'':'bdte5'}}"  ng-show="type=='live'"  ng-repeat="vs in list" on-finish-render-filters>
+                                    <a href="#/detail?zb=zb&columnType={{vs.epglist[0].kankeId.split('_')[0]}}&videoId={{vs.epglist[0].kankeId.split('_')[1]}}&kankeId={{vs.epglist[0].kankeId}}&vodId=&englishName={{vs.epglist[0].kankeChannel}}&channelID={{vs.channelId}}&chaneseName={{vs.zh_name}}" ng-click="deleteHtml()">
+                                        <p class="img">
+                                            <img class="lazy loading ico" src="{{vs.epglist[0].icon2}}" err-src="img/ico_df.png">
+                                            <span class="sec-text dsb ellipsis">{{vs.zh_name}}</span>
+                                        </p>
+                                    </a>
+
+                                    <p class="time" ng-show="vs.epglist&&vs.epglist.length<2?'true':'false'"><span class="lh16">&ensp;</span></p>
+                                        <div ng-repeat="v in vs.epglist" on-finish-render-filters>
+                                            <p class="time"><span class="lh16" ng-bind="v.date+v.beginTime|mytime"></span></p>
+                                            <p class="name">
+                                                <span class="lh16 ellipsis">{{v.playTitle.length>12?(v.playTitle).slice(0,12)+'...':v.playTitle}}</span>
+                                                <span data-list="'+i+'" data-epglist="'+j+'" class="btn-order {{v.isorder?'btn-orderActive':''}}"  ng-show="afterTim(v.date+' '+v.beginTime)" ng-click="ordertv(vs,$index, $parent.$index)"></span>
+                                            </p>
+                                        </div>
+                                        <p class="time" ng-show="vs.epglist&&vs.epglist.length<2?'true':'false'" ><span class="lh16">&ensp;</span></p>
+                                </div>
+                            -->
+						</ul>
+					</div>
+					<div class="panel" ng-show="searchtype=='live'" style="margin-top: .85rem">
+						<ul class="ovh searzblist" id="J_relist_zb">
+							<li class='item wp100 p10 bsz ptr ovh dflex fcenter ' ng-repeat="v in list">
+								<a href="#/detail?zb=zb&channelID={{v.channelId}}" class="fl mr10">
+									<div class='img'>
+										<img lazy-src="{{v.image}}" class='wp100 hp100' alt="">
+									</div>
+								</a>
+								<a class='ptr dsb pt15 fs13 lh24 midinfo' url="#/detail?zb=zb&channelID={{v.channelId}}">
+									<p class='fs15  ellipsis'>{{v.title}}</p>
+									<p class='ellipsis ce4 '>正在直播：归去来</p>
+									<p class='ellipsis c66'>16:00-18:00</p>
+								</a>
+								<p class='push-button alic cff fs13' ng-click="playtv('zb',v.channelId)">推屏</p>
+							</li>
+						</ul>
+					</div>
+					<div class="panel" ng-show="searchtype=='back'" style="margin-top: .84rem">
+						<ul class="ovh searzblist" id="J_relist_zb">
+							<li class='item wp100 p10 bsz ptr ovh dflex fcenter ' ng-repeat="v in list">
+								<a href="#/detail?zb=zb&channelID={{v.channelId}}" class="fl mr10">
+									<div class='img'>
+										<img lazy-src="{{v.image}}" class='wp100 hp100' alt="">
+									</div>
+								</a>
+								<a class='ptr dsb pt15 fs13 lh24 midinfo' url="#/detail?zb=zb&channelID={{v.channelId}}">
+									<p class='fs15  ellipsis'>{{v.title}}</p>
+									<p class='ellipsis ce4 '>正在直播：归去来</p>
+									<p class='ellipsis c66'>16:00-18:00</p>
+								</a>
+								<p class='push-button alic cff fs13' ng-click="playtv('back',v.channelId)">推屏</p>
+							</li>
+						</ul>
+					</div>
+					<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+				</div>
+			</div>
+			<ul ng-show="type=='apply'">
+				<li class="tab_bd_item_app ptr" ng-repeat="v in list" on-finish-render-filters>
+					<a ng-href="#/app_detail?contentId={{v.CONTENTID}}&appUserName={{v.CONTENTNAME}}" class="tva alil">
+						<p class="img pta">
+							<img class="loading lazy dsb bdr5" animate-visible="true" lazy-src="{{v.ICON}}" err-src="img/ico_app.png">
+						</p>
+						<div class="dt live-box" style="padding: .38rem .7rem .38rem .1rem">
+							<p class="sec-text ellipsis" ng-bind="v.CONTENTNAME?v.CONTENTNAME:'暂无'"></p>
+						</div>
+					</a>
+					<span class="{{v.epgs.length>1?'btn-order':''}} {{v.isorder?'btn-orderActive':''}}" ng-click="ordertv(v,$index,'live')"></span>
+					<span class="btn-app" ng-click="playApp(v)">电视打开</span>
+				</li>
+			</ul>
+			<ul ng-show="type=='live'" class="channel_search">
+				<li class="li ptr" ng-repeat="v in list" on-finish-render-filters>
+					<a href="#/detail?zb=zb&channelID={{v.channelId}}&kankeId={{v.epgs[0].kankeId}}&id=&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}">
+						<img animate-visible="true" lazy-src="{{v.icon}}" err-src="img/ico_df.png" alt="" class="channel_img fl loading lazy">
+						<div class="channel_right bdb">
+							<p class="fs16 c33">{{v.channelName}}</p>
+							<p class="cyellow fs13">正在播放：{{v.epgs[0].title}}</p>
+						</div>
+					</a>
+					<img src="images/his_tv.png" ng-click="playLive(v.channelId)" alt="" class="chal_playicon wp02">
+				</li>
+			</ul>
+		</div>
+		<div class="" id="J_list" ng-show="!search_on&&!isresult">
+			<div class="shis  bdb">
+				<p class="histil c33 fs16 lh30 ovh fwb">搜索历史
+					<a ng-show="keyhistory.length" href="javascript:;" class="clear fr" id="J_clearhis" ng-click="clearCommit=true;"><img
+						    src="images/search_del.png" style="height: .2rem;" alt=""></a>
+				</p>
+				<ul class="hisul ovh pt20" id="J_history">
+					<li class="hisli" ng-repeat="v in keyhistory">
+						<a href="javascript:;" class="keyw" ng-click="keysearch(v)" ng-bind="v"></a>
+					</li><span ng-if="nohis">暂无搜索记录</span>
+				</ul>
+			</div>
+			<div class="hotsearch" ng-show="type=='vod'">
+				<p class="c33 fs16 pt20 pb20 plr fwb">热门搜索</p>
+				<div class='hot_ul pl10 pr10 ovh fs26 c66 flex fcenter'>
+					<div class='item  mb30  bsz wp50 flex fcenter' ng-repeat="vs in typelist" ng-click="keysearch(vs.word)">
+						<div class="numimg alic flex fcenter">
+							<img src='images/search_{{$index+1}}.png' />
+						</div>
+						<span class='c66 fs14  ellipsis'>{{vs.word}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--BEGIN toast-->
+	<div id="toast" style="display: none;">
+		<div class="weui_mask_transparent"></div>
+		<div class="weui_toast">关键字不可为空
+		</div>
+	</div>
+	<!--end toast-->
+	<div class="chosetv" style="display: block;" ng-show="clearCommit">
+		<div class="remotenew alic">
+			<div id="device_delete">
+				<p class="rn-til  fs18 pt20">清空</p>
+				<div class="rn-sm fs14  pt10">确定清空搜索记录吗？</div>
+				<p class="rn-bnts ovh pta b0">
+					<a href="javascript:;" class="rn-btn" id="J_delete_qx" ng-click="clearCommit=false">取消</a>
+					<a href="javascript:;" class="rn-btn rn-btn-a" id="J_delete_qd" ng-click="nohistory()">清空</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,54 @@
+<div class="headline headline-title headline-fixed">
+    <a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+        <img style="height: .44rem;" src="img/left-arrow.png" />
+    </a>
+    <p class="i-text alic" id="J_til" ng-bind="toptil"></p>
+    <a href="#/search" class="pta r50 t0 lh0 dsb hp100 cff fs24">
+        <span class="mui-icon">
+            <img src="img/searchi.png" style="height: .44rem;" />
+        </span>
+    </a>
+    <a href="#/shakeResult" class="pta r10 t0 lh0 dsb hp100 cff fs24">
+        <span class="mui-icon">
+            <img src="img/shakei.png" style="height: .44rem;" />
+        </span>
+    </a>
+</div>
+<div class="second scrolly" id="J_second" ng-show={{issec}}>
+    <table>
+        <tr id="J_second_tr">
+            <td ng-repeat="v in sectype"><a class="tvls ellipsis {{$index==0?'active':''}}" href="javascript:;"
+                    ng-click="getsec($index,v)" data-tags="{{v}}">{{v}}</a></td>
+        </tr>
+    </table>
+</div>
+<div class="content {{issec?'sec':''}}" id="J_content">
+    <div class="actlist">
+        <ul class="list ovh" id="J_list">
+            <li class="li" ng-repeat="v in list" on-finish-render-filters>
+                <a href="#/detial?kankeId={{v.kankeId}}&columnType={{v.videoType}}&isMatch={{v.isMatched}}&vodId={{v.vodId}}"
+                    class="lia">
+                    <p class="size-cover ptr ovh">
+                        <img class="loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" style="display: block;">
+                        <span class="{{(v.isMatched==-2||v.isMatched==1)?'J_icotv':''}} dsb"></span>
+                    </p>
+                    <p class="sec-text ellipsis pt5">{{v.title}}</p>
+                    <p class="c66 lh16">播放:{{v.playCount|to_wan}}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+</div>
+<div class="condition" id="J_condition" style="display:{{isshowxuan?'block':'none'}}">
+    <div class="list ovh" id="J_cdlist">
+        <div class="ptb" ng-repeat="v in category">
+            <p class="subtil"><span class="btntil">{{v.name}}</span></p>
+            <ul class="ovh">
+                <li class="type-li {{$index==0?'active':''}}" data-value="{{$index==0?'':vv}}" data-type="{{v.filed}}"
+                    ng-repeat="vv in v.values"><a href="javascript:;">{{vv}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <a href="javascript:;" class="botbtn" id="J_cdbtn" ng-click="xuanze()">完成</a>
+</div>

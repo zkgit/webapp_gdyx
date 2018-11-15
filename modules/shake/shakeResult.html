@@ -1,0 +1,136 @@
+<div class="headline headline-title headline-fixed">
+	<a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+		<img style="height: .44rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="i-text alic" id="J_til">摇一摇</p>
+	<a href="#/shakeSet" class="pta r10 t0 lh0 dsb hp100 cff fs24">
+		<span class="mui-icon">
+		<img src="imgnew/setting.png" style="height: .44rem;"/>
+		</span>
+	</a>
+</div>
+<div ng-show="loading" style="margin-top: .44rem;">
+	<img src="imgnew/shake.png" />
+</div>
+<div ng-show="!loading">
+	<ul class="ovh content-navbg" style="margin-top: .44rem;">
+		<li class="li-4" ng-repeat="v in sectype">
+			<a class="tvls ellipsis" ng-click="getsec($index,v)" data-tags="{{v}}">
+				<p class="tab-text {{$index==resultNum?'active':''}}" style="margin-bottom: 0;">{{v}}</p>
+			</a>
+		</li>
+	</ul>
+	<div ng-show="resultNum==0" style="margin-bottom: .49rem;">
+		<li class="mui-table-view-part">&nbsp;</li>
+		<!--<div ng-include="#/TVlive_detail"></div>-->
+		<a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+			<img style="height: .44rem;" src="img/left-arrow.png" />{{detial.title}}
+		</a>
+		<img ng-src="{{detial.bpic}}" style="width: 100%;height: 30%;" />
+
+		<div style="height: .44rem;border-bottom: 1px solid #f0f0f0;color: #888;background-color: #fff;" ng-show="isdetail">
+			<div class="comment"></div><span>{{commons|to_wan}}</span>
+			<div class="share"></div>
+			<div class="heart {{is_collect?'heartActive':''}}" ng-click="collect()"></div>
+			<div class="like {{is_like?'likeActive':''}}" ng-click="like()"></div><span>{{likenum|to_wan}}</span>
+		</div>
+		<div class="tyitem" style="margin-top: 0;" ng-show="!isdetail">
+			<p class="til fs18 pb10 ellipsis c33">暂无数据</p>
+		</div>
+		<div class="tyitem" style="margin-top: 0;" ng-show="isdetail">
+			<div style="float: right;margin-top: -.1rem;">
+				<img class="{{fold1?'fold':'unfold'}}" ng-click="unfold(1)" src="img/rec01fr.png" />
+			</div>
+			<p class="til fs18 pb10 ellipsis c33" id="J_vtitle" ng-bind="detial.title?detial.title:'暂无数据'">正在加载···</p>
+			<p class="c66 lh18 ellipsis fs14" id="J_director" ng-bind="detial.director?'导演：'+detial.director:'导演：'">导演：正在加载···</p>
+			<p class="c66 lh18 ellipsis fs14" id="J_actor" ng-bind="detial.actor?'主演：'+detial.actor:'主演：'">主演：正在加载···</p>
+			<p class="c66 lh18 ellipsis fs14" id="J_type" ng-bind="detial.tags?'类型：'+detial.tags:'类型：'">类型：正在加载···</p>
+			<p class="c66 lh18 ellipsis fs14" id="J_year" ng-bind="detial.year?'年代：'+detial.year:'年代：'">年代：正在加载···</p>
+			<div class="dt-intro pb10" id="J_showintro" ng-show="!fold1">
+				<p class="fs16 c33 lh30 pt10">剧情介绍<i class="fa fa-caret-right fr lh30"></i></p>
+				<div class="fs14 c66" id="J_desc_part" ng-bind="detial.shortdes">正在加载···</div>
+			</div>
+		</div>
+		<div class="tyitem">
+			<img class="loading lazy" src="http://ikanpic.kanketv.com/image/live/icon2/jiangsu.png" error="assets/images/ico_df.jpg" style="width: .3rem;float: left;">江苏卫视
+			<div class="dt-tab-panel" style="display:{{isjmlist==1?'block':'none'}}" id="J_jmlistbox">
+				<p class="J_jmlist_time ovh pt10" id="J_jmlist_time">
+					<a href="javascript:;" ng-repeat="v in jmtime" class="jm-time {{$index==jmtimeeq?'active':''}}" data-time="{{v.timestr}}" ng-click="changeday($index,v.timestr)">{{v.day}}</a>
+				</p>
+				<div class=" scrolly" id="J_scroll_go">
+					<ul class="list" id="J_jmlist">
+						<li class="ptr card" ng-repeat="v in jmlist" on-finish-render-filters>
+							<!--<div class="line"></div>-->
+							<a href="javascript:;" class="jm-l ellipsis {{v.active?'active':''}}" eq="{{$index}}">{{v.startTime}}  {{v.title}}
+								<span  class="timer" ng-click="ordertv(v,$index)"></span>
+								<a href="#detail?columnType={{v.videoType}}&videoId={{v.videoId}}">
+									<span  class="play"></span>
+								</a>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="tyitem">
+			<p>明星</p>
+			<a href="#profile"><img src="imgnew/test.png" /></a>
+		</div>
+		<div class="tyitem" style="padding: 0;height: .49rem;position: fixed;bottom: 0;width: 100%;">
+			<div class="tvbg">
+				<div class="tvplay"></div>
+			</div>
+			<div class="cellbg">
+				<div class="cellplay"></div>
+			</div>
+		</div>
+		<div class="chosetv" id="J_chosetv" style="display:{{showremove?'block':'none'}};" ng-click="closeend()">
+			<div class="remotenew">
+				<div class="choseend">
+					<p class="">
+						<a href="javascript:;" class="J_chose_tv btn_end" ng-click="playtv(true)">电视播放</a>
+					</p>
+					<p class="pt40">
+						<a href="javascript:;" ng-click="playmb()" class="J_chose_mb btn_end">手机播放</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="resultNum==1">
+		<div class="m-tyitem">
+			<div class="ptr" on-finish-render-filters>
+				<a href="TTV/good.html" class="lstv ptr">
+					<p class="img pta">
+						<img class="loading ico lazy" src="imgnew/test11.png"  animate-visible="true"  lazy-src="{{v.icon}}" error="assets/images/ico_df.jpg" style="display: block;">
+					</p>
+					<p class="name">
+						<span class="fs16 dsb name1">[天貓超市]伊利牛奶 安慕希那酸奶 原味205*12</span>
+						<span class="lh16 ellipsis dsb pt5 money">56.00</span>
+					</p>
+					<div class="right-mark">天猫</div>
+				</a>
+			</div>
+		</div>
+		<div class="m-tyitem">
+			<div class="ptr" on-finish-render-filters>
+				<a href="TTV/good.html" class="lstv ptr">
+					<p class="img pta">
+						<img class="loading ico lazy" src="imgnew/test11.png"  animate-visible="true"  lazy-src="{{v.icon}}" error="assets/images/ico_df.jpg" style="display: block;">
+					</p>
+					<p class="name">
+						<span class="fs16 dsb name1">[天貓超市]伊利牛奶 安慕希那酸奶 原味205*12[天貓超市]伊利牛奶 安慕希那酸奶 原味205*12</span>
+						<span class="lh16 ellipsis dsb pt5 money">56.00</span>
+					</p>
+					<div class="right-mark">天猫</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div ng-show="resultNum==2">
+		<!--<iframe  id="iframepage" class="iframe-con" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()" src="http://ad.t2o.kanketv.com/TTV/newactivity.html" ></iframe>-->
+		<iframe id="iframepage" class="iframe-con" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onLoad="iFrameHeight()" src="TTV/newactivity.html"></iframe>
+		<!--<div ng-include="http://ad.t2o.kanketv.com/TTV/newactivity.html"></div>-->
+	</div>
+	<div ng-show="resultNum==3"></div>
+</div>

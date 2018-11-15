@@ -1,0 +1,34 @@
+<div class="headline headline-title headline-fixed">
+	<a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+		<img style="height: .2rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="i-text alic" id="J_til">我的直播</p>
+	<!--<a href="#/search" class="pta r10 t0 lh0 dsb hp100 cff fs24">-->
+	<!--<span class="mui-icon">-->
+	<!--<img src="img/searchi.png" style="height: .44rem;"/>-->
+	<!--</span>-->
+	<!--</a>-->
+	<!--<a href="#/shakeResult" class="pta r10 t0 lh0 dsb hp100 cff fs24">
+		<span class="mui-icon">
+		<img src="img/shakei.png" style="height: .44rem;"/>
+		</span>
+	</a>-->
+</div>
+<div class="tyitem" id="J_content" style="margin-top: .54rem;background: #f0f0f0;">
+	<ul class="list mt10 ovh" id="J_hot">
+		<li class="li" ng-repeat="v in hotlist">
+			<a ng-href="#/detail?zb=zb&serviceid={{v.epgs[0].channelID}}&tsid={{(v.epgs[0].channel_sid).split('_')[1]}}&frequence={{v.epgs[0].channel_tid}}&kankeId={{v.videoId}}&vodId={{v.vodId}}&columnType={{v.videoId.split('_')[0]}}&videoId={{v.videoId.split('_')[1]}}&englishName={{v.epgs[0].englishName}}&channelID={{v.epgs[0].channelID}}&chaneseName={{v.epgs[0].chaneseName}}&recommend=1"
+			    class="J_a cff">
+				<p class="size-cover ptr ovh" style="margin-bottom: 0;">
+					<img class="J_img loading pta wp100 hp100" ng-src="{{v.lpic}}">
+					<span class="zb_channel ellipsis"><img src="{{v.epgs[0].icon2}}" />{{v.epgs[0].chaneseName}}</span>
+				</p>
+				<div class="tv_info" style="background: #fff;">
+					<p class="J_til til sec-text ellipsis cff">{{v.title}}</p>
+					<p class="pre ptr"><span class="J_pre pta hp100" style="width:{{v.epgs[0].percentage}}%;"></span></p>
+				</div>
+			</a>
+		</li>
+	</ul>
+	<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+</div>

@@ -1,0 +1,87 @@
+<style>
+	body {
+		background: #fff;
+	}
+</style>
+<div class="headline headline-title headline-fixed dsn">
+	<a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+		<img style="height: .15rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="i-text" id="J_til">我的消息</p>
+</div>
+<div class="index_my_message">
+	<ul>
+		<li ng-repeat="v in list">
+			<a href="#/mine_msg_order?title={{v.title}}&type={{v.id}}" class="lia">
+				<div class="mes_bd_item ptr">
+					<div class="img pta">
+						<img class="loading lazy" src="{{v.image}}">
+						<p class="cff mes_num" ng-show="v.totalrecords">{{v.totalrecords}}</p>
+					</div>
+					<div class="dt">
+						<p class="fs12 pb5 c99 ovh"><span class="fl">{{v.title}}</span><span class="fr mr10" style="display: none;">2017年10月17日</span></p>
+						<!--<div class="fs14 c33">您预约的江苏卫视那年花开月正圆即将播出！</div>-->
+						<!--<p class="alir fs12 cyellow plr">视频详情 <img src="imgnew/mes_jiantou.png" style="height: .12rem;"  alt="" class="ml5"></p>-->
+					</div>
+				</div>
+			</a>
+		</li>
+		<!--<li>
+			  <a href="#/mine_msg_order" class="lia">
+					<div class="mes_bd_item ptr">
+						<div class="img pta">
+							<img class="loading lazy" src="imgnew/mes_order.png">
+							<p class="cff mes_num">3</p>
+						</div>
+						<div class="dt">
+								<p class="fs12 pb5 c99 ovh"><span class="fl">预约提醒</span><span class="fr mr10">2017年10月17日</span></p>
+								<div class="fs14 c33">您预约的江苏卫视那年花开月正圆即将播出！</div>
+						        <p class="alir fs12 cyellow plr">视频详情 <img src="imgnew/mes_jiantou.png" style="height: .12rem;"  alt="" class="ml5"></p>
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#/mine_msg_feedback" class="lia">
+					<div class="mes_bd_item ptr">
+						<div class="img pta">
+							<img class="loading lazy" src="imgnew/mes_fankui.png">
+						   <p class="cff mes_num">3</p>
+						</div>
+						<div class="dt">
+							<p class="fs12 pb5 c99 ovh"><span class="fl">反馈回复</span><span class="fr mr10">2017年10月17日</span></p>
+							<div class="fs14 c33">小编已补全您之前反馈的剧集来源哦～速速来看吧</div>
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#detail?kankeId=film_722883&amp;vodId=0" class="lia">
+					<div class="mes_bd_item ptr">
+						<div class="img pta">
+							<img class="loading lazy" src="imgnew/mes_fans.png">
+						   <p class="cff mes_num">3</p>
+						</div>
+						<div class="dt">
+							<p class="fs12 pb5 c99 ovh"><span class="fl">粉丝关注</span><span class="fr mr10">2017年10月17日</span></p>
+							<div class="fs14 c33">又有新增粉丝楼～快来互相关注变成好友吧！</div>
+						</div>
+					</div>
+				</a>
+			</li>-->
+	</ul>
+	<div class="closeMsg alic" style="display: none;">
+		<img src="imgnew/closeMsg.png" alt="">
+		<p class="fs16 pt30"><span class="c33 mr10">消息提醒已被关闭</span> <span class="cyellow" ng-click="">开启消息</span></p>
+	</div>
+</div>
+<!--<div class="chosetv"  style="display: none;" ng-click="resetstate()">
+	<div class="remotenew" ng-click="stopBubble($event)" style="height: 1.56rem;margin-top: -.78rem;">
+			<p class="rn-til  fs18 pt20 alic fwb">关闭</p>
+			<div class="c33 fs15 alic pt10 pb10"><p>确定关闭该帐号的消息提醒功能</p><p>吗？</p></div>
+			<p class="rn-bnts ovh ">
+				<a href="javascript:;" class="rn-btn alic " id="J_edit_qx">取消</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a alic" id="J_edit_qd" >关闭</a>
+			</p>
+	</div>
+</div>-->

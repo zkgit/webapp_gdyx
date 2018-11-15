@@ -1,0 +1,70 @@
+<div class="remote pta hp100 wp100" id="remote" unselectable="on" style="-moz-user-select:none;-webkit-user-select:none;webkit-touch-callout:none">
+	<p class="pt30 pb30 fs16 c99 alic">遥控器</p>
+	<ul class="mt10 pb30 pl20 pr20 ovh ico-item-2 ptr">
+		<li class="J_code keybg1 key_home" data-keyCode="54782"></li>
+		<li class="vol">
+			<div class="left l0 J_code" data-keyCode="27923">
+				<!--<img src="img/remote_voljian.png" alt="" class="J_code img1" data-keyCode="27923"><img
+					src="img/remote_voljian-1.png" alt="" class="J_code img2" data-keyCode="27923">-->
+			</div>
+			<div ng-click="is_staticvol=!is_staticvol" class="J_code key_vol {{is_staticvol?'key_novol active':''}}"
+			    data-keyCode="{{is_staticvol?103246:98764}}">
+				<!--<img style="width: .2rem" src="{{is_staticvol?'img/remote_mute.png':'img/remote_vol.png'}}" alt="">-->
+			</div>
+			<div class="right r0 J_code" data-keyCode="31488">
+				<!--<img src="img/remote_voladd.png" alt="" class="J_code img1" data-keyCode="31488"><img
+					src="img/remote_voladd-1.png" alt="" class="J_code img2" data-keyCode="31488">-->
+			</div>
+		</li>
+		<li class="keybg1  key_off" ng-click="isshowclose=true"></li>
+	</ul>
+	<ul class="ico-item-3" ng-show="showmodel=='num'">
+		<li data-keyCode="678934" data-keyNumber="1" class="J_code">1</li>
+		<li data-keyCode="123568" data-keyNumber="2" class="J_code">2</li>
+		<li data-keyCode="982356" data-keyNumber="3" class="J_code">3</li>
+		<li data-keyCode="345823" data-keyNumber="4" class="J_code">4</li>
+		<li data-keyCode="150792" data-keyNumber="5" class="J_code">5</li>
+		<li data-keyCode="715128" data-keyNumber="6" class="J_code">6</li>
+		<li data-keyCode="245139" data-keyNumber="7" class="J_code">7</li>
+		<li data-keyCode="142458" data-keyNumber="8" class="J_code">8</li>
+		<li data-keyCode="234789" data-keyNumber="9" class="J_code">9</li>
+		<li data-keyCode="104789" data-keyNumber="" class="J_code">#</li>
+		<li data-keyCode="765352" data-keyNumber="0" class="J_code">0</li>
+		<li data-keyCode="252345" data-keyNumber="" class="J_code lastli"><img src="img/remote_delete.png" alt="" class="img1"><img
+			    src="img/remote_delete_press.png" alt="" class="img2"></li>
+	</ul>
+	<div id="svgbox" ng-show="showmodel=='default'" class="svgbox">
+		<div class="svg-up cover">
+			<div class="remote-top direction"></div>
+		</div>
+		<div class="svg-right cover">
+			<div class="remote-right direction"></div>
+		</div>
+		<div class="svg-bottom cover">
+			<div class="remote-bottom direction"></div>
+		</div>
+		<div class="svg-left cover">
+			<div class="remote-left direction"></div>
+		</div>
+		<div data-keyCode="58492" class="remote-ok J_code "></div>
+	</div>
+	<ul class="ico-item ico-item-2 wp100 pl20 pr20" style="top:4.54rem">
+		<li class="J_code  keybg1 key_menu" data-keyCode="793168" style="display: none"></li>
+		<li class="key_num fs16"><a href="javascript:;" ng-click="shownum('default')" style="left: 2px;" class="{{showmodel=='default'?'active':''}}">按键</a><a
+			    href="javascript:;" style="right:2px;" class="{{showmodel=='num'?'active':''}}" ng-click="shownum('num')">数字</a></li>
+		<li class="J_code keybg1 key_back" data-keyCode="51367"></li>
+	</ul>
+	<p class="alic pta b10 lh30 wp100 " back><img src="img/remote_back2.png" alt="" style="height: .2rem;"></p>
+	<div class="chosetv" ng-show="isshowclose" style="display: block">
+		<div class="remotenew plr" ng-click="stopBubble($event)" style="height:1rem;width:2.8rem;margin-left: -1.4rem;">
+			<p class="fs18 fwb c33 pt20 pb10  alic">是否关闭</p>
+			<p class="rn-bnts ovh ">
+				<a href="javascript:;" class="rn-btn alic" ng-click="isshowclose=false">取消</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a alic" ng-click="remoteclose('109238')">确定</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!--遥控器的数字提示-->
+<!--<div class="remotetip ptf z10 wp100 alic ellipsis  "><div class="dsilb fs26  info"><div class="ellipsis"><sapn class="remotetipitext" >{{option}}</sapn></div></div></div>-->

@@ -1,0 +1,93 @@
+<div class="mb56 good_friend bgcffffff pt100">
+    <ul class="col_nav alic tab-text666 mb20 " ng-click="tip()">
+        <li class="fl wp50 {{fr_ky?'active':''}}">看友动态</li>
+        <li class="fr wp50 {{fr_hy?'active':''}}">好友在看</li>
+    </ul>
+    <div ng-show="fr_ky" class="ptr">
+        <div class="pta z2 r10 kan_select">
+            <p class="ce4 alir" ng-click="is_showselect=!is_showselect"><img src="imgnew/kan_choose.png" alt="" style="height:.14rem;vertical-align: baseline;"
+                    class="mr5">{{selectArr[selectIndex+1]}}</p>
+            <ul class="alic c33 fs13 lh30" ng-show="is_showselect">
+                <li class="{{selectIndex==-1?'ce4':''}}" ng-click="changeSelect(-1)">全部</li>
+                <li class="{{selectIndex==0?'ce4':''}}" ng-click="changeSelect(0)">关注</li>
+                <li class="{{selectIndex==1?'ce4':''}}" ng-click="changeSelect(1)">粉丝</li>
+                <li class="{{selectIndex==2?'ce4':''}}" ng-click="changeSelect(2)">好友</li>
+            </ul>
+        </div>
+        <div class="item ovh pb10 mt10 bdb ptr " ng-repeat="v in res" on-finish-render-filters ng-hide="v.hide">
+            <a href="#/user_center?otherId={{v.userId}}">
+                <img class="loading bdrp50 fl user_img lazy" animate-visible="true" lazy-src="{{v.userImage}}" err-src="img/default.jpg"
+                    alt="">
+            </a>
+            <p class="fs12 lh15 pt5 wp76 ellipsis">
+                <span class="c57 fwb">{{v.userName}}</span> &nbsp <span class="c99">和你分享{{v.type|typeshare}}：</span>
+            </p>
+            <div class=" ptr wp33 fl">
+                <p class="fs11 cacaca ellipsis" ng-bind="v.addTime"></p>
+                <div class="size-cover ptr">
+                    <a href="{{v.type==0?'#/detail?columnType='+v.videoType+'&id='+v.entityId:(v.type==1?'#/detail?zb=zb&id='+v.id+'&channelID='+v.entityId+'&englishName='+v.channelKen+'&chaneseName='+v.channelName:'#/order_detail?id='+v.entityId+'&otherId='+v.userId)}}">
+                        <img class="J_img lazy loading pta bdr5" animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg">
+                    </a>
+                    <div class="pta channel_info_l" ng-show="v.type==1?true:false">
+                        <img src="http://ikanpic.kanketv.com/image/live/icon2/{{v.channelKen}}.png" err-src="img/ico_df.png"
+                            class="" alt="">
+                        <span>{{v.channelName}}</span>
+                    </div>
+                </div>
+            </div>
+            <p class="c33 fs12 fl wp100 pt5" style="padding-left: .6rem;" ng-bind="v.title"></p>
+            <div class="fl pt5 wp100" style="padding-left: .6rem;">
+                <span class="fs12 c99 dsib fl" style="width:.8rem;">分享{{v.total|to_wan}}次</span>
+                <p class="fs12   c57 fl" ng-click="del($index,v)" ng-show="userId==v.userId">删除</p>
+                <div class="fr mr10" ng-click="like(v)">
+                    <img src="{{v.likeStatus?'imgnew/detail_like_press.png':'imgnew/detail_like_ccc.png'}}" alt=""
+                        style="height:.15rem; vertical-align: text-bottom;">
+                    <span class="fs12 {{v.likeStatus?'cyellow':''}}" ng-bind="v.count"></span>
+                </div>
+            </div>
+        </div>
+        <p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+    </div>
+    <div ng-show="fr_hy">
+        <div ng-show="list.length==0||!list">
+            <img class="wp76 ml20" src="img/default_fr.png" alt="">
+            <p class="fs16 alic c66">
+                您当前还没有好友
+            </p>
+            <p class="fs16 alic c66 pt5">
+                去<span class="cyellow" ng-click="tip()">看友动态</span>关注有趣的朋友们吧
+            </p>
+            <p class="h190">
+            </p>
+        </div>
+        <div class="item ovh mt10" ng-repeat="v in list" on-finish-render-filters>
+            <div class="pic_left wp20 ptr fl">
+                <img class="lazy" animate-visible="true" lazy-src="{{v.headImgurl}}" err-src="img/default.jpg" alt="">
+            </div>
+            <p class="sec-text ellipsis" ng-bind="v.nickName">
+            </p>
+            <div class="pro_right  wp76 scrolly">
+                <table>
+                    <tr>
+                        <td ng-repeat="vv in v.list" on-finish-render-filters>
+                            <a class="history lia lazy" href="{{vv.type==0?'#/detail?columnType='+vv.videoType+'&id='+vv.seriesId:(vv.type==1?'#/detail?zb=zb&id='+vv.id+'&kankeId=&channelID='+vv.channelId+'&englishName='+vv.channelKen+'&chaneseName='+vv.channelName:'')}}">
+                                <div>
+                                    <p class="sec-text8989 alil ellipsis" ng-bind="vv.addTime">
+                                    </p>
+                                    <img class="lazy" animate-visible="true" lazy-src="{{vv.image}}" err-src="img/icon_mine.jpg" />
+                                    <p class="sec-text8989 alil ellipsis" ng-bind="vv.type==1?vv.channelName:vv.title">
+
+                                    </p>
+                                    <p class="sec-text8989 alil ellipsis" ng-bind="vv.channelName||vv.title?'':'暂无名称'">
+
+                                    </p>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

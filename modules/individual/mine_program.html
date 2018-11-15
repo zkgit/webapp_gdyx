@@ -1,0 +1,78 @@
+<style>
+	body{background: #fff;}
+</style>
+<div class="headline headline-title headline-fixed">
+	<!--<a class="pta l10 cff" href="javascript:;" id="J_back" back>
+		<img style="height: .15rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="tab-text333" id="J_til">我的看单</p>-->
+	<!--<a href="javascript:;" class="pta r10 t0 lh0 dsb hp100 cff" ng-click="is_showEdit=true" ng-show="!deleteState">-->
+	<a href="javascript:;" class="pta r10 t0 lh0 dsb hp100 cff" ng-click="deletefcn()" ng-show="!deleteState">
+		<span class="sec-text">编辑</span>
+	</a>
+	<a href="javascript:;" class="pta r10 t0 lh0 dsb hp100 cff" ng-click="deleteState=!deleteState" ng-show="deleteState">
+		<span class="sec-text">取消</span>
+	</a>
+</div>
+
+<div class="editprogramm cff plr" ng-show="is_showEdit">
+	<p><a href="#/creatProgram?id={{sc.id}}"><img src="./imgnew/mine_pro_new.png" alt=""><span class="fs16">新建看单</span></a></p>
+	<p ng-click="deletefcn()"><img src="./imgnew/mine_pro_manage.png" alt=""> <span class="fs16">管理看单</span></p>
+</div>
+<div id="J_list" class="index_programm mine_list" style="margin-top: .44rem;padding-bottom: .6rem;">
+	<div class="pt10" id="creatKan">
+		<div class="tab-text666 pl10" ng-click="zhanList('creat')"><img class="{{seting.tindex==0?'program_bot':'program_left'}}  fl"
+			    style="margin-top: .08rem;" src="imgnew/program_jiantou.png" alt="">
+			<p class="{{seting.tindex==0?'':'bdb'}} pb10 ml20">我创建的看单({{seting.creatnum}})</p>
+		</div>
+		<ul class="list  bdb  tab-text33316" ng-show="seting.tindex==0&&creatList.length" style="overflow: hidden;margin-left: {{deleteState?0:'-.35rem'}}">
+			<li ng-repeat="v in creatList" on-finish-render-filters>
+				<input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" ng-click="count()" data-id="{{v.id}}">
+				<a href="#/order_detail?id={{v.id}}&otherId=">
+					<div class="his_bd_item ptr">
+						<p class="img pta"><img animate-visible="true" lazy-src="{{v.image}}" class="lazy loading" alt=""><img src="imgnew/mine_nopub.png"
+							    alt="" ng-if="v.isPublic==0" class="pta b0 r0" style="width: .25rem;"></p>
+						<p class="ellipsis dt">{{v.title}} <img class="rightArrow" src="img/rec01fr.png" alt="" ng-show="!deleteState"></p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="pt10" id="colKan">
+		<div class="tab-text666 pl10" ng-click="zhanList('col')"><img class="{{seting.tindex==1?'program_bot':'program_left'}} fl"
+			    style="margin-top: .08rem;" src="imgnew/program_jiantou.png" alt="">
+			<p class="pb10 ml20">我收藏的看单({{seting.colnum}})</p>
+		</div>
+		<ul class="list  bdb  tab-text33316" ng-show="seting.tindex==1&&colList.length" style="overflow: hidden;margin-left: {{deleteState?0:'-.35rem'}}">
+			<li ng-repeat="v in colList" on-finish-render-filters>
+				<input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" ng-click="count()" data-id="{{v.id}}">
+				<a href="#/order_detail?id={{v.entityId}}&otherId={{v.userId}}">
+					<div class="his_bd_item ptr">
+						<p class="img pta">
+							<img animate-visible="true" lazy-src="{{v.image}}" class="lazy loading" alt="">
+							<img src="imgnew/mine_nopub.png" alt="" ng-if="v.isPublic==0" class="pta b0 r0" style="width: .25rem;">
+						</p>
+						<p class="ellipsis dt">{{v.title}} <img class="rightArrow" src="img/rec01fr.png" alt="" ng-show="!deleteState"></p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="editline" ng-show="deleteState" style="display: block;">
+	<a href="javascript:;" class="f" ng-click="checkAll()">{{allSelect?'取消全选':'全选'}}</a>
+	<a href="javascript:;" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>
+<div class="chosetv" id="chosetv" ng-show="deleteCommit" style="display: block;" ng-click="resetstate()">
+	<div class="remotenew" ng-click="stopBubble($event)">
+		<div id="device_delete" ng-show="deleteCommit">
+			<p class="fwb fs18 pt10 alic">删除看单</p>
+			<p class="fs14 c33 pt10 alic">删除看单后，将无法恢复现有看单</p>
+			<p class="fs14 c33 pb10 alic">是否继续删除看单？</p>
+			<p class="rn-bnts alic ovh" style="margin-top: .14rem">
+				<a href="javascript:;" class="rn-btn" id="J_delete_qd" ng-click="deleteConfirm()">确定</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a" id="J_delete_qx" ng-click="resetstate()">取消</a>
+			</p>
+		</div>
+	</div>
+</div>

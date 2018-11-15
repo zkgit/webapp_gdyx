@@ -1,0 +1,85 @@
+<div class="bgcffffff tb-block">
+    <ul class="col_nav alic tab-text33314 ovh">
+        <li class="fl wp50 {{type==1?'active':''}} fs17 fwb" ng-click="changeType(1)">频道
+            <s class="s"></s>
+        </li>
+        <li class="fr wp50 {{type==0?'active':''}} fs17 fwb" ng-click="changeType(0)">片库
+            <s class="s"></s>
+        </li>
+    </ul>
+</div>
+
+<div class="headline headline-title wp100 alic">
+    <a href="javascript:;" class="lh0 dsb hp100" ng-click="deletefcn()">
+        <span class="sec-text">
+            {{deleteState?'取消':'编辑'}}
+        </span>
+    </a>
+</div>
+
+
+<div style="padding-top: .6rem;">
+    <div id="collectlist" class="mine_list timeline" style="overflow: hidden;margin-left:{{deleteState?'0':'-.35rem'}};">
+        <ul ng-if="type==1">
+            <li ng-repeat="v in list" on-finish-render-filters>
+                <input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" data-id="{{v.id}}"
+                    ng-click="count()">
+                <div class="his_bd_item ptr">
+                	<!--<a href="{{type==0?'#/detail?columnType='+v.videoType+'&id='+v.entityId:(type==1?'#/detail?zb=zb&id='+v.id+'&channelID='+v.entityId+'&englishName='+v.channelKen+'&chaneseName='+v.title:'#/app_detail?contentId='+v.entityId+'&appUserName='+v.title)}}"-->
+                <!--class="lia">-->
+               		<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>
+                        <div class="img ptr">
+                            <div class="size-cover pta ovh img">
+                                <img class="loading lazy pta" animate-visible="true" lazy-src="{{v.image}}" style="display: block;">
+                                <!--<span ng-if="v.edition" class="J_icotv fs12 cff dsb alic">{{v.edition}}</span>-->
+                            </div>
+                        </div>
+                        <div class="psr">
+                            <div class="dt_fl dt">
+                                <p class="til fs15 pb5 ellipsis fwb">{{v.title}}</p>
+                                <p class="ellipsis fs13 cfd82 pb8 lh1" ng-show="v.epgName">正在直播：  {{v.epgName}}</p>
+                                <p class="c66 ellipsis fs13 pb10 lh1" ng-show="!v.epgName">暂无节目单</p>
+                                <p class="c66 ellipsis fs13 lh1">{{v.startTime}}-{{v.endTime}}</p>
+                                <!--<div class="fs13 cyellow"><p class="ico_col mr10"></p>{{v.videoType=='tv'?'电视剧':(v.videoType=='film'?'电影':(v.videoType=='arts'?'综艺':(v.videoType=='anime'?'动漫':(v.videoType=='documentary'?'纪录片':''))))}}</div>-->
+                            </div>
+                        </div>
+                    </a>
+                    <button class="push-btn cff fs13 alic dsib psa lh1" ng-click="gotoplay('zb',v)">投屏</button>
+                </div>
+            </li>
+        </ul>
+        <ul ng-if="type==0">
+            <li ng-repeat="v in list" on-finish-render-filters>
+                <input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" data-id="{{v.id}}"
+                    ng-click="count()">
+                <div class="his_bd_item ptr">
+                	<!--<a href="#/detail?id={{v.id}}" class="lia">-->
+                	<a href="{{type==0?'#/detail?columnType='+v.videoType+'&id='+v.entityId:(type==1?'#/detail?zb=zb&id='+v.id+'&channelID='+v.entityId+'&englishName='+v.channelKen+'&chaneseName='+v.title:'#/app_detail?contentId='+v.entityId+'&appUserName='+v.title)}}"  class="lia">
+                        <div class="img ptr">
+                            <div class="size-cover pta ovh img">
+                                <img class="loading lazy pta" animate-visible="true" lazy-src="{{v.image}}" style="display: block;">
+                            </div>
+                        </div>
+                        <div class="psr">
+                            <div class="dt_fl dt">
+                                <p class="til fs16 ellipsis c33 pb5 fwb">{{v.title}}</p>
+                                <p class="ellipsis fs13 c66 pb10 lh1">{{v.tags}}</p>
+                                <p class="ellipsis fs13 c66 lh1">{{v.actors}}</p>
+                                <!--<p class="c99 ellipsis fs12"  ng-show="type==3">{{v.appSize}}</p>
+                                <div class="fs13 cyellow" ng-show="type==0"><p class="ico_col mr10"></p>{{v.videoType=='tv'?'电视剧':(v.videoType=='film'?'电影':(v.videoType=='arts'?'综艺':(v.videoType=='anime'?'动漫':(v.videoType=='documentary'?'纪录片':''))))}}</div>-->
+                            </div>
+                        </div>
+                    </a>
+                    <button class="push-btn cff fs13 alic dsib psa lh1" ng-click="gotoplay('db',v)">投屏</button>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <p class="_loading" id="J_loading">{{loadtext}}</p>
+</div>
+<div class="editline" id="J_editline" ng-show="deleteState" style="display: block;">
+    <a href="javascript:;" class="f c33" id="J_del_all" ng-click="deletefcn()">取消</a>
+    <a href="javascript:;" class="f" id="J_del_all" ng-click="checkAll()">{{allSelect?'取消全选':'全选'}}</a>
+    <a href="javascript:;" id="J_del" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>

@@ -1,0 +1,52 @@
+<!-- <div class="second scrolly" id="J_second"  click-bottom>
+	<table width="100%">
+		<tr id="J_second_tr">
+			<td class="tab-text333" ng-repeat="v in typearr" style="width:{{100/typearr.length}}%;">
+				<a class=" tvls ellipsis {{v.type==seting.type?'active':''}}" ng-click="choose(v.type)" >{{v.name}}</a>
+			</td>
+		</tr>
+	</table>
+</div> -->
+
+<div class="stv-container">
+	<div class="tab-bar scrolly-wbk fs16">
+		<div ng-repeat="v in typearr" class="tab ptr {{v.type==seting.type?'tab-active':''}}" ng-click="choose(v.type)">
+			{{v.name}}
+			<div class='i'></div>
+		</div>
+	</div>
+	<a href="#/search" class="search">
+		<img src="images/search.png" alt="">
+	</a>
+</div>
+
+<div class="pglist  pb60">
+	<div id="choosetable" style="margin-top: .44rem;">
+		<ul class='scrolly-wbk wp100 wsp pl5  mt5' style="height:{{chooseIndex==$index?'auto':'.4rem'}}" ng-repeat="(key,value) in category">
+			<li ng-repeat="vv in value" class='type-li {{$index==0?"active":""}} dsib ' data-value="{{$index==0?'':vv}}"
+			    data-type="{{key}}" on-finish-render-filters>
+				<a href="javascript:;" class="choose_ls">{{vv.split(',')[0]}}</a>
+			</li>
+			<div class="pta r10 lh40 J_choose" ng-click="changechoose($index)"></div>
+		</ul>
+	</div>
+	<div id="J_content ">
+		<div class="actlist pt10 lazyLoadContainer" infinite-scroll="getAjax()" infinite-scroll-disabled="isc"
+		    infinite-scroll-distance="0">
+			<ul class="list ovh " id="J_list">
+				<li class="li" ng-repeat="v in list">
+					<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}" class="lia">
+						<p class="size-cover ptr ovh">
+							<img class="loading pta lazy" lazy-src="{{v.image}}" animate-visible="true">
+							<span ng-if="v.edition" class="J_icotv cff dsb ">{{v.edition}}</span>
+						</p>
+						<p class="sec-text  ellipsis pt5">{{v.title}}</p>
+						<!--播放量展示-->
+						<!--<p class="thi-text lh16">播放:{{v.playCount|to_wan}}</p>-->
+					</a>
+				</li>
+			</ul>
+		</div>
+		<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+	</div>
+</div>

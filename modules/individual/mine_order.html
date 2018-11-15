@@ -1,0 +1,76 @@
+<style>
+	body{background: #fff;}
+</style>
+<!--<div class="headline headline-title headline-fixed">
+	<a href="javascript:;" class="pta r10 t0 lh0 dsb hp100 cff" ng-click="deletefcn()">
+		<span class="sec-text">
+			{{deleteState?'取消':'删除'}}
+		</span>
+	</a>
+</div>-->
+
+
+<div class="headline headline-title wp100 alic">
+	<a href="javascript:;" class="lh0 dsb hp100" ng-click="deletefcn()">
+		<span class="sec-text">
+			{{deleteState?'取消':'编辑'}}
+		</span>
+	</a>
+</div>
+
+<div id="J_list" style="padding-top: .2rem;">
+	<!--<ul class="col_nav alic tab-text33314 ovh">
+		<li class="fl wp50 {{type==1?'active':''}}" ng-click="changeType(1)">直播</li>
+		<li class="fr wp50 {{type==0?'active':''}}" ng-click="changeType(0)">点播</li>
+	</ul>-->
+	<div class="mine_list order_list {{type==1?'order_zb':'order_db'}} timeline" style="overflow: hidden;margin-left:{{deleteState?'0':'-.35rem'}};">
+		<ul>
+			<li ng-repeat="v in list" on-finish-render-filters>
+				<input name="checkbox" type="checkbox" ng-click="countdel()" style="display:{{deleteState?'block':'none'}};"
+				    data-id="{{v.vodCombineId}}" data-list='{{v}}'>
+				
+				<div class="his_bd_item ptr">
+					<a href="{{type==1?'#/detail?zb=zb&channelID='+v.channelId+'&kankeId='+v.kankeId+'&englishName='+v.kankeChannel+'&chaneseName='+v.channelName:'javascript:;'}}"
+			    class="lia">
+					<p class="img pta" style="margin-top: 0;">
+						<img class="loading lazy bdr3" animate-visible="true" lazy-src="{{v.image}}" error="img/ico_df.jpg" style="display: block;">
+					</p>
+					<div class="psr">
+						<div class="dt_fl dt">
+							<p class="til fs15 pb5 ellipsis fwb">{{v.title}}</p>
+							<!--第二行-->
+							<p class="ellipsis fs13 cfd82 pb10 lh1">播出时间 {{v.startTime}}</p>
+							<!--<p class="ellipsis fs13 cfd82 pb10 lh1">正在播放</p>-->
+							<!--<p class="c66 ellipsis fs13 pb10 lh1">已结束</p>-->
+							<!--第三行-->
+							<!--<p class="c66 ellipsis fs13 lh1">17:30-19:20</p>-->
+							<p class="c66 ellipsis fs13 lh1">预约过期时间 {{v.endTime}}</p>
+							<!--<div class="fs13 cyellow bt_bot" ng-show="type==0"><p class="ico_col mr5"></p>播出时间：{{v.startTime}}</div>-->
+						</div>
+					</a>
+					</div>
+				<button class="push-btn cff fs13 alic dsib psa lh1" ng-click="gotoplay(v)">投屏</button>
+				</div>
+			</li>
+		</ul>
+		<p class="_loading" id="J_loading">{{loadtext}}</p>
+	</div>
+
+</div>
+<div class="editline" id="J_editline" ng-show="deleteState" style="display: block;">
+	<a href="javascript:;" class="f c33" id="J_del_all" ng-click="deletefcn()">取消</a>
+	<a href="javascript:;" class="f" id="J_del_all" ng-click="checkAll()">全选</a>
+	<a href="javascript:;" id="J_del" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>
+<div class="chosetv" id="chosetv" ng-show="deleteCommit" style="display: block;" ng-click="resetstate()">
+	<div class="remotenew" ng-click="stopBubble($event)">
+		<div id="device_delete" ng-show="deleteCommit">
+			<p class="rn-til c33 fs18 fs18 pt10 alic">取消预约</p>
+			<p class="rn-sm fs15 c33 pt10 pb20 alic">取消预约后，节目即将播放时，无法收到提醒，是否要继续取消</p>
+			<p class="rn-bnts ovh fs18 " style="margin-top: .05rem;">
+				<a href="javascript:;" class="rn-btn alic" id="J_delete_qx" ng-click="resetstate()">取消</a>
+				<a href="javascript:;" class="rn-btn alic rn-btn-a" id="J_delete_qd" ng-click="deleteConfirm()">确定</a>
+			</p>
+		</div>
+	</div>
+</div>

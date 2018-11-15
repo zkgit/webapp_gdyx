@@ -1,0 +1,164 @@
+<a href="#/remote" id="J_showrt" class="showrote" style="left: 280px;"><img src="img/showrt.png"></a>
+<div class="remotecont" id="J_remote" unselectable="on" style="-moz-user-select:none;-webkit-user-select:none;webkit-touch-callout:none">
+	<div class="remotebd">
+		<div class="rm-top">
+			<a href="javascript:;" data-v="reduceVolume" class="JJ_code a rmbtn-vm alic rmbtn-vm">
+				<span class="rm-btn ico-vm"></span>
+				<!--<i class="zsh sh-vdown"></i>-->
+			</a>
+			<a href="javascript:;" class="midline"></a>
+			<a href="javascript:;" data-v="addVolume" class="JJ_code a rmbtn-va alic rmbtn-va">
+				<span class="rm-btn ico-va"></span>
+				<!--<i class="zsh sh-vup"></i>-->
+			</a>
+		</div>
+		<div class="rm-mid">
+			<a href="javascript:;" class="rm-tl"></a>
+			<a href="javascript:;" class="rm-bl"></a>
+			<div class="rm-btns-t">
+				<a class="rm-l" href="javascript:;"></a>
+				<a class="JJ_code rm-m rmbtn-top alic" data-v="up" href="javascript:;">
+					<span class="rm-btn ico-top"></span>
+					<!--<i class="zsh sh-up"></i>-->
+				</a>
+				<a class="rm-r" href="javascript:;"></a>
+			</div>
+			<div class="rm-btns-m">
+				<a class="JJ_code rm-l rmbtn-left alir" data-v="left" href="javascript:;">
+					<span class="rm-btn ico-left"></span>
+					<!--<i class="zsh sh-left"></i>-->
+				</a>
+				<a class="JJ_code rm-m rmbtn-ok" data-v="ok" href="javascript:;">
+					<span class="rm-btn ico-ok"></span>
+				</a>
+				<a class="JJ_code rm-r rmbtn-right" data-v="right" href="javascript:;">
+					<span class="rm-btn ico-right"></span>
+					<!--<i class="zsh sh-right"></i>-->
+				</a>
+			</div>
+			<div class="rm-btns-t rm-btns-b">
+				<a class="rm-l" href="javascript:;"></a>
+				<a class="JJ_code rm-m rmbtn-down alic" data-v="down" href="javascript:;">
+					<!--<i class="zsh sh-down"></i>-->
+					<span class="rm-btn ico-down"></span>
+				</a>
+				<a class="rm-r" href="javascript:;"></a>
+			</div>
+		</div>
+		<div class="rm-top rm-bot">
+			<a href="javascript:;" data-v="home" class="JJ_code a rmbtn-menu alic">
+				<!--<i class="zsh sh-nenu"></i>-->
+				<span class="rm-btn ico-menu"></span>
+			</a>
+			<a href="javascript:;" class="midline"></a>
+			<a href="#/remote" id="rmlink" class="a alic">
+				<!--<i class="zsh sh-remote"></i>-->
+				<span class="rm-btn ico-rmlink"></span>
+			</a>
+			<a href="javascript:;" class="midline"></a>
+			<a href="javascript:;" data-v="back" class="JJ_code a rmbtn-back alic">
+				<!--<i class="zsh sh-back"></i>-->
+				<span class="rm-btn ico-back"></span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	window.remotebtn = function (options) {
+		var _this = this;
+		_this.elm = options.elm;
+		_this.html = $('.html');
+		var stx = options.maxleft;
+		var sty = parseInt(_this.elm.css('top'));
+		var nstx = 0,
+			nsty = 0;
+		_this.elm.css('left', options.maxleft);
+		_this.ismove = false;
+		document.body.addEventListener('touchstart', function (event) {});
+		_this.elm.on('touchstart', function (event) {
+			nstx = event.originalEvent.touches[0].pageX;
+			nsty = event.originalEvent.touches[0].pageY;
+			$.noscroll();
+		}).on('touchmove', function (event) {
+			var cx = event.originalEvent.touches[0].pageX - nstx;
+			var cy = event.originalEvent.touches[0].pageY - nsty;
+			_this.elm.attr('style', 'left:' + (cx + stx) + 'px;top:' + (sty + cy) + 'px;');
+			_this.ismove = true;
+		}).on('touchend', function () {
+			if (_this.ismove) {
+				$.backscroll();
+			}
+			_this.ismove = false;
+			stx = parseInt(_this.elm.css('left'));
+			sty = parseInt(_this.elm.css('top'));
+			if (stx >= options.midleft) {
+				stx = options.maxleft;
+			} else {
+				stx = 0;
+			}
+			if (sty <= options.mintop) {
+				sty = options.mintop;
+			} else if (sty >= options.maxtop) {
+				sty = options.maxtop;
+			}
+			_this.elm.attr('style', "top:" + sty + "px; left:" + stx +
+				"px; transition: top 0.2s,left 0.2s;-webkit-transition: top 0.2s,left 0.2s;-moz-transition: top 0.2s,left 0.2s;"
+			);
+		}).on('click', function () {
+			$.noscroll();
+		})
+
+		_this.targ = options.targ;
+
+		_this.bd = _this.targ.find('.remotebd');
+
+		$('.JJ_code').click(function () {
+			var v = $(this).data('v');
+			console.log(v)
+			sentcode(v);
+		});
+
+		$('#rmlink').click(function () {
+			window.location.href = $(this).attr('href');
+		});
+		_this.targ.click(function () {
+			$.backscroll();
+			//			$('#J_remote').toggle();
+		})
+		_this.bd.click(function () {
+			return false;
+		});
+
+		_this.sentCode = function (v) {
+			console.log(v)
+			// sentmsgfn(v,'action');
+
+		}
+
+		// 兼容ios的active
+		document.body.addEventListener('touchstart', function () {});
+		return _this;
+	};
+	(function ($, window, document, undefined) {
+		$(function () {
+			$('#J_showrt').click(function () {
+				//				$('#J_remote').toggle();
+			});
+			var $winw = window.innerWidth;
+			var $winh = window.innerHeight;
+			var rem = window.rem;
+			var w = $("#J_showrt").width();
+			var h = $("#J_showrt").height();
+			var rmtebtn = new remotebtn({
+				elm: $('#J_showrt'),
+				minleft: 0,
+				maxleft: $winw - w,
+				mintop: h,
+				maxtop: $winh - h - 5,
+				midleft: ($winw - w) / 2,
+				targ: $('#J_remote')
+			});
+		})
+	})(jQuery, window, document);
+</script>

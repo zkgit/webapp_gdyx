@@ -1,0 +1,22 @@
+<div class="headline headline-title headline-fixed dsn">
+	<a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+		<img style="height: .2rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="i-text alic" id="J_til" ng-bind="toptil"></p>
+</div>
+<div class="content {{issec?'sec':''}}" id="J_content">
+	<div class="actlist">
+		<ul class="list ovh p13" id="J_list">
+			<li class="li" ng-repeat="v in list" on-finish-render-filters>
+				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}" class="lia">
+					<p class="size-cover ptr ovh">
+						<img class="loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" style="display: block;">
+						<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>
+					</p>
+					<p class="sec-text ellipsis pt5">{{v.title}}</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+</div>

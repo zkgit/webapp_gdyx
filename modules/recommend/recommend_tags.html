@@ -1,0 +1,34 @@
+<div class="headline headline-title headline-fixed">
+    <a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+        <img style="height: .2rem;" src="img/left-arrow.png" />
+    </a>
+    <p class="i-text alic" id="J_til" ng-bind="toptil"></p>
+    <!--<a href="#/search" class="pta r10 t0 lh0 dsb hp100 cff fs24">-->
+    <!--<span class="mui-icon">-->
+    <!--<img src="img/searchi.png" style="height: .44rem;"/>-->
+    <!--</span>-->
+    <!--</a>-->
+    <!--<a href="#/shakeResult" class="pta r10 t0 lh0 dsb hp100 cff fs24">-->
+    <!--<span class="mui-icon">-->
+    <!--<img src="img/shakei.png" style="height: .44rem;"/>-->
+    <!--</span>-->
+    <!--</a>-->
+</div>
+<div class="content" id="J_content">
+    <div class="actlist" id="J_list">
+        <ul class="list ovh" style="padding: .02rem .02rem 0;">
+            <li class="li" ng-repeat="v in list" on-finish-render-filters>
+                <a href="#/detail?columnType={{v.videoType}}&videoId={{v.videoId}}&kankeId={{v.kankeId}}&vodId={{v.vodId}}&recommend=1"
+                    class="lia">
+                    <p class="size-cover ptr ovh">
+                        <img class="loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" style="display: block;">
+                        <span class="{{(v.isMatched==-2||v.isMatched==1)?'J_icotv':''}} dsb"></span>
+                    </p>
+                    <p class="sec-text ellipsis pt5">{{v.title}}</p>
+                    <!--<p class="thi-text lh16">播放:{{v.playCount|to_wan}}</p>-->
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+</div>

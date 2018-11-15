@@ -1,0 +1,30 @@
+<div class="headline headline-title headline-fixed" style="background: transparent">
+    <a class="pta l10 cff" href="javascript:;" id="J_back" back>
+        <img style="height: .15rem;" src="img/left-arrow.png" />
+    </a>
+    <p class="tab-text33316" id="J_til">我的收藏</p>
+    <a href="javascript:;" class="pta r10 t0 lh0 dsb hp100" ng-click="deletefcn()">
+        <span class="sec-text">
+            {{deleteState?'取消':'删除'}}
+        </span>
+    </a>
+</div>
+<div class="mine_msg_feedback mine_list timeline" style="padding-top:.59rem;">
+    <ul>
+        <li class="alic">
+            <p class="cff fs12 dsib plr mt15 msg_time">2017年10月17日</p>
+            <div class="li">
+                <input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" data-id="{{v.entityId}}">
+                <a href="#/detail?id={{v.entityId}}" class="lia dsb alil bgcffffff" style="margin-left:{{deleteState?'.49rem':'5%'}};">
+                    <p class="fs12 cyellow pb10">[反馈回复]</p>
+                    <p class="fs15 c33 pb10">小编已补全您之前反馈的剧集来源哦~速速来看吧</p>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="editline" id="J_editline" ng-show="deleteState" style="display: block;">
+    <a href="javascript:;" class="f" id="J_del_all" ng-click="checkAll()">全选</a>
+    <a href="javascript:;" id="J_del" ng-click="deleteButton()">删除</a>
+</div>

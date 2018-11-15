@@ -1,0 +1,34 @@
+<div class="headline headline-title headline-fixed">
+    <a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+        <img style="height: .2rem;" src="img/left-arrow.png" />
+    </a>
+    <p class="i-text " id="J_til">我的频道</p>
+    <a href="javascript:;" class="pta r10 t0 lh0 dsb hp100 cff fs24" ng-click="deletefcn()">
+        <span class="tab-text">
+            {{deleteState?'取消':'删除'}}
+        </span>
+    </a>
+</div>
+<div style="margin-top: .44rem;">
+    <div class="actlist" style="padding: .13rem;" id="collectlist">
+        <ul class="list ovh {{isedit?'active':''}}" id="J_list">
+            <li class="li" ng-repeat="v in list" data-channelid="{{v.channelId}}" data-channelname="{{v.channelName}}">
+                <input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};">
+                <a class="edit" href="javascript:;" ng-click="del(v.kanke_id,v.vodId)"><span class="ico"></span></a>
+                <a href="#detail?zb=zb&columnType={{v.classId|vtype}}&videoId={{v.videoId}}&kankeId={{v.kanke_id}}&vodId={{v.vodId}}&&englishName={{v.channelEn}}&channelID={{v.channelId}}"
+                    class="lia">
+                    <p class="size-covers ptr ovh">
+                        <img class="lazy loading pta mycollect " src="http://ikanpic.kanketv.com/image/live/icon2/{{v.channelEn}}.png"
+                            err-src="img/ico_df.png">
+                    </p>
+                    <p class="sec-text ellipsis pt5 mui-text-center">{{v.channelName}}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p class="_loading" id="J_loading">{{loadtext}}</p>
+</div>
+<div class="editline" id="J_editline" ng-show="deleteState" style="display: block;">
+    <a href="javascript:;" class="f" id="J_del_all" ng-click="checkAll()">全选</a>
+    <a href="javascript:;" id="J_del" ng-click="deleteButton()">删除</a>
+</div>

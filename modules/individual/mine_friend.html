@@ -1,0 +1,27 @@
+<style>
+	body {
+		background: #f7f7f7;
+	}
+</style>
+<div class="headline headline-title headline-fixed dsn">
+	<a class="pta l10 cff" href="javascript:;" id="J_back" back>
+		<img style="height: .15rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="tab-text33316" id="J_til">{{sc.otherId!=userId?'他的好友':'我的好友'}}</p>
+</div>
+<div class="">
+	<div class="pt10">
+		<ul class="list ovh pl10 tab-text33316">
+			<li ng-repeat="v in list" on-finish-render-filters>
+				<a href="#/user_center?otherId={{v.id}}"><img src="{{v.headimgurl}}" err-src="img/default.jpg" alt=""></a>
+				<div class="l_r ptr"><a href="#/user_center?otherId={{v.id}}">
+						<p class="ellipsis">{{v.nickname}}</p>
+					</a>
+					<p class="pta r10  mine_concern  {{v.status==2?'mine_eachconcern':'mine_addconcern'}}" ng-show="sc.otherId==userId"
+					    ng-click="update(v,$index)"></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<p class="_loading" id="J_loading">{{loadtext}}</p>
+</div>

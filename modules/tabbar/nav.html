@@ -1,0 +1,27 @@
+<nav class="mui-bar mui-bar-tab mui-bar-tab-top  bColor" ng-show="navtop">
+    <!--<a href="#/family_cloud" class="pta l5 t0 lh0 dsb hp100 cff fs24">-->
+    <!--<span>-->
+    <!--<img src="images/yun.png" style="height: .2rem;margin-left: .15rem"/>-->
+    <!--</span>-->
+    <!--</a>-->
+    <a href="#/search?type={{$root.type}}" class="dsb fs14 alic" style="margin: 0 .2rem;height: .3rem;line-height: .3rem;margin-top: .07rem;background: #f5f5f5;border-radius: 1.4rem;color: #aaaaaa;">
+        <!--<input type="search"  class="mui-input-clear alic" placeholder="" >-->
+        <img style="width:.15rem;vertical-align: text-bottom;" class="mr5" src="images/search.png" />
+        <span>请输入要搜索的内容</span>
+    </a>
+</nav>
+<nav class="mui-bar mui-bar-tab mui-bar-tab-bottom" style="border-top: 1px solid #eeeeee;">
+    <a class="mui-tab-item" ui-sref="/enter_careful.today_live">
+        <img src="{{$root.current_menu==1?'images/nav_b1_1.png':'images/nav_b1.png'}}" />
+    </a>
+    <a class="mui-tab-item" ui-sref="/TVlive">
+        <img src="{{$root.current_menu==3?'images/nav_b2_1.png':'images/nav_b2.png'}}" />
+    </a>
+    <a class="mui-tab-item" ui-sref="/choose_db">
+        <img src="{{$root.current_menu==2?'images/nav_b3_1.png':'images/nav_b3.png'}}" />
+    </a>
+
+    <a class="mui-tab-item" ui-sref="/mine">
+        <img src="{{$root.current_menu==5?'images/nav_b4_1.png':'images/nav_b4.png'}}" />
+    </a>
+</nav>

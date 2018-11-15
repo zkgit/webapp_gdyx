@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+    <meta content="IE=5.0000" http-equiv="X-UA-Compatible">
+    <meta name="page-view-size" content="1920*1080">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="config/config.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script type="text/javascript" src="js/ajax.min.js"></script>
+    <style type="text/css">
+        .p0 {
+            font-size: 20px
+        }
+
+        .p1 {
+            font-size: 20px
+        }
+    </style>
+    <meta name="GENERATOR" content="MSHTML 11.00.10570.1001">
+</head>
+
+
+<body onload="initdatas()" style="background: url('images/apk_itv_bg.png') no-repeat">
+    <img id="CONTAINER_BG" src="images/apk_itv_bg1.png" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px;">
+    <div id='FOCUS_DIV' style='position:absolute;left:0px;top:0px;z-index:11'>
+        <img id='FOCUS_IMG' src="images/transparent.png">
+    </div>
+    <div style="position:absolute;left:246px;top:592px;">
+        <img id="weixin_qrcode" src="images/transparent.png" style="position:absolute;left:0;top:0;width: 278px;" alt="">
+    </div>
+    <div id="allItem" style="display: none">
+        <div id="nobd_tip" style="position:absolute;left:744px;top:364px;display: none">
+            <img src="images/nobd_tip_bg.png" style="position:absolute;left:0;top:0;width: 616px;" alt="">
+        </div>
+        <div id="item_page">
+            <!-- 第一排 -->
+            <div id="div_f0" style="position:absolute;left:744px;top:364px;display:none;">
+                <img id="bt_si0" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n0" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f0" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+            <div id="div_f1" style="position:absolute;left:934px;top:364px;display:none;">
+                <img id="bt_si1" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n1" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f1" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+            <div id="div_f2" style="position:absolute;left:1124px;top:364px;display:none;">
+                <img id="bt_si2" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n2" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f2" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+            <div id="div_f3" style="position:absolute;left:1314px;top:364px;display:none;">
+                <img id="bt_si3" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n3" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f3" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+
+            <!--第二排  -->
+            <div id="div_f4" style="position:absolute;left:744px;top:622px;display:none;">
+                <img id="bt_si4" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n4" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f4" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+            <div id="div_f5" style="position:absolute;left:934px;top:622px;display:none;">
+                <img id="bt_si5" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n5" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f5" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+            <div id="div_f6" style="position:absolute;left:1124px;top:622px;display:none;">
+                <img id="bt_si6" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n6" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f6" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+            <div id="div_f7" style="position:absolute;left:1314px;top:622px;display:none;">
+                <img id="bt_si7" src="images/transparent.png" style="position:absolute;left:0;top:0;border-radius: 50%" alt="">
+                <p id="bf_n7" style="position:absolute;left:0;top:138px;width:130px; height:50px;font-size: 30px; line-height:50px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#C5CDE2; overflow:hidden; margin:0; padding:0;z-index:100"></p>
+                <p id="bt_f7" style="position:absolute;left:10px;top:190px;width:110px; height:45px;font-size: 26px; line-height:45px; text-align:center; font-family:微软雅黑; font-weight:normal; color:#ffffff;background: #012966; overflow:hidden; margin:0; padding:0;z-index:100;border-radius: 20px;">解绑</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="xml_test" style="visibility: hidden;"></div>
+
+    <script type="text/javascript">
+        var KEY_G_0 = 0x0008;
+        var KEY_G_1 = 0x000D; //ok
+        var KEY_G_2 = 0x0021;
+        var KEY_G_3 = 0x0022;
+        var KEY_G_4 = 0x0025; //左
+        var KEY_G_5 = 0x0026; //上
+        var KEY_G_6 = 0x0027; //右
+        var KEY_G_7 = 0x0028; //下
+        var KEY_M_0 = 0x0103;
+        var KEY_M_1 = 0x0104;
+        var KEY_M_2 = 0x0105;
+        var KEY_M_3 = 0x0106;
+        var KEY_M_4 = 0x0107;
+        var KEY_M_5 = 0x0108;
+        var KEY_M_6 = 0x0109;
+        var KEY_M_7 = 0x0300;
+        var KEY_N_0 = 0x0030;
+        var KEY_N_1 = 0x0031;
+        var KEY_N_2 = 0x0032;
+        var KEY_N_3 = 0x0033;
+        var KEY_N_4 = 0x0034;
+        var KEY_N_5 = 0x0035;
+        var KEY_N_6 = 0x0036;
+        var KEY_N_7 = 0x0037;
+        var KEY_N_8 = 0x0038;
+        var KEY_N_9 = 0x0039;
+        var KEY_O_0 = 0x0072;
+        var KEY_O_1 = 0x01A6;
+        var KEY_O_2 = 0x0206;
+
+
+        window.document.onkeypress = function (keyEvent) {
+            keyEvent = keyEvent ? keyEvent : window.event;
+            var KV = keyEvent.which ? keyEvent.which : keyEvent.keyCode;
+            if ('F_SHOW' in window) {
+                F_SHOW(KV);
+                console.info('F_SHOW')
+            }
+            if (KV == KEY_G_0) {
+                console.info(KEY_G_0, '+++++++返回')
+                if ('F_KEY_G_0' in window) {
+                    F_KEY_G_0();
+                }
+            } else if (KV == KEY_G_1) {
+                console.info(KEY_G_1, '+++++++进入')
+                if ('F_KEY_G_1' in window) {
+                    F_KEY_G_1();
+                }
+            } else if (KV == KEY_G_4) {
+                console.info(KEY_G_4, '+++++++左')
+                if ('F_KEY_G_4' in window) {
+                    F_KEY_G_4();
+                }
+            } else if (KV == KEY_G_5) {
+                console.info(KEY_G_5, '+++++++上键')
+                if ('F_KEY_G_5' in window) {
+                    F_KEY_G_5();
+                }
+            } else if (KV == KEY_G_6) {
+                console.info(KEY_G_6, '+++++++右')
+                if ('F_KEY_G_6' in window) {
+                    F_KEY_G_6();
+                }
+            } else if (KV == KEY_G_7) {
+                console.info(KEY_G_7, '+++++++下键')
+                if ('F_KEY_G_7' in window) {
+                    F_KEY_G_7();
+                }
+            }
+
+        };
+
+        var _BS = {};
+        var buttons = [{
+                id: 'bt_f0',
+                upButtonId: '',
+                downButtonId: 'bt_f4',
+                leftButtonId: 'bt_bg_left',
+                rightButtonId: 'bt_f1',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            },
+            {
+                id: 'bt_f1',
+                upButtonId: '',
+                downButtonId: 'bt_f5',
+                leftButtonId: 'bt_f0',
+                rightButtonId: 'bt_f2',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            },
+            {
+                id: 'bt_f2',
+                upButtonId: '',
+                downButtonId: 'bt_f6',
+                leftButtonId: 'bt_f1',
+                rightButtonId: 'bt_f3',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            },
+            {
+                id: 'bt_f3',
+                upButtonId: '',
+                downButtonId: 'bt_f7',
+                leftButtonId: 'bt_f2',
+                rightButtonId: 'bt_f4',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            }, //第二排
+            {
+                id: 'bt_f4',
+                upButtonId: 'bt_f0',
+                downButtonId: '',
+                leftButtonId: 'bt_f3',
+                rightButtonId: 'bt_f5',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            },
+            {
+                id: 'bt_f5',
+                upButtonId: 'bt_f1',
+                downButtonId: '',
+                leftButtonId: 'bt_f4',
+                rightButtonId: 'bt_f6',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            },
+            {
+                id: 'bt_f6',
+                upButtonId: 'bt_f2',
+                downButtonId: '',
+                leftButtonId: 'bt_f5',
+                rightButtonId: 'bt_f7',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            },
+            {
+                id: 'bt_f7',
+                upButtonId: 'bt_f3',
+                downButtonId: '',
+                leftButtonId: 'bt_f6',
+                rightButtonId: 'bt_f0',
+                blurFun: '',
+                focusFun: '',
+                enterFun: '',
+                focusImage: '#1975ff',
+                blurImage: '#012966'
+            },
+            {
+                id: 'bt_bg_left',
+                upButtonId: '',
+                downButtonId: '',
+                leftButtonId: '',
+                rightButtonId: '',
+                blurFun: '',
+                focusFun: 'B_G_LEFT',
+                enterFun: '',
+                focusImage: '',
+                blurImage: ''
+            }
+        ]
+        var focus_id = 'bt_f0'
+        var itemid = new Array();
+        var POSTERINDEX = 1
+        var _img_bg = [];
+
+        var cpid = getCpid(getUrlParam('preframe'))
+        _G_B('xml_test').innerHTML = getUrlParam('INFO')
+        var stbId = encodeURI(document.getElementsByTagName('stbId')[0].innerHTML)
+
+        if (cpid == 1) {
+            _img_bg = [{
+                    img: "images/apk_itv_bg_bstv1.png"
+                },
+                {
+                    img: "images/apk_itv_bg2.png"
+                },
+                {
+                    img: "images/apk_itv_bg_bstv3.png"
+                },
+                {
+                    img: "images/apk_itv_bg4.png"
+                }
+            ];
+        } else {
+            _img_bg = [{
+                    img: "images/apk_itv_bg1.png"
+                },
+                {
+                    img: "images/apk_itv_bg2.png"
+                },
+                {
+                    img: "images/apk_itv_bg3.png"
+                },
+                {
+                    img: "images/apk_itv_bg4.png"
+                }
+            ];
+        }
+
+
+
+
+        // function addLoadEvent(func) {
+        //     var oldonload = window.onload;
+        //     if (typeof window.onload != 'function') {
+        //         window.onload = func;
+        //     } else {
+        //         window.onload = function () {
+        //             if (oldonload) {
+        //                 oldonload();
+        //             }
+        //             func();
+        //             console.info(func)
+        //         }
+        //     }
+        // }
+        // addLoadEvent(preloader);
+
+        function initdatas() {
+            _G_B('CONTAINER_BG').src = _img_bg[0].img;
+            getqrcode() //获取二维码
+
+            function preloader() {
+                for (i in _img_bg) {
+                    if (i >= 1) {
+                        var hidimg = document.createElement('img')
+                        hidimg.style.display = 'none';
+                        hidimg.src = _img_bg[i].img;
+                    }
+                }
+            }
+            preloader()
+        }
+
+        function init() {
+            for (var i = 0; i < buttons.length; ++i) {
+                var _b = buttons[i];
+                this._BS[_b.id] = _b;
+            }
+            if (_BS[focus_id] != undefined && _G_B(focus_id) != undefined) {
+                _G_B(focus_id).style.background = _BS[focus_id]['focusImage'];
+                if (_BS[focus_id]['focusImage'] == '#012966') {
+                    _G_B(focus_id).style.background = _BS[focus_id]['focusImage']
+                }
+            }
+        }
+
+        function getuserinfo() {
+            _G_B("allItem").style.display = "block";
+            var url = webset.api + 'userInfo.json?userId=' + stbId
+            $.get(url, function (result) {
+                var json = eval('(' + result + ')');
+                if (json.data.length == 0) {
+                    _G_B("nobd_tip").style.display = "block";
+                    return
+                }
+                _G_B("nobd_tip").style.display = "none";
+                $.each(json.data.splice(0, 8), function (i, item) {
+                    _G_B("div_f" + i).style.display = "block";
+                    _G_B("bt_si" + i).src = item.imgUrl;
+                    _G_B("bf_n" + i).innerHTML = item.nickName;
+                    itemid.push(item.openId);
+
+                });
+            }, true);
+        }
+
+        function GETDELETEINFO(i) {
+            var url = webset.api + 'unBind.json?userId=' + stbId + '&openId=' + itemid[i]
+            $.get(url, function (result) {}, false);
+
+            focus_id = 'bt_f0'
+            init()
+            itemid = []
+            for (var i = 0; i < 8; i++) {
+                _G_B("div_f" + i).style.display = "none";
+                _G_B("bt_si" + i).src = "images/transparent.png";
+                _G_B("bf_n" + i).innerHTML = "";
+            }
+        }
+
+        function getqrcode() {
+            var url = webset.api + 'qrcode.json?userId=' + stbId + '&cpid=' + cpid
+            $.get(url, function (result) {
+                var json = eval('(' + result + ')');
+                _G_B('weixin_qrcode').src = json.data.url
+            }, true);
+        }
+
+        function S_F(_id) {
+            console.info('S_F', _id, focus_id)
+            if (_BS[focus_id] != undefined && _BS[_id] != undefined && _G_B(focus_id) != undefined && _G_B(_id) !=
+                undefined) {
+                if (_id.indexOf('bt_f') >= 0) {
+                    var _p_div = _id.replace('bt', 'div');
+                    if (_G_B(_p_div).style.display == 'none') {
+                        return;
+                    }
+                }
+                _G_B(focus_id).style.background = _BS[focus_id]['blurImage']
+                focus_id = _id;
+                _G_B(focus_id).style.background = _BS[focus_id]['focusImage'];
+            }
+            DOBUTTONFOCUSFUN(_id)
+
+        }
+        // 左边
+        function F_KEY_G_4() {
+            console.info('F_KEY_G_4')
+            if (POSTERINDEX < 4 && POSTERINDEX > 1) {
+                POSTERINDEX--
+                _G_B('CONTAINER_BG').src = _img_bg[POSTERINDEX - 1].img;
+                return;
+            } else if (POSTERINDEX == 4) {
+                if (_BS[focus_id] != undefined && _BS[focus_id]['leftButtonId'] != '') {
+                    S_F(_BS[focus_id]['leftButtonId']);
+                }
+                return;
+            }
+
+        }
+
+        function B_G_LEFT() {
+            POSTERINDEX--
+            _G_B('CONTAINER_BG').src = _img_bg[POSTERINDEX - 1].img;
+            _G_B("allItem").style.display = "none";
+            return;
+        }
+        // 右边
+        function F_KEY_G_6() {
+            console.info('F_KEY_G_6')
+            if (POSTERINDEX < 4) {
+                POSTERINDEX++
+                _G_B('CONTAINER_BG').src = _img_bg[POSTERINDEX - 1].img;
+                POSTERINDEX == 4 && getuserinfo(), init()
+                return;
+            } else {
+                if (_BS[focus_id] != undefined && _BS[focus_id]['rightButtonId'] != '') {
+                    S_F(_BS[focus_id]['rightButtonId'])
+                };
+                return;
+            }
+
+        }
+        //向上触发事件
+        function F_KEY_G_5() {
+            console.info('F_KEY_G_5')
+            if (_BS[focus_id] != undefined && _BS[focus_id]['upButtonId'] != '') {
+                S_F(_BS[focus_id]['upButtonId']);
+            }
+            return;
+        }
+        //向下触发事件
+        function F_KEY_G_7() {
+            console.info('F_KEY_G_7')
+            if (_BS[focus_id] != undefined && _BS[focus_id]['downButtonId'] != '') {
+                S_F(_BS[focus_id]['downButtonId'])
+            };
+            return;
+        }
+
+        function F_KEY_G_1() { //进入
+            var i = parseInt(focus_id.replace('bt_f', ''));
+            GETDELETEINFO(i)
+            getuserinfo()
+
+        }
+
+        function F_KEY_G_0() { //返回
+            window.history.go(-1)
+        }
+        //blurFun
+        function DOBUTTONBLURFUN(_id) { //dobuttonblurfun
+            console.info('DOBUTTONBLURFUN')
+            if (_BS[_id] != undefined && _BS[_id]['blurFun'] != undefined && _BS[_id]['blurFun'] != '') {
+                var _b = _BS[_id];
+                var fun = _b['blurFun'];
+                eval("(" + fun + ")")();
+            }
+        }
+
+
+        //focusFun
+        function DOBUTTONFOCUSFUN(_id) { //dobuttonfocusfun
+            console.info('DOBUTTONFOCUSFUN')
+            if (_BS[_id] != undefined && _BS[_id]['focusFun'] != undefined && _BS[_id]['focusFun'] != '') {
+                var _b = _BS[_id];
+                var fun = _b['focusFun'];
+                eval("(" + fun + ")")();
+            }
+        }
+
+        //enterFun
+        function DOBUTTONENTERFUN(_id) { //dobuttonenterfun
+            console.info('DOBUTTONENTERFUN')
+            if (_BS[_id] != undefined && _BS[_id]['enterFun'] != undefined && _BS[_id]['enterFun'] != '') {
+                var _b = _BS[_id];
+                var fun = _b['enterFun'];
+                eval("(" + fun + ")")();
+            }
+        }
+    </script>
+</body>
+
+</html>

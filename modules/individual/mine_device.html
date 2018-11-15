@@ -1,0 +1,138 @@
+<style type="text/css">
+	body {
+		background: #f7f7f7;
+	}
+</style>
+<div class="headline headline-title wp100 alic">
+	<a href="javascript:;" class="lh0 dsb hp100" ng-click="deletefcn()">
+		<span class="sec-text">
+			{{deleteState?'取消':'编辑'}}
+		</span>
+	</a>
+</div>
+<div style="margin-top: .2rem;">
+	<ul id="devicelist" class="mine_list list" style="margin: 0 .13rem .1rem 0; margin-left: {{deleteState?'0':'.13rem'}}">
+		<div ng-repeat="v in list" on-finish-render-filters class="">
+			<input name="radio1" type="radio" style="display:{{exchangeState?'block':'none'}};">
+			<input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" ng-click="countdel()"
+			    data-boxid="{{v.boxId}}">
+			<li class="" data-boxid="{{v.boxId}}" data-random="{{v.bindTime}}">
+				<div class="ellipsis" style="padding: 0 .66rem 0 .13rem;" ng-click="changeButton(v)">{{v.boxName?v.boxName:v.boxId}}{{v.vip==1?'-VIP':''}}</div>
+				<img ng-show="{{v.level==1}}" src="images/checked.png" class="check-s" />
+				<!--<div class="fs15 modify alic cff" ng-click="goedit(v)">修改</div>-->
+			</li>
+		</div>
+		<li ng-click="add_d()" class="alic" style="background-color: #FFFFFF;margin: 8px 0;" ng-show="!deleteState&&!exchangeState">
+			<a href="javascript:;" class="dsb">
+				<img src="images/add.png" class="mr10" style="height: .54rem;padding: .17rem 0;" /><span class="cfd82 fs15 dsib">添加设备</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="editline" ng-show="deleteState" style="display: block;">
+	<a href="javascript:;" class="f c33" id="J_del_all" ng-click="deletefcn()">取消</a>
+	<a href="javascritpt:;" class="f" ng-click="checkAll()">{{allSelect?'取消全选':'全选'}}</a>
+	<a href="javascript:;" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>
+<div class="editline" ng-show="exchangeState" style="display: block;">
+	<a href="javascritpt:;" class="f" ng-click="resetstate()">取消</a>
+	<a href="javascript:;" ng-click="changeButton()">确定</a>
+</div>
+<div class="chosetv" id="chosetv" ng-show="deleteCommit||addState||isedit" style="display: block;" ng-click="resetstate()">
+	<div class="remotenew" ng-click="stopBubble($event)">
+		<div id="device_delete" ng-show="deleteCommit">
+			<p class="fwb fs18 pt10 alic">删除设备</p>
+			<p class="fs14 c33 pt10 alic">删除设备后，将解锁该设备的绑定，</p>
+			<p class="fs14 c33 pb10 alic">是否要继续删除</p>
+			<p class="rn-bnts alic ovh" style="margin-top: .14rem">
+				<a href="javascript:;" class="rn-btn" id="J_delete_qd" ng-click="deleteConfirm()">确定</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a" id="J_delete_qx" ng-click="resetstate()">取消</a>
+			</p>
+		</div>
+		<div id="device_edit" ng-show="isedit">
+			<p class="rn-til  fs18 pt10 alic">修改设备别名</p>
+			<p class="rn-inp"><input type="text" class="rn-input" id="J_edit_input" ng-model="boxName" placeholder="例：我的客厅"></p>
+			<p class="rn-bnts ovh ">
+				<a href="javascript:;" class="rn-btn alic" id="J_edit_qx" ng-click="resetstate()">取消</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a alic" id="J_edit_qd" ng-click="editConfirm()">确定</a>
+			</p>
+		</div>
+		<!--<div id="device_bind" ng-show="addState">
+			<p class="rn-til  fs18 pt10 alic">请输入电视上的绑定码</p>
+			<p class="rn-sm fs13  pt10 alic c33">设备码位置：机顶盒首页&gt;微信电视</p>
+			<p class="ptb15" style="padding:.1rem .35rem"><input type="text" style="height:.28rem;" class="rn-input" id="J_add_input" placeholder="请输入电视上的设备号" ng-model="boxinputid"></p>
+			<p class="rn-bnts ovh c33 fs18 alic">
+				<a href="javascript:;" class="fl wp33 bdre5"  ng-click="resetstate()">取消</a>
+				<a href="javascript:;" class="fl wp33 bdre5" ng-click="add_d()">扫一扫</a>
+				<a href="javascript:;" class="fl wp33 cyellow fwb"  ng-click="bind_commit()">确定</a>
+			</p>
+		</div>-->
+		<div class="dsn" id="device_limit">
+			<p class="rn-til cff fs16 pt10">设置权限</p>
+			<form class="mui-input-group">
+				<div class="mui-input-row mui-checkbox mui-left">
+					<label>推送</label>
+					<input name="checkbox" value="Item 1" type="checkbox" checked>
+				</div>
+				<div class="mui-input-row mui-checkbox mui-left mui-disabled">
+					<label>摇一摇</label>
+					<input name="checkbox" value="Item 2" type="checkbox">
+				</div>
+				<div class="mui-input-row mui-checkbox mui-left mui-disabled">
+					<label>禁用</label>
+					<input name="checkbox" type="checkbox" disabled="disabled">
+				</div>
+				<div class="mui-input-row mui-checkbox mui-left mui-disabled">
+					<label>设置为管理员</label>
+					<input name="checkbox" type="checkbox" disabled="disabled">
+				</div>
+			</form>
+			<p class="rn-bnts ovh">
+				<a href="javascript:;" class="rn-btn" id="">取消</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a" id="">确定</a>
+
+			</p>
+		</div>
+		<div class="dsn" id="device_mem">
+			<p class="rn-til cff fs16 pt10">设置所有成员权限</p>
+			<form class="mui-input-group">
+				<div class="mui-input-row mui-checkbox mui-left">
+					<label>推送</label>
+					<input name="checkbox" value="Item 1" type="checkbox" checked>
+				</div>
+				<div class="mui-input-row mui-checkbox mui-left mui-disabled">
+					<label>摇一摇</label>
+					<input name="checkbox" value="Item 2" type="checkbox">
+				</div>
+				<div class="mui-input-row mui-checkbox mui-left mui-disabled">
+					<label>禁用</label>
+					<input name="checkbox" type="checkbox" disabled="disabled">
+				</div>
+			</form>
+			<p class="rn-bnts ovh">
+				<a href="javascript:;" class="rn-btn rn-btn-a" id="J_add_qx">确定</a>
+				<a href="javascript:;" class="rn-btn" id="J_add_lj">取消</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!--<div class="" style="font-size: 18px;">
+	<div class="actlist" style="background-color:#efeff4">
+		<ul class="list ovh" id="J_list" style="background-color:#efeff4">
+			<li class="mui-table-view-cell" style="background-color: #FFFFFF;margin: 8px 0;" ng-repeat="v in list">
+				<div class="mui-slider-right mui-disabled" data-boxId="{{v.boxId}}">
+					<a class="delete mui-btn {{v.state==1?'mui-btn-red':'mui-btn-yellow'}}  mui-icon mui-icon-email">
+						<img src="assets/images/delete.png" /></a>
+				</div>
+				<div class="mui-slider-handle ellipsis">{{v.random}}
+					<div class="mui-btn mui-btn-danger" style="position:absolute;right:58px">
+						<a class="lisa" style="display: {{v.state==1?'block':'none'}};" href="#/mine_member?random={{v.random}}&boxId={{v.boxId}}&boxName={{v.boxName.replace(/(^\s*)|(\s*$)/g," ")}}">管理</a>
+					</div>
+					<div class="modify mui-btn mui-btn-primary" style="position:absolute;right:0">修改</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<p class="_loading" id="J_loading">您还未绑定设备，点击添加设备立即绑定</p>
+</div>-->

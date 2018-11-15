@@ -1,0 +1,39 @@
+<div class="bgcffffff toMember">
+	<div class="psr head-block">
+		<img class="dsib" src="img/default.jpg" />
+		<div class="psa mt25 dsib">
+			<p class="fwb p1">{{mine.nickname=='null'||mine.nickname=='undefined'||!mine.nickname?'未登录':mine.nickname}}</p>
+			<p>绑定设备号 {{}}</p>
+		</div>
+	</div>
+	<div class="cont-block">
+		<div class="cont-title">
+			<p class="dsib fwb fs14">点播节目VIP</p>
+			<p class="dsib pl10 c99 fs11">电视端观看“电视院线”内容</p>
+		</div>
+		<div class="child mb20 psr {{itemId==v.id?'active':''}}" ng-repeat="v in goodsList" ng-click="selectTiem(v.id)">
+			<p ng-show="{{v.id==0}}" class="dsib psa label cff fs11 lh1">包年价超值买</p>
+			<div class="dsib psa mt20 ml10">
+				<p class="c66 fs15 fwb lh1 mb10">{{v.title}}</p>
+				<p class="c99 fs11 lh1">{{v.title2}}</p>
+			</div>
+			<p class="dsib price psa fs16 fwb">{{v.price}}</p>
+		</div>
+		<button class="alic fs15 cff mb15 mt15 dsib btn" ng-click="submitInfo()">立即开通</button>
+		<div class="">
+			<p class="c99 alic lh1 fs12">支付成功后，10分钟内为您开通</p>
+		</div>
+	</div>
+</div>
+
+<div class="chosetv" id="chosetv" ng-show="toBuyCheck" style="display: block;" ng-click="resetstate()">
+	<div class="remotenew alic" ng-click="stopBubble($event)" style="height:1.02rem;">
+		<div id="device_delete" ng-show="toBuyCheck">
+			<div class="rn-sm fs14  pt10">确定购买吗？</div>
+			<p class="rn-bnts ovh pta b0">
+				<a href="javascript:;" class="rn-btn" id="J_delete_qx" ng-click="subConfirm()">确定</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a" id="J_delete_qd" ng-click="resetstate()">取消</a>
+			</p>
+		</div>
+	</div>
+</div>

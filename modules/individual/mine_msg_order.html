@@ -1,0 +1,36 @@
+<style type="text/css">
+    body {
+        background: #f7f7f7;
+    }
+</style>
+
+<div class="headline headline-title wp100 alic">
+    <a href="javascript:;" class="lh0 dsb hp100" ng-click="deletefcn()">
+        <span class="sec-text">{{deleteState?'取消':'编辑'}}</span>
+    </a>
+</div>
+
+<div class="mine_msg_order mine_list timeline" style="overflow: hidden;">
+    <ul infinite-scroll="" infinite-scroll-disabled="isc" infinite-scroll-distance="0">
+        <li ng-repeat="v in list" on-finish-render-filters class="alic" style="margin-bottom: 0;">
+            <p class="cff fs12 dsib plr mt15 msg_time">{{v.addTime}}</p>
+            <div class="li">
+                <input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" ng-click="count()"
+                    data-id="{{v.id}}">
+                <a href="javascript:;" class="lia dsb alil bgcffffff" style="margin-left:{{deleteState?'.49rem':'5%'}};">
+                    <p class="fs12 c33 ellipsis pb15 lh1"><span class="cred mr5">[{{v.messageTitle}}]</span>{{v.title}}</p>
+                    <p class="fs15 c33  pb20 ellipsis lh1">{{v.content}}</p>
+                    <p class="s"></p>
+                    <p><img src="imgnew/rec01fr.png" class="fr r_img" alt=""></p>
+                </a>
+            </div>
+        </li>
+    </ul>
+    <p class="_loading">{{loadtext}}</p>
+</div>
+
+<div class="editline" ng-show="deleteState" style="display: block;">
+    <a href="javascript:;" class="f c33" id="J_del_all" ng-click="deletefcn()">取消</a>
+    <a href="javascript:;" class="f" ng-click="checkAll()">{{allSelect?'取消全选':'全选'}}</a>
+    <a href="javascript:;" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>

@@ -1,0 +1,36 @@
+<div class="headline headline-title headline-fixed dsn bdb" style="background: #f5f5f5">
+	<a class="pta l10" href="javascript:;" id="J_back" back>
+		<img style="height: .15rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="tab-text33316 alil ellipsis" id="J_til">明星详情</p>
+</div>
+<div class="profile">
+	<div class="dt-mess ptr pt10">
+		<p class="mt10 dt-img" id="J_image"><img ng-src="{{detail.imageSmall?detail.imageSmall:'img/mxdefault.png'}}"></p>
+		<p class="tab-text ellipsis pb10 pt10 alic">{{v.actorName}}</p>
+		<div class="fs14 c33 alic pb10" style="display: none">
+			<p class="fl" ng-show="detail.imageSmall">地区：{{detail.region}}</p>
+			<p class="dsib" ng-show="detail.imageSmall">生日：{{detail.birthday}}</p>
+			<p class="fr" ng-show="detail.imageSmall">性别：{{detail.sex}}</p>
+		</div>
+	</div>
+	<div class="c33 fs14 pt10 pb10"><span class="fwb">简介:</span>
+		{{is_zhan?detail.intro:(detail.intro.length>62?detail.intro.substr(0,62)+'...':detail.intro)}} <span ng-click="is_zhan=!is_zhan"
+		    ng-show="detail.intro.length>65" class="cyellow">{{is_zhan?'收起':'展开'}}</span></div>
+</div>
+
+<div class="tyitem" style="background: transparent;">
+	<div class="recos pt10" id="J_list" ng-show="tjshow">
+		<p class="fs15 c33 fwb lh30">相关影片</p>
+		<ul class="list ovh" id="J_topimg">
+			<li class="li" ng-repeat="v in tjlist" infinite-scroll="getAjaxList()" infinite-scroll-disabled="isc" infinite-scroll-distance="0">
+				<a ng-href="#/detail?columnType={{v.videoType}}&id={{v.id}}" class="J_a cff">
+					<p class="size-cover ptr ovh"><img class="J_img lazy loading pta" ng-src="{{v.image}}"><span ng-if="v.edition"
+						    class="J_icotv cff dsb alic">{{v.edition}}</span></p>
+					<p class="sec-text ellipsis pt5">{{v.title}}</p>
+				</a>
+			</li>
+		</ul>
+		<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+	</div>
+</div>

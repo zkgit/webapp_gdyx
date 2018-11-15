@@ -1,0 +1,67 @@
+<div class="index_itu" id="J_list">
+	<!--我的直播-->
+	<div class="J_list tyitem" ng-show="nowEpgList.length>0" style="padding: 0 .1rem;">
+		<div class="topline sec-text ptr fwb alic">
+			<img class="wp15" src="images/dot1.png" />
+			<p class="dsib p005">正在播</p>
+			<img class="wp15" src="images/dot2.png" />
+			<!--<a class="fr sec-text8989" href="#/iti_zb?columnType=film&id=274028"><img src="img/ico_index00fr.png"></a>-->
+		</div>
+		<ul class="list ovh" >
+			<li class="li ng-scope" ng-repeat="v in nowEpgList " on-finish-render-filters>
+				<!--<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="J_a cff  psr dsb">-->
+				<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}' class="J_a cff psr dsb">
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg">
+					</p>
+					<div class="J_label dsb" style="width: .6rem;" ng-show="v.iflive==0">
+						<p class="J_p dsit"></p>
+						<p class="J_span cff dsb alic psa" style="width: .5rem;">直播中</p>
+					</div>
+					<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
+					<p class="J_play thi-text lh16 c99" ng-bind="v.channelName"></p>
+					<!--<p class="cff sec-text-num ellipsis">更新至多少集</p>-->
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<!--<div class="alic change-btn" ng-click=" recommend_mix_film(1)">
+			<img src="img/refresh.png"/>
+			<p class="dsib caa">换一换</p>
+		</div>-->
+	</div>
+
+	<!--我的直播-->
+	<div class="J_list tyitem" ng-show="followingEpgList.length>0">
+		<div class="topline sec-text ptr fwb alic">
+			<img class="wp15" src="images/dot1.png" />
+			<p class="dsib p005">即将播</p>
+			<img class="wp15" src="images/dot2.png" />
+			<!--<a class="fr sec-text8989" href="#/iti_zb?columnType=film&id=274028"><img src="img/ico_index00fr.png"></a>-->
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope" ng-repeat="v in followingEpgList " on-finish-render-filters>
+				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="J_a cff">
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg">
+						<!--<span class="J_label2 cff dsb alic">预约</span>
+						<span class="J_label2 cff dsb alic">已预约</span>-->
+					</p>
+					<!--<span class="J_icoYU cff dsb alic fs11">预约</span>-->
+					<!--<span class="J_icoYU cff dsb alic fs11">已预约</span>-->
+					<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
+					<p class="J_play thi-text lh16 c99">卫视名称</p>
+					
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<!--<div class="alic change-btn" ng-click=" recommend_mix_film(1)">
+			<img src="img/refresh.png"/>
+			<p class="dsib caa">换一换</p>
+		</div>-->
+	</div>
+
+
+
+</div>

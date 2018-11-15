@@ -1,0 +1,48 @@
+<div class="index " style="margin-top: .88rem;">
+    <div class="banner swipe" id="J_swipe" style="">
+        <div class="swipe-box">
+            <div class="lis" ng-repeat="v in poster track by $index" ng-init="checklast($last)">
+                <a ng-href="#/detail?{{v.columnType==2?'zb=zb&channelID='+v.channel_id+'&':''}}kankeId={{v.kankeId}}&vodId={{v.vodId}}&chaneseName={{v.chaneseName}}&englishName={{v.kankeChannel}}">
+                    <img animate-visible="true" lazy-src="{{v.bimage}}" class="lazy" />
+                </a>
+            </div>
+        </div>
+        <div class="poter"></div>
+    </div>
+    <div class="tbitem" style="margin-top: .01rem;padding-top: .2rem">
+        <ul class="list ovh" id="J_hot">
+            <li class="li" ng-repeat="v in category">
+                <a ng-href="#/TVlive?type={{v.type}}&enName={{v.enName}}&title={{v.title}}" class="J_a cff">
+                    <div class="tv_label_info">
+                        <p class="sec-text ellipsis alic ">{{v.title}}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="J_list tyitem" style="margin-top: .01rem;" ng-repeat="zb_list in list">
+        <div class="topline sec-text ptr">
+            <div class=""></div>
+            {{zb_list.title}}
+            <a href="#/TVlive?type={{zb_list.type}}&enName={{zb_list.enName}}&title={{zb_list.title}}" class="fr sec-text8989"><img
+                    src="img/ico_index00fr.png" /></a>
+        </div>
+        <ul class="list ovh" id="J_hot">
+            <li class="li" ng-repeat="v in zb_list.list" on-finish-render-filters>
+                <a ng-href="#/detail?zb=zb&serviceid={{v.epgs[0].channel_id}}&tsid={{(v.epgs[0].channel_sid).split('_')[1]}}&frequence={{v.epgs[0].channel_tid}}&startTime={{v.epgs[0].startTime}}&kankeId={{v.kankeid}}&vodId={{v.vodId}}&columnType={{v.classId}}&videoId={{v.videoId}}&englishName={{v.epgs[0].kankeChannel}}&channelID={{v.epgs[0].channel_id}}&chaneseName={{v.epgs[0].chaneseName}}"
+                    class="J_a cff">
+                    <p class="size-cover ptr ovh" style="margin-bottom: 0;">
+                        <img class="J_img loading pta wp100 hp100 lazy" animate-visible="true" lazy-src="{{v.lpic}}">
+                        <span class="zb_channel ellipsis"><img src="{{v.epgs[0].icon2}}" err-src="img/ico_df.png" />{{v.epgs[0].chaneseName}}</span>
+                        <p class="pre ptr"><span class="J_pre pta hp100" style="width:{{v.epgs[0].percentage}}%;"></span>
+                        </p>
+                    </p>
+                    <div class="tv_info" style="background: #fff;">
+                        <p class="J_til til sec-text ellipsis cff">{{v.videoTitle}}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+</div>

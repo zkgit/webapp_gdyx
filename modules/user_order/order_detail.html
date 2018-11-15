@@ -1,0 +1,74 @@
+<style>
+	body {
+		background: #fff;
+	}
+</style>
+<div class="order_detail">
+	<div class="headline headline-title headline-fixed dsn bdb">
+		<a class="pta l10" href="javascript:;" id="J_back" back>
+			<img style="height: .15rem;" src="img/left-arrow.png" />
+		</a>
+		<p class="tab-text33316 alil ellipsis" id="J_til">看单详情</p>
+	</div>
+	<div id="J_list">
+		<div class="top ovh ptr">
+			<div class="bg blur pta wp100 hp100 z1" style="background-image: url('{{detail.image}}')"></div>
+			<div class="wp40 fl mr15 ptr z2">
+				<img class="loading lazy " src="{{detail.image}}">
+			</div>
+			<div class="ptr z2 cff">
+				<p class="fs18 pt15 pb5">{{detail.title.length>17?detail.title.substr(0,17) : detail.title}}</p>
+				<a href="#/user_center?otherId={{detail.userId}}" class="dsib pb20"><img src="{{detail.userImage?detail.userImage:'img/default.jpg'}}"
+					    alt="" class="bdrp50 wp03 mr5 "><span class="fs13">{{detail.userName}} <img src="imgnew/kandan-more.png" alt=""
+						    style="height:.1rem;"></span>
+				</a>
+				<div>
+					<img ng-click="is_showpub=true" class="pt10 fl pb10 mr25" ng-show="detail.isPublic==0" src="imgnew/nopubKan.png"
+					    style="height:.38rem;" alt="">
+					<img ng-click="collect()" class="pt10 fl pb10 mr25" ng-show="(detail.userId!=userId)&&detail.isPublic==1" src="{{is_collect?'imgnew/collect-selected.png':'imgnew/collect-normal.png'}}"
+					    style="height:.38rem;" alt="">
+					<p class="fl" ng-show="detail.isPublic==1" ng-click="is_showshare=true"><img src="imgnew/detail_share_white.png"
+						    alt="" class="pt10 pb10 mr10" style="height:.38rem;"><span class="cff fs12">分享至动态</span></p>
+				</div>
+			</div>
+		</div>
+		<ul class="list">
+			<li ng-repeat="v in list" class="ovh plr pt15 pb15 bdb" on-finish-render-filters>
+				<a href="#/detail?columnType={{v.videoType}}&id={{v.seriesId}}">
+					<div class="wp40 fl mr15">
+						<div class="size-cover ptr ovh">
+							<img class="loading lazy pta" animate-visible="true" lazy-src="{{v.image}}">
+							<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>
+						</div>
+					</div>
+					<div class="c33">
+						<p class="fs16 pt20 pb10 ellipsis fwb">{{v.title}}</p>
+						<p class="fs12 des">{{v.detail.length>50?v.detail.substr(0,50)+'...':v.detail}}</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="chosetv" id="chosetv" ng-show="is_showpub" style="display: block;" ng-click="resetstate()">
+		<div class="remotenew" ng-click="stopBubble($event)" style="height:1.46rem;">
+			<div id="device_delete">
+				<p class="fwb fs18 pt10 alic">确定将此看单设置为公开？</p>
+				<p class="fs14 c33 pt20 pb10 alic">公开后将无法重新设为隐私</p>
+				<p class="rn-bnts alic ovh" style="margin-top: .14rem">
+					<a href="javascript:;" class="rn-btn" id="J_delete_qd" ng-click="changepub()">确定</a>
+					<a href="javascript:;" class="rn-btn rn-btn-a" id="J_delete_qx" ng-click="is_showpub=false">取消</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="chosetv" style="display: {{is_showshare?'block':'none'}};">
+		<div class="remotenew plr" ng-click="stopBubble($event)" style="height:1.64rem;width:2.8rem;margin-left: -1.4rem;">
+			<p class="fs18 fwb c33 pt20 pb10  alic">是否分享至动态？</p>
+			<p class="fs16 c33 pt10 pb10 alic">分享后您可至 <span class="ce4">看友圈</span> 中查看您分享的以及他人分享的内容。</p>
+			<p class="rn-bnts ovh ">
+				<a href="javascript:;" class="rn-btn alic" ng-click="is_showshare=false">取消</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a alic" ng-click="shareKan()">确定</a>
+			</p>
+		</div>
+	</div>
+</div>

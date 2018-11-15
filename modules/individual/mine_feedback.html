@@ -1,0 +1,95 @@
+<div class="headline headline-title headline-fixed dsn" style="background: #F5F5F5">
+	<a class="pta l10 cff" href="javascript:;" id="J_back" back>
+		<img style="height: .15rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="tab-text33316" id="J_til">自助服务</p>
+</div>
+<div class="mine_self">
+	<p class="alic c66 fs16 pt10 pb10 fwb">常见问题</p>
+	<div class="qus fs14 c33 bgcffffff">
+		<ul class="pl10 bdb  bdte5">
+			<li class="bdb" ng-click="list[0].top=!list[0].top">
+				<p class="li">如何绑定机顶盒？ <img src="imgnew/program_jiantou.png" alt="" class="{{list[0].top?'program_top':''}}"></p>
+				<div ng-show="list[0].top" class="pr10 fs12 c66 ">
+					<p class="pb10">1.打开天翼高清，选择首页“天翼高清多屏互动”；</p>
+					<p class="pb30">2.手机微信扫描微信绑定二维码，完成绑定。</p>
+				</div>
+			</li>
+			<li class="bdb" ng-click="list[1].top=!list[1].top">
+				<p class="li">如何投屏观看视频？<img src="imgnew/program_jiantou.png" alt="" class="{{list[1].top?'program_top':''}}"></p>
+				<div ng-show="list[1].top" class="pr10 fs12 c66 ">
+					<p class="pb10">1.今日看点、直播页点击播放按钮即可投屏；</p>
+					<p class="pb30">2.视频详情页点击电视观看，实现投屏观看。</p>
+				</div>
+			</li>
+			<li class="bdb" ng-click="list[2].top=!list[2].top">
+				<p class="li">如何安装应用？<img src="imgnew/program_jiantou.png" class="{{list[2].top?'program_top':''}}" alt=""></p>
+				<div ng-show="list[2].top" class="pr10 fs12 c66">
+					<p class="pb10">1.微信端已绑定机顶盒的前提下；</p>
+					<p class="pb30">2.微电视-应用-点击【打开】，即安装应用至电视端。</p>
+				</div>
+			</li>
+			<li class="qus2 bdb" ng-click="isshow_kandan=true">
+				<p class="li">关于看单相关问题 <img src="imgnew/program_jiantou.png" alt=""></p>
+			</li>
+			<li class="qus2" ng-click="isshow_foucs=true">
+				<p class="li">关于好友关注相关问题 <img src="imgnew/program_jiantou.png" alt=""></p>
+			</li>
+		</ul>
+	</div>
+	<div class="feequs plr">
+		<p class="alic c66 fs16 pt10 pb10 fwb">意见反馈</p>
+		<textarea cols="20" placeholder="请详细描述问题，便于技术人员为您解决" ng-model="val" class="alic"></textarea>
+		<div class="submit alic" ng-click="submit()">提交</div>
+	</div>
+</div>
+<div class="chosetv self_kandan" style="display: block;background:#F5F5F5;" ng-show="isshow_kandan">
+	<div class="headline headline-title headline-fixed bdb" style="background: #F5F5F5;">
+		<a class="pta l10" href="javascript:;" ng-click="isshow_kandan=false">
+			<img style="height: .15rem;" src="img/left-arrow.png" />
+		</a>
+		<p class="tab-text33316 alil ellipsis">看单相关</p>
+	</div>
+	<ul style="margin-top: .44rem;">
+		<li class="alic">
+			<p class="fs14 c33 self_title fwb">新建看单</p>
+			<p class="fs12 c66">视频详情页面-加入看单-新建；</p>
+			<p class="fs12 c66">我的-我的看单-编辑-新建。</p>
+		</li>
+		<li class="alic">
+			<p class="fs14 c33 self_title fwb">分享看单</p>
+			<!--<p class="fs12 c66">新建看单时，不勾选“设为隐私看单”即自动分享至看友动态;</p>-->
+			<p class="fs12 c66">我的看单-看单详情-分享。</p>
+		</li>
+		<li class="alic">
+			<p class="fs14 c33 self_title fwb">分享视频</p>
+			<p class="fs12 c66">视频详情页-分享至动态。</p>
+		</li>
+	</ul>
+	<p class="fs12 c99 self_dash alic">如有更多相关问题，请返回自助服务反馈您的问题</p>
+</div>
+<div class="chosetv self_kandan" style="display: block;background:#F5F5F5;" ng-show="isshow_foucs">
+	<div class="headline headline-title headline-fixed bdb" style="background: #F5F5F5;">
+		<a class="pta l10" href="javascript:;" ng-click="isshow_foucs=false">
+			<img style="height: .15rem;" src="img/left-arrow.png" />
+		</a>
+		<p class="tab-text33316 alil ellipsis">好友关注</p>
+	</div>
+	<ul style="margin-top: .44rem;">
+		<li class="alic">
+			<p class="fs14 c33 self_title fwb">关注用户</p>
+			<p class="fs12 c66">看友动态-点击头像-进入用户中心-关注;</p>
+			<p class="fs12 c66">我的-我的粉丝-关注。</p>
+		</li>
+		<li class="alic">
+			<p class="fs14 c33 self_title fwb">成为好友</p>
+			<p class="fs12 c66">彼此互相关注，即成为好友;</p>
+			<p class="fs12 c66">我的粉丝-关注-好友关系。</p>
+		</li>
+		<li class="alic line2">
+			<p class="fs14 c33 self_title fwb">查看好友正在看</p>
+			<p class="fs12 c66">精选-看友圈-好友正在看。</p>
+		</li>
+	</ul>
+	<p class="fs12 c99 self_dash alic">如有更多相关问题，请返回自助服务反馈您的问题</p>
+</div>

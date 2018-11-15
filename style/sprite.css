@@ -1,0 +1,446 @@
+/*问题反馈*/
+.feedback1,.feedback2, .feedback3, .feedback4{
+	background: url(../imgnew/feedback.png) no-repeat;
+	background-size: 3.75rem auto;
+	width: .82rem;
+	height: .4rem;
+	margin: 0 auto;
+}
+.feedback1{
+	background-position: 0 0;
+    width: 100%;
+    height: 1.15rem;
+    background-size: 100%;
+}
+.feedback2{
+	background-position: 0 -1.25rem ;
+}
+.feedback2:active,.feedback2.active{
+	background-position: 0 -1.75rem;
+}
+.feedback3{
+	background-position: -1rem -1.25rem ;
+}
+.feedback3:active,.feedback3.active{
+	background-position: -1rem -1.75rem;
+}
+.feedback4{
+	background-position: -2rem -1.25rem ;
+}
+.feedback4:active,.feedback4.active{
+	background-position: -2rem -1.75rem;
+}
+
+/*历史记录*/
+.tv-little, .cell-little, .clock-yellow, .clock-green, .next{
+	background: url(../imgnew/history.png) no-repeat;
+	background-size: .715rem auto;
+	float: left;
+}
+
+.tv-little{
+	background-position: 0 0;
+	width: .209rem;
+	height: .16rem;
+	margin-top: .04rem;
+}
+
+.cell-little{
+	background-position: -.25rem 0;
+	width: .1rem;
+	height: .16rem;
+}
+
+.clock-yellow{
+	background-position: -.38rem 0;
+	width: .15rem;
+	height: .15rem;
+}
+
+.clock-green{
+	background-position: -.564rem 0;
+	width: .15rem;
+	height: .15rem;
+}
+
+.next{
+	background-position: 0 -.2rem ;
+	width: .45rem;
+	height: .44rem;
+	position: absolute;
+    right: .4rem;
+    top: 0;
+}
+
+/*直播页面按钮*/
+.btn-order:after,.btn-orderActive:after,btn-orderActive, .btn-db:after,.btn-tv:after,.btn-unfold:after{
+	background: url(../imgnew/TVlive.png) no-repeat;
+	position: absolute;
+	content: '';
+	width: .7rem;
+	height: .46rem;
+	background-size: .8rem;
+}
+.btn-unfold{
+	position: relative;
+	background: #fff;
+	margin-bottom: .1rem;
+	width: .9rem;
+	padding: .05rem;
+}
+.btn-unfold:after{
+	background-position: 0 -3rem;
+	width: .06rem;
+	height: .05rem;
+	right: 0.05rem;
+	top: 50%;
+	margin-top: -.025rem;
+}
+.btn-unfold.active:after{
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.btn-order:after{
+	background-position:0 -1.92rem;
+	right: 0;
+	/*bottom: 0;*/
+	bottom: .14rem;
+}
+.right:after{
+	right: -1rem;
+}
+
+.btn-order:active:after,.btn-orderActive:after{
+	background-position: 0 -2.35rem ;
+}
+
+.btn-db:after{
+	background-position: 0rem -.13rem;
+	right: 0;
+	bottom: .14rem;
+}
+
+.btn-db:active:after{
+	background-position: 0 -.58rem ;
+}
+.btn-tv:after{
+	background-position: 0 -1.01rem;
+	right: 0;
+	bottom: .14rem;
+}
+
+.btn-tv:active:after{
+	background-position: 0 -1.46rem ;
+}
+/*应用app*/
+.btn-app{font-size:.13rem;border:1px solid #fd8200;color:#fd8200;position: absolute;right:.18rem;top:.35rem;padding:0 .1rem;height:.3rem;line-height: .3rem;border-radius: 5px;}
+.btn-app:active{background: #fd8200;color:#fff;border:1px solid transparent;}
+/*遥控器*/
+.remote-01:before,
+.remote-02:before,
+.remote-03:before,
+.remote-04:before,
+.remote-05:before {
+	background: url(../imgnew/remote.png) no-repeat;
+	position: absolute;
+	content: '';
+}
+
+.remote-01:before {
+	top: 0;
+	left: -110%;
+	background-size: 2rem;
+	background-position: 0 0;
+	width: .45rem;
+	height: .46rem;
+}
+.remote-01-01{
+	background: url(../imgnew/remote01.png) no-repeat;
+}
+.remote-01-01{
+    left: .36rem;
+    top: .3rem;
+    z-index: 2;
+    position: absolute;
+    background-size: cover;
+    padding: .1rem .05rem;
+    text-align: center;
+}
+
+.remote-01.active:before {
+	background-position: -.5rem 0;
+}
+
+.remote-02:before {
+	top: 0;
+	left: 112%;
+	background-size: 2rem;
+	background-position: -1.005rem 0;
+	width: .45rem;
+	height: .46rem;
+}
+
+.remote-02:active:before {
+	background-position: -1.505rem 0;
+}
+
+.remote-03,
+.remote-04,
+.remote-05 {
+	position: absolute;
+}
+.remote-03{
+	right: 2.67rem;
+}
+.remote-04{
+	right: 1.45rem;
+}
+.remote-05{
+	right: 2.086rem;
+}
+.remote-03:before,
+.remote-04:before {
+	width: .67rem;
+	height: .5rem;
+}
+
+.remote-03:before {
+	top: .05rem;
+	background-size: 1.9rem;
+	background-position: -.92rem -.9999rem;
+}
+
+.remote-03:active:before {
+	background-position: .04rem -1rem;
+}
+
+.remote-04:before {
+	top: .05rem;
+	background-size: 1.9rem;
+	background-position: -.958rem -.49rem;
+}
+
+.remote-04:active:before {
+	background-position: -.02rem -.49rem;
+}
+
+.remote-05:before {
+	top: .05rem;
+	background-size: 1.89rem;
+	background-position: -.9rem -1.496rem;
+	width: .71rem;
+	height: .5rem;
+}
+
+.remote-05:active:before {
+	background-position: .05rem -1.496rem;
+}
+/*点播、直播详情页*/
+
+.cellbg,
+.cellplay,
+.choose,
+.chooseActive,
+.clock:after,
+.clockActive:after,
+.comment,
+.commented,
+.commentActive,
+.heart,
+.heartActive,
+.like,
+.likeActive,
+.line,
+.point,
+.share,
+.timer,
+.tvbg,
+.tvplay,
+.comment,
+.zbtvplay {
+	background: url(../imgnew/detail.png) no-repeat;
+	float: left;
+	background-size: 3.75rem auto;
+}
+
+.card {
+	background-position: -0rem 0rem;
+    width: 100%;
+    height: .45rem;
+    line-height: .45rem;
+}
+
+.choose {
+	background-position: 0 0;
+	width: .44rem;
+	height: .44rem;
+}
+
+.choose:active,
+.choose:hover,
+.chooseActive {
+	background-position: -.51rem 0;
+	width: .44rem;
+	height: .44rem;
+}
+
+.clock:after{
+	position: absolute;
+	content: '';
+	right: 0;
+	background-position: -1.01rem 0;
+    width: .3rem;
+    height: .3rem;
+}
+
+.clock:active:after,
+.clockActive:after {
+	background-position: -1.39rem 0;
+	width: .3rem;
+    height: .3rem;
+}
+
+.comment {
+	background-position: -550px 0;
+	width: 88px;
+	height: 88px;
+	background-position: -2.75rem 0;
+	width: .44rem;
+	height: .44rem;
+}
+.commented {
+	background-position: -550px 0;
+	width: 88px;
+	height: 88px;
+	background-position: -2.64rem -.5rem;
+	width: .44rem;
+	height: .44rem;
+}
+.commentNew {
+	background-position: -2.635rem -.51rem;
+	width: .44rem;
+	height: .44rem;
+}
+
+.comment:active,
+.commentActive {
+	background-position: -3.065rem -.89rem;
+	width: .44rem;
+	height: .44rem;
+}
+
+.heart {
+	background-position: -1.505rem -.5rem;
+	width: .34rem;
+	height: .44rem;
+	float: right;
+}
+
+.heart:active,
+.heartActive {
+	background-position: -2.005rem -.5rem;
+	width: .34rem;
+	height: .44rem;
+}
+
+.like {
+	background-position: -1.75rem -.01rem;
+	width: .32rem;
+	height: .44rem;
+	float: right;
+}
+
+.like:active,
+.likeActive {
+	background-position: -2.255rem -.01rem;
+	width: .32rem;
+	height: .44rem;
+}
+
+.line {
+	background-position: -3.35rem -.575rem;
+	width: .05rem;
+	height: .15rem;
+	position: absolute;
+	left: .205rem;
+	top: -.12rem;
+}
+.timer{
+	background-position: 0 -2.62rem ;
+	width: .37rem;
+	height: .37rem;
+	position: absolute;
+    right: .5rem;
+    bottom: 0;
+}
+.timer:active,
+.timerActive {
+	background-position: -.5rem -.5rem;
+	width: .37rem;
+	height: .37rem;
+	
+}
+.play{
+	width: .16rem;
+	height: .16rem;
+    vertical-align: middle;
+}
+
+
+
+.point {
+	background-position: -591px -112px;
+	width: 12px;
+	height: 12px;
+}
+
+.share {
+	background-position: 0 -.505rem;
+	width: .44rem;
+	height: .44rem;
+	float: right;
+	display: none;
+}
+
+.cellbg {
+	background-position: 0 -1.55rem;
+	width: 50%;
+	height: .49rem;
+}
+
+.cellplay {
+	background-position: -1.995rem -1.715rem;
+	width: 1.08rem;
+	height: .28rem;
+	position: absolute;
+	top: 50%;
+	left: 75%;
+	margin-left: -.54rem;
+	margin-top: -.14rem;
+}
+
+.tvbg {
+	background-position: 0 -1.01rem;
+	width: 50%;
+	height: .49rem;
+}
+
+.tvplay {
+	background-position: -2rem -1.365rem;
+	width: 1.08rem;
+	height: .28rem;
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	margin-left: -.54rem;
+	margin-top: -.14rem;
+}
+.zbtvplay {
+	display:none;
+	background-position: 0 -3rem;
+	width: 100%;
+	height: .49rem;
+	position: fixed;
+	bottom: 0;
+	margin-top: -.245rem;
+}

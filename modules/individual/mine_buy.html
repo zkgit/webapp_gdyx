@@ -1,0 +1,71 @@
+<style>
+	body{background: #f7f7f7;}
+</style>
+<!--<div class="headline headline-title headline-fixed dsn">
+    <a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+        <img style="height: .15rem;" src="img/left-arrow.png" />
+    </a>
+    <p class="i-text" id="J_til">订购记录</p>
+</div>
+<ul class="index_mine_buy pt20">
+    <li class="pl20 pr20" ng-repeat="v in list">
+        <p class="c33 fs17 lh40">{{v.productname}}</p>
+        <p class="c99 fs15 lh40">有效时间：{{v.expiredtime}}</p>
+        <p class="cyellow fs13 lh30">订购时间：{{v.ordertime}}</p>
+    </li>
+</ul>
+<p class="_loading" >{{loadtext}}</p>-->
+
+
+<div class="headline headline-title wp100 alic">
+	<a href="javascript:;" class="lh0 dsb hp100" ng-click="deletefcn()">
+		<span class="sec-text">
+			{{deleteState?'取消':'编辑'}}
+		</span>
+	</a>
+</div>
+
+<div id="J_list">
+	<div class="timeline">
+		<ul class="index_mine_buy pt20">
+			<li ng-repeat="v in list" on-finish-render-filters style="margin-left:{{deleteState?'.35rem':''}};">
+				<input name="checkbox" type="checkbox" ng-click="countdel()" style="display:{{deleteState?'block':'none'}};"
+				    data-id="{{v.vodCombineId}}" data-list='{{v}}'>
+				<!--<a class="lia">-->
+				<div class="buy_item ptr">
+					<p class="imge pta">
+						<img class="loading lazy" animate-visible="true" lazy-src="{{v.image}}" error="img/ico_df.jpg" style="display: block;">
+					</p>
+					<div class="psr">
+						<div class="dt_fl dt">
+							<p class="til fs15 pb5 ellipsis fwb">{{v.productname}}</p>
+							<p class="c66 ellipsis fs14 pb8 lh1">{{v.productid}}</p>
+							<p class="c99 ellipsis fs13 lh1">{{v.ordertime}}-{{v.expiredtime}}</p>
+						</div>
+					</div>
+					<!--<div class="push-btn cff fs13 alic dsib psa" ng-click="pushAction('{{v.vodCombineId}}')">投屏</div>-->
+				</div>
+				<!--</a>-->
+			</li>
+		</ul>
+		<p class="_loading" id="J_loading">{{loadtext}}</p>
+	</div>
+
+</div>
+<div class="editline" id="J_editline" ng-show="deleteState" style="display: block;">
+	<a href="javascript:;" class="f c33" id="J_del_all" ng-click="deletefcn()">取消</a>
+	<a href="javascript:;" class="f" id="J_del_all" ng-click="checkAll()">全选</a>
+	<a href="javascript:;" id="J_del" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>
+<div class="chosetv" id="chosetv" ng-show="deleteCommit" style="display: block;" ng-click="resetstate()">
+	<div class="remotenew" ng-click="stopBubble($event)">
+		<div id="device_delete" ng-show="deleteCommit">
+			<p class="rn-til c33 fs18 fs18 pt10 alic">删除</p>
+			<p class="rn-sm fs15 c33 pt10 pb20 alic">确定执行删除操作吗</p>
+			<p class="rn-bnts ovh fs18 " style="margin-top: .05rem;">
+				<a href="javascript:;" class="rn-btn alic" id="J_delete_qx" ng-click="resetstate()">取消</a>
+				<a href="javascript:;" class="rn-btn alic rn-btn-a" id="J_delete_qd" ng-click="deleteConfirm()">确定</a>
+			</p>
+		</div>
+	</div>
+</div>

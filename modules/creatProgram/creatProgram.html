@@ -1,0 +1,40 @@
+<style>
+    body {
+        background: #fff;
+    }
+</style>
+<!--新建看单-->
+<div class="new_kandan">
+    <!---->
+    <div class="headline-fixed bgcffffff">
+        <div class="headline headline-title bdb" style="background: #eeeff0;">
+            <a class="pta l10" href="javascript:;" ng-click="isshow_creatlist=false" back>
+                <img style="height: .15rem;" src="img/left-arrow.png" />
+            </a>
+            <p class="tab-text33316 alil ellipsis">新建看单</p>
+            <p class="pta r10" ng-click="addKandan()">完成</p>
+        </div>
+        <p class="fs14 alic title h44 lh44 "><span ng-show="!seting.currKey">请在下方选择看单标题</span> <span ng-show="seting.currKey"
+                class="c33">{{seting.currKey}}<img src="imgnew/search_qx.png" alt="" style="width: .35rem;" class="p10"
+                    ng-click="seting.currKey=''"></span></p>
+        <p class="set_kandan pl10 pt10 pb10 ovh" style="background: #eeeff0;"><i class="ml5 alic" ng-click="seting.ispublic==1?(seting.ispublic=0):(seting.ispublic=1)"><img
+                    ng-show="!seting.ispublic" style="width:.15rem;" src="imgnew/kandan_checked.png" alt=""></i> <span
+                class="fs13" style="color:#bbb;">设置为隐私看单</span></p>
+        <div class="pt15 pb15 pl10  kandan_nav">
+            <img src="{{seting.kandanType=='tv'?'imgnew/kandan_tv_press.png':'imgnew/kandan_tv.png'}}" alt="" class="mr10 "
+                ng-click="changeKanType('tv')">
+            <img src="{{seting.kandanType=='film'?'imgnew/kandan_film_press.png':'imgnew/kandan_film.png'}}" alt=""
+                class="mr10" ng-click="changeKanType('film')">
+            <img src="{{seting.kandanType=='arts'?'imgnew/kandan_arts_press.png':'imgnew/kandan_arts.png'}}" alt=""
+                class="mr10" ng-click="changeKanType('arts')">
+            <img src="{{seting.kandanType=='anime'?'imgnew/kandan_anime_press.png':'imgnew/kandan_anime.png'}}" alt=""
+                class="mr10" ng-click="changeKanType('anime')">
+            <img src="{{seting.kandanType=='documentary'?'imgnew/kandan_docu_press.png':'imgnew/kandan_docu.png'}}" alt=""
+                class="mr10" ng-click="changeKanType('documentary')">
+        </div>
+    </div>
+    <ul class="pt10 pl10 fs14 c33  ovh" style="margin-top: 2.12rem;">
+        <li ng-repeat="v in kan_list" on-finish-render-filters class="{{(kandanindex==$index)&&seting.currKey?'active':''}}"
+            ng-click="changeKanindex($index,v)">{{v}}</li>
+    </ul>
+</div>

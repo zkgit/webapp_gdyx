@@ -1,0 +1,118 @@
+<style>
+    body {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        height: 100;
+        width: 100%;
+    }
+</style>
+<div class="stv-container">
+    <div class="tab-bar scrolly-wbk fs16" id="J_second">
+        <div ng-repeat="v in cate" class="tab ptr {{$index==0?'tab-active':''}}" ng-click="tab_type(v.channel_en)">
+            {{v.channel_ch}}
+            <div class='i'></div>
+        </div>
+    </div>
+    <a href="#/search" class="search">
+        <img src="images/search.png" alt="">
+    </a>
+</div>
+<!--日期-->
+<!-- <div class="second scrolly tab-box " style="margin-top: .46rem">
+    <table click-tv-top class="wp100">
+        <tr>
+            <td ng-repeat="v in jmtime" class="{{v.class?'bgf5':''}}">
+                <a href="javascript:;" class="jm-time {{v.class}}  alic" data-time="{{v.timestr}}" ng-click="change_time(v.data)">
+                    <span>{{!v.class?v.day:'今天'}}</span>
+                    <p class="fs11 ptr b10">{{v.timestr}}</p>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div> -->
+<div class='dateBox dflex h88 wp100'>
+    <div class="dateBar " click-tv-top>
+        <div class="alic dateTab" ng-repeat="v in jmtime">
+            <div class=" tdCx {{v.class?'ce4 bgf2':''}}  lh28" data-time="{{v.timestr}}" ng-click="change_time(v.data)">
+                {{!v.class?v.day:'今天'}}
+            </div>
+            <div class="fs12 {{v.class?'ce4 bgf2':''}}">{{v.timestr}}</div> 
+             <!--<div class='fs18'>{{item.timestr}}</div> -->
+        </div>
+    </div>
+</div>
+<!-- <div class="weui_tab mt88"> -->
+<!--台标-->
+<!-- <div class="scrolly-wbk lazyLoadContainer" id="tody_scroll">
+        <div class="weui_leftbar" click-tv-left>
+            <div class="weui_leftbar_item {{$index==0?'weui_bar_item_on':''}}" ng-repeat="v in tb" ng-click="changetb(v.channelId)" on-finish-render-filters
+                repeat-id="r1">
+                <p class="img">
+                    <img class="lazy" lazy-src="{{v.icon2}}" animate-visible="true" animate-speed="0.5s" err-src="img/ico_df.png" style="display: block;width: .36rem;margin: 0 auto;">
+                </p>
+                <p class="c33 fs13 ellipsis b0 l10" ng-bind="v.channelName"></p>
+            </div>
+        </div>
+    </div> -->
+<!--查询节目单-->
+<!-- <div class="weui_lefttab_bd scrolly-wbk bgcffffff" id="lit_scroll">
+        <ul class="ovh0 pb54" ng-show="list.length">
+            <li class="tab_bd_item {{v.flag==1?'tab_bd_item_now':''}} ptr" ng-repeat="v in list" eq="{{$index}}" on-finish-render-filters
+                repeat-id="r2">
+                <a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>
+                    <div class="dt">
+                        <p class="sec-text pb5 ellipsis " ng-bind="v.videoTitle"></p>
+                        <p class="thi-text ellipsis {{v.flag==1?'ce4 ':''}} " ng-bind="v.flag==0?'已结束':(v.flag==1?'正在直播':v.startTime+'播出')"></p>
+                        <p class="" style="border: 1px solid #fd8200;width: 1.2rem;height: .04rem;">
+                            <span class="J_pre hp100 dsb" style="width:{{v.percentage}}%;background: #fd8200;"></span>
+                        </p>
+                        <p class="btl mt20"></p>
+                    </div>
+                </a>
+                <span class="{{v.flag|typebtn}} {{v.isorder?'btn-orderActive':''}}" ng-click="gotoplay(v)"></span>
+                <span class="pta time {{v.flag==1?'ce4 ':''}}" ng-bind="v.startTime"></span>
+            </li>
+        </ul>
+        <div class="tvdefault alic c99" ng-show="isshow_default">
+            <img src="imgnew/tvlive_default.png" alt="" style="width: 35%" class="pb20 pt88">
+            <p class="lh22">当前节目单暂无数据</p>
+            <p class="lh22">快去寻找其他精彩直播吧</p>
+        </div>
+    </div> -->
+<!-- </div> -->
+
+<div class="scroll-view">
+    <div class="scrolly-wbk leftbar" click-tv-left id="left_scroll">
+        <div ng-repeat="v in tb" class='leftbar_item' ng-click="changetb(v.channelId)" repeat-id="r1"
+            on-finish-render-filters>
+            <div class="itemText {{$index==0?'bgf2 ce4':''}}" ng-bind="v.channelName"></div>
+        </div>
+    </div>
+    <div class='rightEpg scrolly-wbk pt10' id="lit_scroll">
+        <div ng-repeat="v in list" class="item ptr {{v.flag==1 ? 'item_live':''}}" eq="{{$index}}" id="hash{{$index+v.flag}}"
+            repeat-id="r2" on-finish-render-filters>
+            <a href="#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}"
+                class="">
+                <text class="time pta fs14 c33 {{v.flag==1?'ce4 ':''}}">{{v.startTime}}</text>
+                <div class='dt'>
+                    <div class="c00 dl {{v.flag==1?'ce4 ':''}} ellipsis">{{v.title}}</div>
+                </div>
+            </a>
+            <div class='btn  alic' ng-click="gotoplay(v)">
+                <img class="image" src="images/tv{{v.flag}}.png" ng-show="!v.isorder">
+                <img class="image" src="images/tv2_press.png" ng-show="v.isorder">
+                <span ng-show="v.isorder" class='fs11 ce4' style="position: absolute;transform: scale(0.833333);right: 0;">已预约</span>
+            </div>
+        </div>
+        <div ng-show='isshow_default' class='alic c99'>
+            <img src='images/tvlive_default.png' style='width:484px;padding-top:15px;'>
+        </div>
+        <!-- <div class='btn  alic' ng-click="gotoplay(v)">
+            <img  class="image" src="{{v.isorder?'images/tv2_press.png':'images/tv2.png'}}" />
+            <text ng-show="{{v.isorder}}" class='fs18 pta cf5'>已预约</text>
+        </div> -->
+
+    </div>
+</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="headline headline-title">
+    <a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>&lt;返回</a>
+    <p class="i-text alic">个人资料</p>
+</div>
+<div class="">
+    <div class="headerimg ptr ovh">
+        <p class="headbox alic">
+            <a href="javascript:;" id="J_a" class="imgbox dsb bdrp50 ptr ovh mc">
+                <img id="J_img" ng-src="{{headimg}}" class="loading pta bdrp50">
+            </a>
+            <span class="name c dsb pt5" id="J_name">{{nickname}}</span>
+        </p>
+    </div>
+    <div class="text">
+        <p>性别：<span id="J_sex">{{sex}}</span></p>
+        <p>地区：<span id="J_area">{{area}}</span></p>
+        <p>注册时间：<span id="J_reg">{{regtime|date : 'yyyy-MM-dd'}}</span></p>
+        <!-- <p>登录时间：<span id="J_log"></span></p> -->
+    </div>
+    <p class="btnbot plr"><a href="javascript:;" class="btn" id="J_logoff">退出登录</a></p>
+</div>

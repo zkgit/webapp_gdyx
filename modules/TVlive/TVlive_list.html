@@ -1,0 +1,43 @@
+<div class="hotlist bgcffffff  ">
+    <div class="headline headline-title headline-fixed">
+        <a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+            <img style="height: .2rem;" src="img/left-arrow.png" />
+        </a>
+        <p class="i-text " id="J_til" ng-bind="toptil"></p>
+        <a href="#/search" class="pta r10 t0 lh0 dsb hp100 cff fs24">
+            <span class="mui-icon">
+                <img src="img/searchi.png" style="height: .44rem;" />
+            </span>
+        </a>
+        <!--<a href="#/shakeResult" class="pta r10 t0 lh0 dsb hp100 cff fs24">-->
+        <!--<span class="mui-icon">-->
+        <!--<img src="img/shakei.png" style="height: .44rem;"/>-->
+        <!--</span>-->
+        <!--</a>-->
+    </div>
+    <div class="pt10" style="margin-top: .44rem;">
+        <ul class="list ovh plr" id="J_list">
+            <li class="li ptr mb10 ng-scope" ng-repeat="v in list" on-finish-render-filters>
+                <p class="img pta">
+                    <img class="loading lazy" animate-visible="true" lazy-src="{{v.imageLink?v.imageLink:v.lpic}}"
+                        style="display: block;">
+                </p>
+                <div class="dt">
+                    <p class="til fs16 pb5 ellipsis c33 ng-binding">{{v.title}}</p>
+                    <p class="c66 lh16 ellipsis ng-binding">主持/导演：{{v.director}}</p>
+                    <p class="c66 lh16 ellipsis ng-binding">嘉宾/主演：{{v.actor}}</p>
+                    <div class="tvs ovh pt5">
+                        <a ng-href="#/detail?zb=zb&serviceid={{v.epgs[$index].channel_id}}&tsid={{(v.epgs[$index].channel_sid).split('_')[1]}}&frequence={{v.epgs[$index].channel_tid}}&startTime={{v.epgs[$index].startTime}}&kankeId={{v.kankeid}}&vodId={{v.vodId}}&columnType={{v.classId}}&videoId={{v.videoId}}&englishName={{v.epgs[0].englishName}}&channelID={{v.epgs[0].channel_id}}&chaneseName={{v.epgs[$index].chaneseName}}"
+                            class="tva alic ng-scope" ng-repeat="vs in v.epgs.slice(0,2)">
+                            <p class="ico bgcffffff ptr">
+                                <img class="loading mhp100 mc" src="{{vs.icon2}}" err-src="img/ico_df.png" style="display: block;">
+                                <p class="name cff ng-binding ellipsis">{{vs.chaneseName}}</p>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+    </div>
+</div>

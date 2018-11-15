@@ -1,0 +1,61 @@
+<div class="headline headline-title headline-fixed">
+	<a class="pta l10 cff fs16" href="javascript:;" id="J_back" back>
+		<img style="height: .2rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="i-text alic" id="J_til">为你推荐</p>
+	<a href="#/search" class="pta r10 t0 lh0 dsb hp100 cff fs24">
+		<span class="mui-icon">
+			<img src="img/searchi.png" style="height: .44rem;" />
+		</span>
+	</a>
+	<!--<a href="#/shakeResult" class="pta r10 t0 lh0 dsb hp100 cff fs24">
+		<span class="mui-icon">
+		<img src="img/shakei.png" style="height: .44rem;"/>
+		</span>
+	</a>-->
+</div>
+<div class="second scrollx" id="J_second" ng-show={{issec}}>
+	<table>
+		<tr id="J_second_tr">
+			<td ng-repeat="v in sectype"><a class="tab-text tvls ellipsis {{$index==0?'active':''}}" href="javascript:;"
+				    ng-click="getsec($index,v.id)" data-tags="{{v.id}}">{{v.name}}</a></td>
+		</tr>
+	</table>
+</div>
+<div class="content {{issec?'sec':''}}" id="J_content">
+	<div class="actlist" id="J_list">
+		<ul class="list ovh " style="display: {{rec_index==0?'block':'none'}};">
+			<li class="li" ng-repeat="v in mix" on-finish-render-filters>
+				<a href="#/detail?columnType={{v.kankeId.split('_')[0]}}&videoId={{v.kankeId.split('_')[1]}}&kankeId={{v.kankeId}}&vodId={{v.vodId}}&recommend=1"
+				    class="lia">
+					<p class="size-cover ptr ovh">
+						<img class="loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" style="display: block;">
+						<span class="{{(v.isMatched==-2||v.isMatched==1)?'J_icotv':''}} dsb"></span>
+					</p>
+					<p class="sec-text ellipsis pt5">{{v.title}}</p>
+					<!--<p class="thi-text lh16">播放:{{v.playCount|to_wan}}</p>-->
+				</a>
+			</li>
+		</ul>
+		<div class="J_list tjitem" style="display: {{rec_index!=0?'block':'none'}};" ng-repeat="type in keyList" ng-show="valueList[$index].length>0">
+			<div class="topline tlc-rec ptr">
+				<p class="ico pta l0 mr10"></p>
+				{{type}}
+				<a href="#/recommend?columnType={{columnType}}&label={{type}}" class="fr"><img src="img/rec01fr.png" /></a>
+			</div>
+			<ul class="list ovh">
+				<li class="li" ng-repeat="v in valueList[$index]" on-finish-render-filters>
+					<a href="#/detail?columnType={{v.classId|vtype}}&videoId={{v.id}}&kankeId={{v.kankeId}}&vodId={{v.vodId}}&recommend=1"
+					    class="lia">
+						<p class="size-cover ptr ovh">
+							<img class="loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" style="display: block;">
+							<span class="{{(v.isMatched==-2||v.isMatched==1)?'J_icotv':''}} dsb"></span>
+						</p>
+						<p class="sec-text ellipsis pt5">{{v.title}}</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+</div>

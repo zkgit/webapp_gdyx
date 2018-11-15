@@ -1,0 +1,54 @@
+<div class="headline headline-title headline-fixed dsn bdb">
+	<a class="pta l10" href="javascript:;" id="J_back" back>
+		<img style="height: .15rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="tab-text33316 alil ellipsis" id="J_til">用户中心</p>
+</div>
+<div class="index_my center bgcffffff">
+	<div class="ovh">
+		<div class="itu_poster ptr" style="height:2.2rem;width:100%;overflow:hidden;background: url('{{mine.headimgurl}}') 50% 0%  no-repeat;background-attachment: fixed; background-size:120%;filter: blur(10px);width: 120%;margin-left: -10%;height: 2.5rem; margin-top: -.15rem;"></div>
+	</div>
+	<div class="pta ovh t68">
+		<p class="headbox alic">
+			<a id="J_a" class="imgbox_center dsb bdrp50 ptr ovh mauto">
+				<img id="J_img" width="100%" src="{{mine.headimgurl}}" err-src="img/default.jpg" class="loading pta bdrp50">
+			</a>
+			<span class="cff fs18 name" id="J_name">{{mine.nickname=='null'||mine.nickname=='undefined'?'未登录':mine.nickname}}</span>
+		</p>
+		<p ng-show="mine.status!=-1" class="{{is_like?'center_concern followed_concern':'center_concern'}}" ng-click="like()"></p>
+	</div>
+	<div class="">
+		<ul class="friend pt10  bdtop ovh alic sm-text666">
+			<li><a href="#/mine_dynamic?otherId={{sc.otherId}}">
+					<p>动态</p><span>{{mine.map[-1]?mine.map[-1]:0}}</span>
+				</a></li>
+			<li><a href="#/mine_friend?otherId={{sc.otherId}}">
+					<p>好友</p><span>{{mine.map[2]?mine.map[2]:0}}</span>
+				</a></li>
+			<li class="concern"><a href="#/mine_focus?otherId={{sc.otherId}}">
+					<p>关注</p><span>{{mine.map[0]?mine.map[0]:0}}</span>
+				</a></li>
+			<li><a href="#/mine_fans?otherId={{sc.otherId}}">
+					<p>粉丝</p><span>{{mine.map[1]?mine.map[1]:0}}</span>
+				</a></li>
+		</ul>
+	</div>
+	<div class="kandan  b0 wp100 z12">
+		<p class="fs18 c33 lh30 plr5 alic pt20 pb20 ">看单&nbsp;{{li.totalrecords}}</p>
+		<ul class="c33">
+			<li class="ptr" ng-repeat="v in list" on-finish-render-filters>
+				<a href="#/order_detail?id={{v.id}}&otherId={{v.userId}}">
+					<img animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg" alt="" class="pta l0 img lazy">
+					<img src="imgnew/mine_nopub.png" alt="" ng-if="v.isPublic==0" class="" style="width: .18rem;position: absolute;bottom: .03rem;left: .22rem;">
+					<div>
+						<p>
+							<span class="wp86 ellipsis dsb fl" ng-bind="v.title"></span>
+							<img class="mr10  fr" style="height:.15rem;" src="img/rec01fr.png">
+						</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+	</div>
+</div>

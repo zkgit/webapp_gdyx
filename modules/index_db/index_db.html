@@ -1,0 +1,37 @@
+<div class="pglist index pb60">
+	<div class="content {{issec?'sec':''}}" id="J_content">
+		<div class="banner swipe" id="J_swipe" style="">
+			<div class="swipe-box">
+				<div class="lis" ng-repeat="v in poster track by $index" ng-init="checklast($last)">
+					<a ng-href="#/detail?{{v.columnType==2?'zb=zb&channelID='+v.channelid+'&':''}}kankeId={{v.kankeId}}&vodId={{v.vodId}}">
+						<img animate-visible="true" lazy-src="{{v.bimage}}" class="lazy" />
+					</a>
+				</div>
+			</div>
+			<div class="poter"></div>
+		</div>
+
+		<div class="J_list tyitem" ng-repeat="v in list" ng-show="list" style="margin-top: .01rem;">
+			<div class="topline sec-text ptr">
+				<div class=""></div>
+				{{v.title}}
+				<!--<img src="img/loading.gif" alt="" style="margin-left: 2.1rem;width: .15rem" ng-show="loadtextLive" >-->
+				<a href="#/list_db?tag={{v.title}}&coltype={{sc.coltype}}" class="fr sec-text8989"><img src="img/ico_index00fr.png" /></a>
+			</div>
+			<ul class="list ovh">
+				<li class="li" ng-repeat="list in v.list" on-finish-render-filters>
+					<a href="#/detail?assetid={{list.code}}&title={{list.title}}&columnType={{list.kanke_id.split('_')[0]}}&vodId={{list.vod_id}}&kankeId={{list.kanke_id}}"
+					    class="lia">
+						<p class="size-cover ptr ovh"><img class="J_img lazy loading pta" animate-visible="true" lazy-src="{{list.image}}">
+							<span class="{{(list.isMatched==-2||list.isMatched==1)?'J_icotv':''}} dsb"></span>
+						</p>
+						<p class="sec-text ellipsis pt5">{{list.title}}</p>
+						<p class="J_play thi-text lh16">播放：{{list.play_count|to_wan}}</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<p class="_loading" id="J_loading" ng-bind="loadtext"></p>
+	</div>
+
+</div>

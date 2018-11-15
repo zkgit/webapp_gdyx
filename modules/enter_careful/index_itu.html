@@ -1,0 +1,186 @@
+<div class="index_itu mb44 mt88" id="J_list">
+	<div ng-show="(list.length>0||tvlist.length>0)">
+		<div class="swiper-container tab_swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" ng-repeat="v in poster"><img src="{{v.image}}" alt=""></div>
+			</div>
+			<div class="swiper-pagination pagination"></div>
+		</div>
+	</div>
+	<!--综艺娱乐 -->
+	<div class="J_list tyitem" ng-show="classify_arts.length>0">
+		<div class="topline fs15 ptr fwb">综艺娱乐
+			<a class="fr sec-text8989" href="#/zb_more?type=arts"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<div class="scrolly">
+			<ul class="list wp100 dst">
+				<li class="scroll_li dsib psr" ng-repeat="v in classify_arts" on-finish-render-filters>
+					<!--<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}">-->
+					<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>
+						<p class="size-cover ptr ovh dsb">
+							<img class="J_img loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg">
+							<!--<span class="J_icoYU cff dsb alic fs11">预约</span>-->
+							<!--<span class="J_icoYU cff dsb alic fs11">已预约</span>-->
+						</p>
+					</a>
+					<!--<p class="cff sec-text-num ellipsis">更新至多少集</p>-->
+					<p class="fs14 ellipsis pt10 c22 lh1 pb5" ng-bind="v.title"></p>
+					<p class="J_play fs12 lh16 c99">{{v.channelName}}</p>
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==1">预约</span>
+					<!--<span class="J_icoYU cff dsb alic fs11">已预约</span>-->
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==-1">回看</span>
+					<div class="J_icoZB flex" ng-show="v.iflive==0">
+						<p class="dsib red_dot"></p>
+						<span class="cff dsb alic fs11">直播中</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div style="border-top: .01rem solid #eee;width: 100%;height: 2px;"></div>
+	</div>
+	<!--电视剧-->
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="classify_tv.length>0">
+		<div class="topline fs15 ptr fwb">电视剧
+			<a class="fr sec-text8989" href="#/zb_more?type=tv"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope psr" ng-repeat="v in classify_tv " on-finish-render-filters>
+				<!--<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}" class="J_a cff">-->
+				<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}' class="J_a">
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<p class="fs14 ellipsis pt10 c22 lh1 pb5" ng-bind="v.title"></p>
+					<p class="J_play fs12 lh16 c99">{{v.channelName}}</p>
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==1">预约</span>
+					<!--<span class="J_icoYU cff dsb alic fs11">已预约</span>-->
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==-1">回看</span>
+					<div class="J_icoZB flex" ng-show="v.iflive==0">
+						<p class="dsib red_dot"></p>
+						<span class="cff dsb alic fs11">直播中</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<!--<div class="alic change-btn" ng-click=" recommend_mix_film(1)">
+			<img src="img/refresh.png"/>
+			<p class="dsib caa">换一换</p>
+		</div>-->
+		<div style="border-top: .01rem solid #eee;width: 100%;height: 2px;"></div>
+	</div>
+
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="classify_film.length>0">
+		<div class="topline fs15 ptr fwb">
+			电影
+			<a class="fr sec-text8989" href="#/zb_more?type=film"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope psr" style="position: relative;" ng-repeat="v in classify_film " on-finish-render-filters>
+				<!--<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}" class="J_a cff">-->
+				<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}' class="J_a">
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" animate-visible="true" lazy-src="{{v.image}}">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<!--<p class="cff sec-text-num ellipsis">更新至多少集</p>-->
+					<p class="fs14 ellipsis pt10 c22 lh1 pb5" ng-bind="v.title"></p>
+					<p class="J_play fs12 lh16 c99">{{v.channelName}}</p>
+					<!--<p class="J_play thi-text lh16">-->
+					<!--播放：{{v.playCount|to_wan}}-->
+					<!--</p>-->
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==1">预约</span>
+					<!--<span class="J_icoYU cff dsb alic fs11">已预约</span>-->
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==-1">回看</span>
+					<div class="J_icoZB flex" ng-show="v.iflive==0">
+						<p class="dsib red_dot"></p>
+						<span class="cff dsb alic fs11">直播中</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<!--<div class="alic change-btn" ng-click="recommend_mix_tv(1)">
+			<img src="img/refresh.png"/>
+			<p class="dsib caa">换一换</p>
+		</div>-->
+		<div style="border-top: .01rem solid #eee;width: 100%;height: 2px;"></div>
+	</div>
+
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="classify_anime.length>0">
+		<div class="topline fs15 ptr fwb">
+			卡通
+			<a class="fr sec-text8989" href="#/zb_more?type=anime"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope" style="position: relative;" ng-repeat="v in classify_anime " on-finish-render-filters>
+				<!--<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="J_a cff">-->
+				<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}' class="J_a">
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" animate-visible="true" lazy-src="{{v.image}}">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<!--<p class="cff sec-text-num ellipsis">更新至多少集</p>-->
+					<p class="fs14 ellipsis pt10 c22 lh1 pb5" ng-bind="v.title"></p>
+					<p class="J_play fs12 lh16 c99">{{v.channelName}}</p>
+					<!--<p class="J_play thi-text lh16">-->
+					<!--播放：{{v.playCount|to_wan}}-->
+					<!--</p>-->
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==1">预约</span>
+					<!--<span class="J_icoYU cff dsb alic fs11">已预约</span>-->
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==-1">回看</span>
+					<div class="J_icoZB flex" ng-show="v.iflive==0">
+						<p class="dsib red_dot"></p>
+						<span class="cff dsb alic fs11">直播中</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<!--<div class="alic change-btn" ng-click="recommend_mix_tv(1)">
+			<img src="img/refresh.png"/>
+			<p class="dsib caa">换一换</p>
+		</div>-->
+		<div style="border-top: .01rem solid #eee;width: 100%;height: 2px;"></div>
+	</div>
+
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="classify_documentary.length>0">
+		<div class="topline fs15 ptr fwb">
+			探索纪实
+			<a class="fr sec-text8989" href="#/zb_more?type=documentary"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope" style="position: relative;" ng-repeat="v in classify_documentary " on-finish-render-filters>
+				<!--<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="J_a cff">-->
+				<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}' class="J_a">
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" animate-visible="true" lazy-src="{{v.image}}">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<!--iflive:-1回看；0直播；1未播-->
+					<!--<p class="cff sec-text-num ellipsis">更新至多少集</p>-->
+					<p class="fs14 ellipsis pt10 c22 lh1 pb5" ng-bind="v.title"></p>
+					<p class="J_play fs12 lh16 c99">{{v.channelName}}</p>
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==1">预约</span>
+					<!--<span class="J_icoYU cff dsb alic fs11">已预约</span>-->
+					<span class="J_icoYU cff dsb alic fs11" ng-show="v.iflive==-1">回看</span>
+					<!--<p class="J_play thi-text lh16">-->
+					<!--播放：{{v.playCount|to_wan}}-->
+					<!--</p>-->
+					<div class="J_icoZB flex" ng-show="v.iflive==0">
+						<p class="dsib red_dot"></p>
+						<span class="cff dsb alic fs11">直播中</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<!--<div class="alic change-btn" ng-click="recommend_mix_tv(1)">
+			<img src="img/refresh.png"/>
+			<p class="dsib caa">换一换</p>
+		</div>-->
+		<div style="border-top: .01rem solid #eee;width: 100%;height: 2px;"></div>
+	</div>
+
+</div>

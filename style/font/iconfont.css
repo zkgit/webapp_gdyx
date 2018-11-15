@@ -1,0 +1,28 @@
+
+@font-face {font-family: "zsh";
+  src: url('iconfont.eot'); /* IE9*/
+  src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg#zsh') format('svg'); /* iOS 4.1- */
+}
+
+.zsh {
+  font-family:"zsh" !important;
+  font-style:normal;
+}
+.sh-left:before { content: "\e601"; }
+.sh-right:before { content: "\e600"; }
+.sh-up:before { content: "\e603"; }
+.sh-down:before { content: "\e602"; }
+.sh-vdown:before { content: "\e604"; }
+.sh-vup:before { content: "\e605"; }
+.sh-device:before { content: "\e606"; }
+.sh-mttype:before { content: "\e607"; }
+.sh-nenu:before { content: "\e608"; }
+.sh-remote:before { content: "\e609"; }
+.sh-back:before { content: "\e60a"; }
+.sh-search:before { content: "\e60b"; }
+.sh-clock:before { content: "\e60c"; }
+.sh-start:before { content: "\e60d"; }
+.sh-starto:before { content: "\e60e"; }

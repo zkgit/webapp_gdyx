@@ -1,0 +1,126 @@
+<div class="bgcffffff tb-block">
+	<ul class="col_nav alic tab-text33314 ovh">
+		<li class="fl wp50 {{type==1?'active':''}} fs17 fwb" ng-click="changeType(1)">频道
+			<s class="s"></s>
+		</li>
+		<li class="fr wp50 {{type==0?'active':''}} fs17 fwb" ng-click="changeType(0)">片库
+			<s class="s"></s>
+		</li>
+	</ul>
+</div>
+
+<div class="headline headline-title wp100 alic">
+	<a href="javascript:;" class="lh0 dsb hp100" ng-click="deletefcn()">
+		<span class="sec-text">{{deleteState?'取消':'编辑'}}</span>
+	</a>
+</div>
+
+<div id="historylist" class="mine_list timeline" style="overflow:hidden;padding-top: .44rem;margin-left:{{deleteState?'0':'-.35rem'}};">
+	<ul ng-if="type==1">
+		<div ng-repeat="v in list" on-finish-render-filters>
+			<!--今天-->
+			<p class="thi-text today" ng-if="v.today">今天</p>
+			<!--昨天-->
+			<p class="thi-text yesterday" ng-if="v.yesterday">6天前</p>
+			<!--更早-->
+			<p class="thi-text earlier" ng-if="v.earlier">更早</p>
+			<li>
+				<input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" ng-click="count(0)" data-id="{{v.id}}">
+				
+				<div class="his_bd_item ptr">
+					<!--<a href="{{v.type==0?'#/detail?columnType='+v.videoType+'&id='+v.seriesId:(v.type==1?'#/detail?zb=zb&id='+v.id+'&kankeId=&channelID='+v.channelId+'&englishName='+v.channelKen+'&chaneseName='+v.channelName:'')}}"
+			    class="lia">-->
+			    	<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>
+						<div class="img ptr">
+							<div class="pta ovh img" style="padding: 66% 0">
+								<img class="loading lazy pta bdr3" animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg" style="display: block;">
+								<!--<span ng-if="v.edition" class="J_icotv cff fs12 dsb alic">{{v.edition}}</span>-->
+							</div>
+						</div>
+						<div class="psr">
+							<div class="dt_fl dt">
+								<!--iflive:-1回看；0直播；1未播-->
+								<!--<p class="label green">回看</p>-->
+								<!--<p class="label black">回看结束</p>-->
+								<p class="til fs15 pb8 ellipsis c33 ng-binding lh1">{{v.channelName}}</p>
+								<p class="til fs13 pb8 ellipsis cfd82 ng-binding lh1">{{v.title}}</p>
+								<p class="til fs13 pb8 ellipsis c66 ng-binding lh1">{{v.addTime}}</p>
+								<!--<div class="thi-text"><p class="tv-little mr10"></p>观看至{{v.endTime}}</div>-->
+							</div>
+							<!--<div class="dt_fr alic" style="display:{{deleteState?'none':'block'}};">
+									<p class="ico_tv"></p>
+									<p class="thi-text222 ellipsis ">继续观看</p>
+								</div>-->
+
+							<!--<p class="c66 lh16 ellipsis">类型:{{v.region}}</p>-->
+						</div>
+					</a>
+					<button class="push-btn cff fs13 alic dsib psa lh1" ng-click="gotoplay('zb',v)">投屏</button>
+				</div>
+				
+			</li>
+		</div>
+	</ul>
+	<ul ng-if="type==0">
+		<div ng-repeat="v in list" on-finish-render-filters>
+			<!--今天-->
+			<p class="thi-text today" ng-if="v.today">今天</p>
+			<!--昨天-->
+			<p class="thi-text yesterday" ng-if="v.yesterday">昨天</p>
+			<!--更早-->
+			<p class="thi-text earlier" ng-if="v.earlier">更早</p>
+			<li>
+				<input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" ng-click="count(1)" data-id="{{v.id}}">
+					<div class="his_bd_item ptr">
+						<a href="{{v.id?'#/detail?id='+v.id:'javascript:;'}}" class="lia">
+							<div class="img ptr">
+								<div class="pta ovh img" style="padding: 66% 0">
+									<img class="loading lazy pta bdr3" animate-visible="true" lazy-src="{{v.image}}" err-src="img/icon_mine.jpg"
+									    style="display: block;">
+								</div>
+							</div>
+							<div class="psr">
+								<div class="dt_fl dt">
+									<p class="til fs15 pb8 ellipsis c33 ng-binding lh1">{{v.title}}</p>
+									<!--<p class="til fs13 pb8 ellipsis c33 ng-binding lh1">{{v.contentname}}</p>-->
+									<p class="til fs13 pb8 ellipsis c33 ng-binding lh1">{{v.actors}}</p>
+									<p class="fs13 c66 pb10 ellipsis lh1">{{v.addTime}}</p>
+									<!--<div class="fs13 cyellow" ng-show="v.contenttype"><p class="ico_col mr10"></p>{{v.contenttype=='2'?'电视剧':(v.contenttype=='3'?'电影':'')}}</div>-->
+									<!--<div class="thi-text"><p class="tv-little mr10"></p>观看至{{v.endTime}}</div>-->
+								</div>
+								<!--<div class="dt_fr alic" style="display:{{deleteState?'none':'block'}};">-->
+								<!--<p class="ico_tv"></p>-->
+								<!--<p class="thi-text222 ellipsis ">继续观看</p>-->
+								<!--</div>-->
+	
+								<!--<p class="c66 lh16 ellipsis">类型:{{v.region}}</p>-->
+								
+							</div>
+						</a>
+						<button class="push-btn cff fs13 alic dsib psa lh1" ng-click="gotoplay('db',v)">投屏</button>
+					</div>
+				
+			</li>
+		</div>
+	</ul>
+	<p class="_loading">{{loadtext}}</p>
+</div>
+
+<div class="editline fs14" id="J_editline" ng-show="deleteState" style="display: block;">
+	<a href="javascript:;" class="f c33" id="J_del_all" ng-click="deletefcn()">取消</a>
+	<a href="javascript:;" class="f c33" id="J_del_all" ng-click="checkAll()">{{allSelect?'取消全选':'全选'}}</a>
+	<a href="javascript:;" id="J_del" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>
+
+<div class="chosetv" id="chosetv" ng-show="deleteCommit" style="display: block;" ng-click="resetstate()">
+	<div class="remotenew alic" ng-click="stopBubble($event)" style="height:1.02rem;">
+		<div id="device_delete" ng-show="deleteCommit">
+			<div class="rn-sm fs14  pt10">确定删除观看历史 <p>吗？</p>
+			</div>
+			<p class="rn-bnts ovh pta b0">
+				<a href="javascript:;" class="rn-btn  " id="J_delete_qx" ng-click="deleteConfirm()">确定</a>
+				<a href="javascript:;" class="rn-btn rn-btn-a" id="J_delete_qd" ng-click="resetstate()">取消</a>
+			</p>
+		</div>
+	</div>
+</div>

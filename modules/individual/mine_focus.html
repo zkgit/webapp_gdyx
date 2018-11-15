@@ -1,0 +1,32 @@
+<style>
+	body {
+		background: #f7f7f7;
+	}
+</style>
+<div class="headline headline-title headline-fixed dsn">
+	<a class="pta l10 cff" href="javascript:;" id="J_back" back>
+		<img style="height: .15rem;" src="img/left-arrow.png" />
+	</a>
+	<p class="tab-text333" id="J_til">{{sc.otherId!=userId?'他的关注':'我的关注'}}</p>
+</div>
+<div class="">
+	<ul class="list ovh pl10 pt10 tab-text33316">
+		<li ng-repeat="v in list" on-finish-render-filters>
+			<a href="#/user_center?otherId={{v.id}}"><img src="{{v.headimgurl}}" err-src="img/default.jpg" alt=""></a>
+			<div class="l_r ptr"><a href="#/user_center?otherId={{v.id}}">
+					<p class="ellipsis">{{v.nickname}}</p>
+				</a>
+				<p class="pta r10  mine_concern mine_concerned " ng-show="(v.status==0)&&(sc.otherId==userId)" ng-click="deleteConfirm(v)"></p>
+				<p class="pta r10  mine_concern  mine_eachconcern" ng-click="deleteConfirm(v)" ng-show="(v.status==2)&&(sc.otherId==userId)"></p>
+			</div>
+		</li>
+	</ul>
+	<p class="_loading" id="J_loading">{{loadtext}}</p>
+</div>
+<div class="chosetv" style="display:block;" ng-show="deleteState">
+	<div class="pta b0 wp100 bgcffffff fs18 c33 alic lh50">
+		<p class="fs15 bdb" style="color: #5d5d5d;">确定不再关注此人？</p>
+		<p style="border-bottom: .1rem solid #e5e5e5;" ng-click="update(activejson)">确定</p>
+		<p ng-click="deleteState=!deleteState">取消</p>
+	</div>
+</div>

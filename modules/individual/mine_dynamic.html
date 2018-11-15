@@ -1,0 +1,55 @@
+<style>
+    body {
+        background: #f7f7f7;
+    }
+</style>
+<div class="headline headline-title  headline-fixed dsn">
+    <a class="pta l10 cff" href="javascript:;" id="J_back" back>
+        <img style="height: .15rem;" src="img/left-arrow.png" />
+    </a>
+    <p class="tab-text33316" id="J_til">{{sc.otherId!=userId?'他的动态':'我的动态'}}</p>
+</div>
+<div class="">
+    <div class="pt10" id="J_list">
+        <!--    <ul class="list ovh pl10 tab-text33316">
+            <li ng-repeat="v in list" on-finish-render-filters><img src="{{v.headimgurl}}" err-src="img/default.jpg" alt="">
+                <div class="l_r ptr"><p class="ellipsis">{{v.nickname}}</p> <p class="pta r10  mine_concern  {{v.qxconcern?'mine_addconcern':'mine_eachconcern'}}" ng-click="update(v)"></p></div>
+            </li>
+        </ul>-->
+        <ul class="list ovh  tab-text33316">
+            <li class="item ovh pb10 mt10 bdb ptr" ng-repeat="v in list" on-finish-render-filters>
+                <a href="#/user_center?otherId={{v.userId}}">
+                    <img class="lazy loading bdrp50  fl user_img" animate-visible="true" lazy-src="{{v.userImage}}"
+                        err-src="img/default.jpg" alt="">
+                </a>
+                <a href="{{v.type==0?'#/detail?columnType='+v.videoType+'&id='+v.entityId:(v.type==1?'#/detail?zb=zb&id='+v.id+'&kankeId=&channelID='+v.entityId+'&englishName='+v.channelKen+'&chaneseName='+v.channelName:'#/order_detail?id='+v.entityId+'&otherId='+v.userId)}}">
+                    <p class="fs12 lh15 pt5 wp76 ellipsis "><span class="c57 fwb">{{v.userName}}</span>&nbsp <span
+                            class="c99">与您分享{{v.type|typeshare}}：</span></p>
+                    <div class="ptr wp33 fl pb10">
+                        <p class="fs11 cacaca ellipsis" ng-bind="v.addTime"></p>
+                        <div class="size-cover ptr">
+                            <img class="J_img lazy loading pta bdr5" animate-visible="true" lazy-src="{{v.image}}">
+                            <span ng-if="v.edition&&(v.type==0)" class="J_icotv cff dsb alic">{{v.edition}}</span>
+                            <div class="pta channel_info_l" ng-if="v.type==1">
+                                <img animate-visible="true" lazy-src="http://ikanpic.kanketv.com/image/live/icon2/{{v.channelKen}}.png"
+                                    class="lazy loading" err-src="img/ico_df.png" class="wp03" alt="">
+                                <span>{{v.channelName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="c33 fs12 fl wp100 pt5" style="padding-left: .6rem;" ng-bind="v.title"></p>
+                </a>
+                <div class="fl pt5 wp100" style="padding-left: .6rem;">
+                    <span class="fs12 c99 dsib fl" style="width:.8rem;">分享{{v.total|to_wan}}次</span>
+                    <p class="fs12   c57 fl" ng-click="del($index,v)" ng-show="userId==v.userId">删除</p>
+                    <div class="fr mr10" ng-click="like(v)">
+                        <img src="{{v.likeStatus?'imgnew/detail_like_press.png':'imgnew/detail_like_ccc.png'}}" alt=""
+                            style="height:.15rem; vertical-align: text-bottom;">
+                        <span class="fs12 {{v.likeStatus?'cyellow':''}}" ng-bind="v.count"></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <p class="_loading" id="J_loading">{{loadtext}}</p>
+</div>

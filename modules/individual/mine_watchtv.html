@@ -1,0 +1,62 @@
+<div class="headline-fixed bgcffffff">
+    <div class="headline headline-title ">
+        <!-- <a class="pta l10 cff" href="javascript:;" id="J_back" back>
+            <img style="height: .15rem;" src="img/left-arrow.png" />
+        </a>
+        <p class="tab-text33316" id="J_til">我的追剧</p>-->
+        <a href="javascript:;" class="pta r10 t0 lh0 dsb hp100" ng-click="deletefcn()">
+            <span class="sec-text">
+                {{deleteState?'取消':'删除'}}
+            </span>
+        </a>
+    </div>
+</div>
+
+<div style="padding-top: .64rem;">
+
+    <div id="collectlist" class="mine_list timeline" style="overflow: hidden;margin-left:{{deleteState?'0':'-.35rem'}};">
+        <ul>
+            <li ng-repeat="v in list" on-finish-render-filters>
+                <input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};" data-id="{{v.id}}"
+                    ng-click="count()">
+                <a href="#/detail?columnType=tv&id={{v.id}}" class="lia">
+                    <div class="his_bd_item ptr">
+                        <p class="img pta">
+                            <img class="loading lazy" animate-visible="true" lazy-src="{{v.image}}" error="img/ico_df.jpg"
+                                style="display: block;">
+                            <span ng-if="v.edition" class="J_icotv fs12 cff dsb alic">{{v.edition}}</span>
+                        </p>
+                        <div class="dt">
+                            <div class="dt_fl">
+                                <p class="til fs16 pb5 ellipsis c33">{{v.title}}</p>
+                                <div class="fs13 cyellow">
+                                    <p class="ico_col mr10"></p>电视剧
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="actlist" style="padding: .06rem;" id="collectlist">
+         <ul class="list ovh {{isedit?'active':''}}" id="J_list">
+             <li class="li" ng-repeat="v in list" data-vodid= "{{v.vodId}}" data-kankeid = "{{v.kankeId}}">
+                 <input name="checkbox" type="checkbox" style="display:{{deleteState?'block':'none'}};">
+                 &lt;!&ndash;<a class="edit" href="javascript:;" ng-click="del(v.kankeId,v.vodId)"><span class="ico"></span></a>&ndash;&gt;
+                 <a href="#detail?columnType={{v.classId|vtype}}&videoId={{v.videoId}}&kankeId={{v.kankeId}}&vodId={{v.vodId}}" class="lia">
+                     <p class="size-cover ptr ovh">
+                         <img class="lazy loading pta mycollect" ng-src="{{v.lpic}}">
+                     </p>
+                     <p class="sec-text ellipsis pt5">{{v.title}}</p>
+                     &lt;!&ndash;<p class="c66 lh16">播放:{{v.allcount|to_wan}}</p>&ndash;&gt;
+                 </a>
+             </li>
+         </ul>
+     </div>-->
+    <p class="_loading" id="J_loading">{{loadtext}}</p>
+</div>
+<div class="editline" id="J_editline" ng-show="deleteState" style="display: block;">
+    <a href="javascript:;" class="f" id="J_del_all" ng-click="checkAll()">{{allSelect?'取消全选':'全选'}}</a>
+    <a href="javascript:;" id="J_del" class="{{dellen?'cred':'cacaca'}}" ng-click="deleteButton()">删除{{dellen?'('+dellen+')':''}}</a>
+</div>

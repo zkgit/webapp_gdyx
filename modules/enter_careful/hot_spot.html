@@ -1,0 +1,107 @@
+<div class="mt100 mb56">
+    <!--    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="v in type"  data-type="{{v.position}}">
+                   <div class="alic bdr5  {{$index|typehotposter}}" >
+                       <p class="fs16 p12 ellipsis cff" >{{v.title}}</p>
+                   </div>
+            </div>
+        </div>
+    </div>-->
+    <ul class="wp100  hot_navtop fs15 c33">
+        <li ng-repeat="v in type" style="width:{{100/type.length}}%" class="fl">
+            <a class="dsb alic  ellipsis {{hotlistIndex==$index?'active':''}}" href="javascript:;" ng-click="getlist(v.position,$index)">
+                {{v.title}}
+            </a>
+        </li>
+        <!--<table>
+            <tr id="J_second_tr" >
+                <td  ng-repeat="v in type" class="wp20">
+                    <a class=" ellipsis {{hotlistIndex==$index?'active':''}}" href="javascript:;" ng-click="getlist(v.position,$index)" >
+                        {{v.title}}
+                    </a>
+                </td>
+            </tr>
+        </table>-->
+    </ul>
+    <div class="hot_spot pt10">
+        <ul class="list ovh" id="J_list">
+            <!--top2-->
+            <li class="li ptr h190" ng-repeat="v in list.slice(1,2)" on-finish-render-filters>
+                <div class="ptar b0 r10 wp90">
+                    <a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1">
+                        <img err-src="img/icon_mine.jpg" class="poster_2 lazy" animate-visible="true" lazy-src="{{v.image}}"
+                            err-src="img/icon_mine.jpg">
+                        <span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>
+                        <p class="sec-text ellipsis pt5 alic" ng-bind="v.title"></p>
+                        <!--<img class="pta wp33" src="imgnew/top2.png" alt="">-->
+                        <span class="pta plr5" style="color:#64747c;background: #c3c7c8">2</span>
+                    </a>
+                </div>
+            </li>
+            <!--top1-->
+            <li class="li ptr h190" ng-repeat="v in list.slice(0,1)" on-finish-render-filters>
+                <div class="ptar b0 wp100">
+                    <a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1">
+                        <img err-src="img/icon_mine.jpg" class="poster_1 lazy" animate-visible="true" lazy-src="{{v.image}}"
+                            err-src="img/icon_mine.jpg">
+                        <span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>
+                        <p class="sec-text ellipsis pt5 alic" ng-bind="v.title"></p>
+                        <!--<img class="pta wp33" src="imgnew/top1.png" alt="">-->
+                        <span class="pta plr5" style="color:#684900;background: #ffd70a">1</span>
+                    </a>
+                </div>
+            </li>
+            <!--top3-->
+            <li class="li ptr h190" ng-repeat="v in list.slice(2,3)" on-finish-render-filters>
+                <div class="pta b0 l10 wp90">
+                    <a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1">
+                        <img err-src="img/icon_mine.jpg" class="poster_3 lazy" animate-visible="true" lazy-src="{{v.image}}"
+                            err-src="img/icon_mine.jpg">
+                        <span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>
+                        <p class="sec-text ellipsis pt5 alic" ng-bind="v.title"></p>
+                        <!--<img class="pta wp33" src="imgnew/top3.png" alt="">-->
+                        <span class="pta plr5" style="color:#8d5716;background: #d3a264">3</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <!--排行4-6-->
+        <div class="ptr mb10 mt28 ml10 bgcffffff bdr5 " ng-repeat="v in list.slice(3,6)" on-finish-render-filters>
+            <div class="tab-text444 pt10 pb10 ovh">
+                <a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1">
+                    <div class="ptr poster-bq-left">
+                        <img err-src="img/icon_mine.jpg" class=" mr10 lazy" animate-visible="true" lazy-src="{{v.image}}"
+                            err-src="img/icon_mine.jpg">
+                        <span class="J_icotop2 dsb fs12 alic  bdr-tl5">{{$index+4}}</span>
+                        <span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>
+                    </div>
+                    <div class="bq-right">
+                        <p class="tab-text ellipsis " ng-bind="v.title"></p>
+                        <div class="h100 pt5 detailEllipsis c66" ng-bind="v.description.substr(0,48)+'...'"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!--排行7-10-->
+        <div class="topline sec-text ptr mt10 bdr5" ng-repeat="v in list.slice(6,10)" on-finish-render-filters>
+            <a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="dsb">
+                <sapn class="ml15" ng-bind="v.title"></sapn>
+                <span class="J_icotop dsb fs12 alic bdr-tl5">{{$index+7}}</span>
+                <div class="fr sec-text8989"><img src="img/ico_index00fr.png"></div>
+            </a>
+        </div>
+        <div class="pt44 alic" ng-show="isshow_default">
+            <img src="img/index_default.png" class="pt20" style="width: 60%" alt="">
+            <p class="fs14 c99 pt5">服务器正在升级维护中...</p>
+            <p class="fs14 c99">建议您稍后再尝试打开，谢谢！</p>
+        </div>
+    </div>
+</div>
+<div id="loadingToast" ng-show="tip">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-loading weui-icon_toast"></i>
+        <p class="weui-toast__content">数据加载中</p>
+    </div>
+</div>
