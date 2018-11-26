@@ -7,16 +7,16 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 		$scope.openId = getCookie('openId');
 		$scope.boxId = getCookie('boxId');
 
-		$scope.poster = [{
-				image: "http://client.kanketv.com/scrollposter/Index/MB1528803.jpg"
-			},
-			{
-				image: "http://client.kanketv.com/scrollposter/Index/MB1534538.jpg"
-			},
-			{
-				image: "http://client.kanketv.com/scrollposter/Index/MB1534517.jpg"
-			}
-		];
+//		$scope.poster = [{
+//				image: "http://client.kanketv.com/scrollposter/Index/MB1528803.jpg"
+//			},
+//			{
+//				image: "http://client.kanketv.com/scrollposter/Index/MB1534538.jpg"
+//			},
+//			{
+//				image: "http://client.kanketv.com/scrollposter/Index/MB1534517.jpg"
+//			}
+//		];
 
 //		$scope.list = [];
 //		$scope.tvlist = [];
@@ -127,18 +127,35 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 		};
 
 		$scope.init = function () {
+			$scope.current_zb();
 			$scope.recommend_mix_film(0);
 			$scope.recommend_mix_tv(0);
 			$scope.recommend_mix_arts(0);
 			$scope.recommend_mix_anime(0);
-			$scope.recommend_mix_documentary(0);
+//			$scope.recommend_mix_documentary(0);
+//			$scope.current_tj();
+			$scope.getPDList();
+		};
+		//正在直播
+		$scope.current_zb = function () {
+			$scope.seting.pageNo_E++;
+			$http.post(webset.apiurl + 'home/hotLive.json?pageNo=1&pageSize=6', {}).success(function (res) {
+				$scope.listZB = res.response.responseBody.list;
+			});
+		};
+		//推荐
+		$scope.current_tj = function () {
+			$scope.seting.pageNo_E++;
+			$http.post(webset.apiurl + 'home/allItU.json?pageNo=1&pageSize=6', {}).success(function (res) {
+				$scope.listTJ = res.response.responseBody.list;
+			});
 		};
 
 		//电影
 		$scope.recommend_mix_film = function (e) {
 			$scope.seting.pageNo_F++;
 			$http.post(webset.apiurl + 'home/followingLive.json?pageNo=' + $scope.seting.pageNo_F + '&pageSize=6&type=film', {}).success(function (res) {
-				var info = (res.response.responseBody.nowEpgList).concat(res.response.responseBody.followingEpgList);
+				var info = res.response.responseBody.followingEpgList;
 				if(info.length>6){
 					$scope.classify_film = info.slice(0,5);
 				}else{
@@ -150,7 +167,7 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 		$scope.recommend_mix_tv = function (e) {
 			$scope.seting.pageNo_T++;
 			$http.post(webset.apiurl + 'home/followingLive.json?pageNo=' + $scope.seting.pageNo_T + '&pageSize=6&type=tv', {}).success(function (res) {
-				var info = (res.response.responseBody.nowEpgList).concat(res.response.responseBody.followingEpgList);
+				var info = res.response.responseBody.followingEpgList;
 				if(info.length>6){
 					$scope.classify_tv = info.slice(0,5);
 				}else{
@@ -162,7 +179,7 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 		$scope.recommend_mix_arts = function (e) {
 			$scope.seting.pageNo_E++;
 			$http.post(webset.apiurl + 'home/followingLive.json?pageNo=' + $scope.seting.pageNo_E + '&pageSize=6&type=arts', {}).success(function (res) {
-				var info = (res.response.responseBody.nowEpgList).concat(res.response.responseBody.followingEpgList);
+				var info = res.response.responseBody.followingEpgList;
 				if(info.length>6){
 					$scope.classify_arts = info.slice(0,5);
 				}else{
@@ -174,7 +191,7 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 		$scope.recommend_mix_anime = function (e) {
 			$scope.seting.pageNo_C++;
 			$http.post(webset.apiurl + 'home/followingLive.json?pageNo=' + $scope.seting.pageNo_C + '&pageSize=6&type=anime', {}).success(function (res) {
-				var info = (res.response.responseBody.nowEpgList).concat(res.response.responseBody.followingEpgList);
+				var info = res.response.responseBody.followingEpgList;
 				if(info.length>6){
 					$scope.classify_anime = info.slice(0,5);
 				}else{
@@ -186,7 +203,7 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 		$scope.recommend_mix_documentary = function (e) {
 			$scope.seting.pageNo_D++;
 			$http.post(webset.apiurl + 'home/followingLive.json?pageNo=' + $scope.seting.pageNo_D + '&pageSize=6&type=documentary', {}).success(function (res) {
-				var info = (res.response.responseBody.nowEpgList).concat(res.response.responseBody.followingEpgList);
+				var info = res.response.responseBody.followingEpgList;
 				if(info.length>6){
 					$scope.classify_documentary = info.slice(0,5);
 				}else{
@@ -194,6 +211,13 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 				}
 			});
 		};
+		
+		//获取我的频道
+		$scope.getPDList = function(){
+			$http.post(webset.apiurl + 'home/mychannel.json?pageNo=1&pageSize=6', {}).success(function (res) {
+				$scope.pdList = res.response.responseBody.list;
+			});		
+		}
 		$scope.list = {};
 		$scope.init();
 

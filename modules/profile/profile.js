@@ -43,7 +43,7 @@ define(['angular', 'size', 'fun'], function (angular, tpl) {
 					if (res.responseBody.length == 12) {
 						$scope.isc = false;
 						$scope.seting.pageNo++;
-						$scope.loadtext = '正在加载...';
+						$scope.loadtext = '';
 					} else {
 						$scope.loadtext = '无更多内容';
 					}

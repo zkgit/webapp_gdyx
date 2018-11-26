@@ -10,14 +10,175 @@
 		</div>
 		<div class="swiper-pagination pagination"></div>
 	</div>
-	<!--当前热播 -->
+	
+	<!--热门点播 -->
 	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listRB.length>0">
 		<div class="topline sec-text ptr fwb">
-			当前热播
+			热门点播
 			<a class="fr sec-text8989" href="#/iti_rb"><img src="img/ico_index00fr.png"></a>
 		</div>
 		<ul class="list ovh">
 			<li class="li ng-scope" style="position: relative;" ng-repeat="v in listRB " on-finish-render-filters>
+				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}" class="J_a cff">
+				<!--<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>-->
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" lazy-src="{{v.image}}" animate-visible="true">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<p class="cff sec-text-num ellipsis" ng-show="v.currentCount>0&&v.videoType=='tv'">更新至{{v.currentCount}}集</p>
+					<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
+					<!--<p class="J_play thi-text lh16">-->
+					<!--播放：{{v.playCount|to_wan}}-->
+					<!--</p>-->
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<div class="alic change-btn" ng-click="changeInfo('rb')">
+			<img src="img/refresh.png" />
+			<p class="dsib caa">换一换</p>
+		</div>
+	</div>
+<!--为您推荐 -->
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listTJ.length>0">
+		<div class="topline sec-text ptr fwb">
+			为您推荐
+			<a class="fr sec-text8989" href="#/iti_tj?columnType=film&id=274028"><img src="img/ico_index00fr.png"></a>
+		</div> 
+		<div class="scrollx">
+			<ul class="list o-scroll">
+				<li class="li ng-scope psr" style="width: 1.1rem;display: inline;" ng-repeat="v in listTJ " on-finish-render-filters>
+					<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="J_a cff">
+					<!--<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>-->
+						<p class="size-cover ptr ovh dsb">
+							<img class="J_img loading pta lazy" lazy-src="{{v.image}}" animate-visible="true">
+							<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+						</p>
+						<p class="cff sec-text-num ellipsis" ng-show="v.currentCount>0&&v.videoType=='tv'">更新至{{v.currentCount}}集</p>
+						<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
+						<!--<p class="J_play thi-text lh16">-->
+						<!--播放：{{v.playCount|to_wan}}-->
+						<!--</p>-->
+					</a>    
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--电视剧 -->
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listInfos_tv.length>0">         
+		<div class="topline sec-text ptr fwb">
+			电视剧
+			<a class="fr sec-text8989" href="#/iti_db?type=tv"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<div class="hb_block mb10">
+			<img class="block_img loading psinherit lazy" lazy-src="{{tvBanner.picUrl}}" animate-visible="true">
+			<p class="t1 fs20" ng-bind="tvBanner.name"></p>
+			<p class="t2 c99 lh1">{{tvBanner.subName}}</p>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope" style="position: relative;" ng-repeat="v in listInfos_tv " on-finish-render-filters>
+				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}" class="J_a cff">
+				<!--<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>-->
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" lazy-src="{{v.image}}" animate-visible="true">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<p class="cff sec-text-num ellipsis" ng-show="v.currentCount>0&&v.videoType=='tv'">更新至{{v.currentCount}}集</p>
+					<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
+					<!--<p class="J_play thi-text lh16">-->
+					<!--播放：{{v.playCount|to_wan}}-->
+					<!--</p>-->
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<div class="alic change-btn" ng-click="changeInfo('tv')">
+			<img src="img/refresh.png" />
+			<p class="dsib caa">换一换</p>
+		</div>
+	</div> 
+	
+	<!--电影-->
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listInfos_film.length>0">
+		<div class="topline sec-text ptr fwb">
+			电影
+			<a class="fr sec-text8989" href="#/iti_db?type=film"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<div class="hb_block mb10">
+			<img class="block_img loading psinherit lazy" lazy-src="{{filmBanner.picUrl}}" animate-visible="true">
+			<p class="t1 fs20" ng-bind="filmBanner.name"></p>
+			<p class="t2 c99 lh1">{{filmBanner.subName}}</p>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope" style="position: relative;" ng-repeat="v in listInfos_film " on-finish-render-filters>
+				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}" class="J_a cff">
+				<!--<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>-->
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" lazy-src="{{v.image}}" animate-visible="true">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<p class="cff sec-text-num ellipsis" ng-show="v.currentCount>0&&v.videoType=='tv'">更新至{{v.currentCount}}集</p>
+					<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
+					<!--<p class="J_play thi-text lh16">-->
+					<!--播放：{{v.playCount|to_wan}}-->
+					<!--</p>-->
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<div class="alic change-btn" ng-click="changeInfo('film')">
+			<img src="img/refresh.png" />
+			<p class="dsib caa">换一换</p>
+		</div>
+	</div> 
+	
+	<!--综艺 -->
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listInfos_arts.length>0">
+		<div class="topline sec-text ptr fwb">
+			综艺
+			<a class="fr sec-text8989" href="#/iti_db?type=arts"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<div class="hb_block mb10">
+			<img class="block_img loading psinherit lazy" lazy-src="{{artsBanner.picUrl}}" animate-visible="true">
+			<p class="t1 fs20" ng-bind="artsBanner.name"></p>
+			<p class="t2 c99 lh1">{{artsBanner.subName}}</p>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope" style="position: relative;" ng-repeat="v in listInfos_arts " on-finish-render-filters>
+				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}" class="J_a cff">
+				<!--<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>-->
+					<p class="size-cover ptr ovh dsb">
+						<img class="J_img loading pta lazy" lazy-src="{{v.image}}" animate-visible="true">
+						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
+					</p>
+					<p class="cff sec-text-num ellipsis" ng-show="v.currentCount>0">更新至{{v.currentCount}}期</p>
+					<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
+					<!--<p class="J_play thi-text lh16">-->
+					<!--播放：{{v.playCount|to_wan}}-->
+					<!--</p>-->
+				</a>
+			</li>
+		</ul>
+		<!--换一批-->
+		<div class="alic change-btn" ng-click="changeInfo('zy')">
+			<img src="img/refresh.png" />
+			<p class="dsib caa">换一换</p>
+		</div>
+	</div> 
+	
+	<!--动漫 -->
+	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listInfos_anime.length>0">
+		<div class="topline sec-text ptr fwb">
+			动漫
+			<a class="fr sec-text8989" href="#/iti_db?type=anime"><img src="img/ico_index00fr.png"></a>
+		</div>
+		<div class="hb_block mb10">
+			<img class="block_img loading psinherit lazy" lazy-src="{{animeBanner.picUrl}}" animate-visible="true">
+			<p class="t1 fs20" ng-bind="animeBanner.name"></p>
+			<p class="t2 c99 lh1">{{animeBanner.subName}}</p>
+		</div>
+		<ul class="list ovh">
+			<li class="li ng-scope" style="position: relative;" ng-repeat="v in listInfos_anime " on-finish-render-filters>
 				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&kankeId={{v.kankeId}}" class="J_a cff">
 				<!--<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>-->
 					<p class="size-cover ptr ovh dsb">
@@ -33,63 +194,12 @@
 			</li>
 		</ul>
 		<!--换一批-->
-		<div class="alic change-btn" ng-click="changeInfo('rb')">
+		<div class="alic change-btn" ng-click="changeInfo('dm')">
 			<img src="img/refresh.png" />
 			<p class="dsib caa">换一换</p>
 		</div>
-	</div>
+	</div> 
 
-	<!--我的直播-->
-	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listZB.length>0">
-		<div class="topline sec-text ptr fwb">我的直播
-			<a class="fr sec-text8989" href="#/iti_zb?columnType=film&id=274028"><img src="img/ico_index00fr.png"></a>
-		</div>
-		<ul class="list ovh">
-			<li class="li ng-scope" ng-repeat="v in listZB " on-finish-render-filters>
-				<!--<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="J_a">-->
-				<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>
-					<p class="size-cover ptr ovh dsb">
-						<img class="J_img loading pta lazy" lazy-src="{{v.image}}" animate-visible="true" err-lazy-src-src="img/icon_mine.jpg">
-						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
-					</p>
-					<p class="fs14 ellipsis pt5 c22" ng-bind="v.title"></p>
-					<p class="J_play fs12 lh16 c99 ellipsis" ng-bind="v.channelName"></p>
-				</a>
-			</li>
-		</ul>
-		<!--换一批-->
-		<div class="alic change-btn" ng-click="changeInfo('zb')">
-			<img src="img/refresh.png" />
-			<p class="dsib caa">换一换</p>
-		</div>
-	</div>
-
-	<div class="J_list tyitem" style="margin-top: .01rem;" ng-show="listTJ.length>0">
-		<div class="topline sec-text ptr fwb">
-			为您推荐
-			<a class="fr sec-text8989" href="#/iti_tj?columnType=film&id=274028"><img src="img/ico_index00fr.png"></a>
-		</div>
-		<ul class="list ovh">
-			<li class="li ng-scope" style="position: relative;" ng-repeat="v in listTJ " on-finish-render-filters>
-				<a href="#/detail?columnType={{v.videoType}}&id={{v.id}}&recommend=1" class="J_a cff">
-				<!--<a href='#/detail?zb=zb&kankeId={{v.kankeId}}&id={{v.id}}&channelID={{v.channelId}}&englishName={{v.kankeChannel}}&chaneseName={{v.channelName}}'>-->
-					<p class="size-cover ptr ovh dsb">
-						<img class="J_img loading pta lazy" lazy-src="{{v.image}}" animate-visible="true">
-						<!--<span ng-if="v.edition" class="J_icotv cff dsb alic">{{v.edition}}</span>-->
-					</p>
-					<p class="cff sec-text-num ellipsis" ng-show="v.currentCount>0">更新至{{v.currentCount}}集</p>
-					<p class="sec-text ellipsis pt5 " ng-bind="v.title"></p>
-					<!--<p class="J_play thi-text lh16">-->
-					<!--播放：{{v.playCount|to_wan}}-->
-					<!--</p>-->
-				</a>
-			</li>
-		</ul>
-		<!--换一批-->
-		<div class="alic change-btn" ng-click="changeInfo('tj')">
-			<img src="img/refresh.png" />
-			<p class="dsib caa">换一换</p>
-		</div>
-	</div>
-
+	
+ 
 </div>

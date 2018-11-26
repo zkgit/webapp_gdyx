@@ -273,9 +273,8 @@
 
 </div>
 <!--加载提示-->
-<p class="_loading" id="J_loading" style="position: fixed;top: 2.4rem;left: 1.15rem;line-height: .16rem;"
-   ng-show="loadtextshow"><img src="img/loading.gif" alt=""
-                               style="margin-right: .06rem;width: 12%;vertical-align: top;">正在加载...</p>
+<p class="_loading" id="J_loading" style="position: fixed;top: 2.4rem;left: .3rem;line-height: .16rem;"
+   ng-show="loadtextshow"><img src="img/loading.gif" alt="" style="margin-right: .06rem;width: 12%;vertical-align: top;">正在加载...</p>
 </div>
 
 
@@ -283,7 +282,7 @@
     <div class="bgcffffff dramafixed wp100">
         <div class="topline tab-text lh44 pl10 pr10">选集 <a href="javascript:;" class="fr" ng-click="isshowdrama=false"><img src="images/qx.png" alt="" ></a></div>
         <ul class="drama_h ovh scrolly">
-            <li ng-repeat="v in nottv_darma" class="ptr" ng-if="v.volumnCount"><span class="pta">{{v.volumnCount}}</span></li>
+            <li ng-repeat="v in nottv_darma" class="ptr" ng-if="v.volumnCount" ng-click="playtv(undefined,v)"><span class="pta">{{v.volumnCount}}</span></li>
         </ul>
     </div>
 </div>

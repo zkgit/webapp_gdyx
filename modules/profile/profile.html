@@ -23,7 +23,7 @@
 	<div class="recos pt10" id="J_list" ng-show="tjshow">
 		<p class="fs15 c33 fwb lh30">相关影片</p>
 		<ul class="list ovh" id="J_topimg">
-			<li class="li" ng-repeat="v in tjlist" infinite-scroll="getAjaxList()" infinite-scroll-disabled="isc" infinite-scroll-distance="0">
+			<li class="li" ng-repeat="v in tjlist" infinite-scroll="" infinite-scroll-disabled="isc" infinite-scroll-distance="0">
 				<a ng-href="#/detail?columnType={{v.videoType}}&id={{v.id}}" class="J_a cff">
 					<p class="size-cover ptr ovh"><img class="J_img lazy loading pta" ng-src="{{v.image}}"><span ng-if="v.edition"
 						    class="J_icotv cff dsb alic">{{v.edition}}</span></p>

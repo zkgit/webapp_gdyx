@@ -204,15 +204,20 @@ define(['angular', 'require', 'angular-ui-router', 'wxshare', 'fun', 'lazy', 'in
                         path: 'modules/iti_tj/iti_tj',
                         controller: 'iti_tjCtrl'
                     },
+                    //首页点播里电视剧电影等的更多
+                    '/iti_db': {
+                        path: 'modules/iti_db/iti_db',
+                        controller: 'iti_dbCtrl'
+                    },
                     //首页直播更多
                     '/zb_more': {
                         path: 'modules/zb_more/zb_more',
                         controller: 'zb_moreCtrl'
                     },
-//                  '/today_live': {
-//                      path: 'modules/enter_careful/today_live',
-//                      controller: 'today_liveCtrl'
-//                  }
+                    '/today_live': {
+                        path: 'modules/enter_careful/today_live',
+                        controller: 'today_liveCtrl'
+                    }
                 },
                 routeSecondaryMap = { //二级视图层：view-enter
                     '/recommendation': { //热播排行
@@ -220,11 +225,11 @@ define(['angular', 'require', 'angular-ui-router', 'wxshare', 'fun', 'lazy', 'in
                         controller: 'recommendationCtrl',
                         parent: '/enter_careful.recommendation'
                     },
-                    '/today_live': { //今日看点
-                        path: 'modules/enter_careful/today_live',
-                        controller: 'today_liveCtrl',
-                        parent: '/enter_careful.today_live'
-                    },
+//                  '/today_live': { //今日看点
+//                      path: 'modules/enter_careful/today_live',
+//                      controller: 'today_liveCtrl',
+//                      parent: '/enter_careful.today_live'
+//                  },
                     '/index_itu': { //看你想看
                         path: 'modules/enter_careful/index_itu',
                         controller: 'index_ituCtrl',
@@ -312,8 +317,8 @@ define(['angular', 'require', 'angular-ui-router', 'wxshare', 'fun', 'lazy', 'in
                     setCookie('hot_spotIndex', 0)
                 }
                 //底部菜单切换样式
-//              if (toState.url == '/enter_careful' || toState.url == '/recommendation' || toState.url == '/index_itu' || toState.url == '/good_friend') {
-                if (toState.url == '/enter_careful' || toState.url == '/recommendation' || toState.url == '/index_itu' || toState.url == '/good_friend'|| toState.url == '/today_live') {
+                if (toState.url == '/enter_careful' || toState.url == '/recommendation' || toState.url == '/index_itu' || toState.url == '/good_friend') {
+//              if (toState.url == '/enter_careful' || toState.url == '/recommendation' || toState.url == '/index_itu' || toState.url == '/good_friend'|| toState.url == '/today_live') {
                     $rootScope.showBar = true;
                     $rootScope.navtop = true;
                     $rootScope.current_menu = 1;
@@ -322,9 +327,9 @@ define(['angular', 'require', 'angular-ui-router', 'wxshare', 'fun', 'lazy', 'in
                         case '/recommendation':
                             $rootScope.enter_nav = 1;
                             break;
-                        case '/today_live':
-                            $rootScope.enter_nav = 2;
-                            break;
+//                      case '/today_live':
+//                          $rootScope.enter_nav = 2;
+//                          break;
                         case '/index_itu':
                             $rootScope.enter_nav = 3;
                             break;
@@ -359,10 +364,17 @@ define(['angular', 'require', 'angular-ui-router', 'wxshare', 'fun', 'lazy', 'in
                 if (toState.url == '/remote') {
                     $rootScope.showRemote = false;
                 }
-
+				if(toState.url == '/today_live'){
+                	$rootScope.showBar = true;
+                	$rootScope.navtop = true;
+                	$rootScope.navbuttom = true
+                }else{
+                	$rootScope.navbuttom = false
+                }
                 if ($rootScope.showBar) {
                     document.title = '广东有线';
                 }
+                
             }
             $.backscroll();
             $rootScope.showremote = false;

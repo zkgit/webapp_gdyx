@@ -170,6 +170,7 @@
 .psr{position: relative;}
 .psa{position: absolute;}
 .psrtb{position: fixed;top: 0;bottom: 0;height: 100;width: 100%;}
+.psinherit{position: inherit;}
 /*.pts{ position: static;}*/
 /*.lauto{ left: auto;}*/
 .l0{ left: 0;}
@@ -289,6 +290,7 @@
 .bdfix{ position: fixed; left: 0; top: 0; width: 100%;}
 .flex{display: flex}
 .fcenter{align-items: center}
+.o-scroll{display: block;height: auto;width: max-content;overflow: hidden;}
 
 
 .bColor{background:#1886FF;}

@@ -132,12 +132,24 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 			"pageNo_rb": 0,
 			"pageNo_zb": 0,
 			"pageNo_tj": 0,
+			"pageNo_video": 0,
+			"pageNo_F": 0,
+			"pageNo_T": 0,
+			"pageNo_E": 0,
+			"pageNo_C": 0,
+			"pageNo_D": 0
 		};
 
 		$scope.init = function () {
 			$scope.current_rb(0);
-			$scope.current_zb(0);
+//			$scope.current_zb(0);
 			$scope.current_tj(0);
+			
+			$scope.recommend_mix_film(0);
+			$scope.recommend_mix_tv(0);
+			$scope.recommend_mix_arts(0);
+			$scope.recommend_mix_anime(0);
+//			$scope.recommend_mix_documentary(0);  //记录
 		};
 
 		//热播
@@ -153,13 +165,80 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 				$scope.listZB = res.response.responseBody.list;
 			});
 		};
+
 		//推荐
 		$scope.current_tj = function () {
 			$scope.seting.pageNo_E++;
-			$http.post(webset.apiurl + 'home/allItU.json?pageNo=' + $scope.seting.pageNo_tj + '&pageSize=6', {}).success(function (res) {
+			$http.post(webset.apiurl + 'home/allItU.json?pageNo=1&pageSize=6', {}).success(function (res) {
 				$scope.listTJ = res.response.responseBody.list;
 			});
 		};
+
+		//电影
+		$scope.recommend_mix_film = function (e) {
+			$scope.seting.pageNo_F++;
+			$http.post(webset.apiurl + 'home/allHot.json?pageNo=' + $scope.seting.pageNo_F + '&pageSize=6&type=film', {}).success(function (res) {
+				var info = res.response.responseBody.list;
+				$scope.filmBanner = res.response.responseBody.banners[0];
+				if(info.length>6){
+					$scope.listInfos_film = info.slice(0,6);
+				}else{
+					$scope.listInfos_film = info;
+				}
+			});
+		};
+		// 电视剧
+		$scope.recommend_mix_tv = function (e) {
+			$scope.seting.pageNo_T++;
+			$http.post(webset.apiurl + 'home/allHot.json?pageNo=' + $scope.seting.pageNo_T + '&pageSize=6&type=tv', {}).success(function (res) {
+				var info = res.response.responseBody.list;
+				$scope.tvBanner = res.response.responseBody.banners[0];
+				if(info.length>6){
+					$scope.listInfos_tv = info.slice(0,6);
+				}else{
+					$scope.listInfos_tv = info;
+				}
+			});
+		};
+		//综艺
+		$scope.recommend_mix_arts = function (e) {
+			$scope.seting.pageNo_E++;
+			$http.post(webset.apiurl + 'home/allHot.json?pageNo=' + $scope.seting.pageNo_E + '&pageSize=6&type=arts', {}).success(function (res) {
+				var info = res.response.responseBody.list;
+				$scope.artsBanner = res.response.responseBody.banners[0];
+				if(info.length>6){
+					$scope.listInfos_arts = info.slice(0,6);
+				}else{
+					$scope.listInfos_arts = info;
+				}
+			});
+		};
+		//动漫
+		$scope.recommend_mix_anime = function (e) {
+			$scope.seting.pageNo_C++;
+			$http.post(webset.apiurl + 'home/allHot.json?pageNo=' + $scope.seting.pageNo_C + '&pageSize=6&type=anime', {}).success(function (res) {
+				var info = res.response.responseBody.list;
+				$scope.animeBanner = res.response.responseBody.banners[0];
+				if(info.length>6){
+					$scope.listInfos_anime = info.slice(0,6);
+				}else{
+					$scope.listInfos_anime = info;
+				}
+			});
+		};
+		//纪录片
+		$scope.recommend_mix_documentary = function (e) {
+			$scope.seting.pageNo_D++;
+			$http.post(webset.apiurl + 'home/allHot.json?pageNo=' + $scope.seting.pageNo_D + '&pageSize=6&type=documentary', {}).success(function (res) {
+				var info = (res.response.responseBody.list).concat(res.response.responseBody.list);
+				if(info.length>6){
+					$scope.classify_documentary = info.slice(0,6);
+				}else{
+					$scope.classify_documentary = info;
+				}
+			});
+		};
+		
 
 		$scope.init();
 		
@@ -188,11 +267,41 @@ define(['angular', 'size', 'fun', 'slide'], function (angular, tpl) {
 					$scope.seting.pageNo_tj++;
 					$scope.current_tj();
 				}
+			}else if(str=='tv'){
+				if($scope.listTJ.length<6){
+					$scope.seting.pageNo_T=0;
+					$scope.recommend_mix_tv();
+				}else{
+					$scope.seting.pageNo_T++;
+					$scope.recommend_mix_tv();
+				}
+			}else if(str=='film'){
+				if($scope.listTJ.length<6){
+					$scope.seting.pageNo_F=0;
+					$scope.recommend_mix_film();
+				}else{
+					$scope.seting.pageNo_F++;
+					$scope.recommend_mix_film();
+				}
+			}else if(str=='zy'){
+				if($scope.listTJ.length<6){
+					$scope.seting.pageNo_E=0;
+					$scope.recommend_mix_arts();
+				}else{
+					$scope.seting.pageNo_E++;
+					$scope.recommend_mix_arts();
+				}
+			}else if(str=='dm'){
+				if($scope.listTJ.length<6){
+					$scope.seting.pageNo_C=0;
+					$scope.recommend_mix_anime();
+				}else{
+					$scope.seting.pageNo_C++;
+					$scope.recommend_mix_anime();
+				}
 			}
 				
-		}
-		
-		
+		}	
 
 	}
 	return {
